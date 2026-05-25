@@ -1,0 +1,4 @@
+﻿saved/model_best.pt
+saved/mixture_valid.txt
+send to gpu/
+*.zip
