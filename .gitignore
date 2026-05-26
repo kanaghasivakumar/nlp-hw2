@@ -2,3 +2,5 @@
 saved/mixture_valid.txt
 send to gpu/
 *.zip
+*.pt
+hw2-env/

@@ -89,22 +89,30 @@ def plot_losses(train_losses, val_losses):
 
 def train_and_evaluate():
     """
-    Executes the training loop with early stopping and saves the best model weights.
+    Executes the training loop with early stopping, mixed precision, and saves the best model weights.
     """
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     tokenizer = BertTokenizer.from_pretrained("google-bert/bert-base-uncased")
-    
+   
     train_dataset = OBQADataset('obqa/obqa.train.txt', tokenizer)
     valid_dataset = OBQADataset('obqa/obqa.valid.txt', tokenizer)
     test_dataset = OBQADataset('obqa/obqa.test.txt', tokenizer)
 
-    train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
-    valid_loader = DataLoader(valid_dataset, batch_size=16)
-    test_loader = DataLoader(test_dataset, batch_size=16)
+    train_loader = DataLoader(
+        train_dataset,
+        batch_size=32,
+        shuffle=True,
+        num_workers=os.cpu_count(),
+        pin_memory=True,
+        prefetch_factor=2
+        )
+    valid_loader = DataLoader(valid_dataset, batch_size=32, num_workers=os.cpu_count(), pin_memory=True)
+    test_loader = DataLoader(test_dataset, batch_size=32, num_workers=os.cpu_count(), pin_memory=True)
 
     model = BertQAClassifier().to(device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=3e-5)
     criterion = nn.CrossEntropyLoss()
+    scaler = torch.amp.GradScaler('cuda')
 
     def evaluate(model, dataloader):
         model.eval()
@@ -113,18 +121,19 @@ def train_and_evaluate():
         total = 0
         with torch.no_grad():
             for batch in dataloader:
-                input_ids = batch["input_ids"].to(device)
-                attention_mask = batch["attention_mask"].to(device)
-                labels = batch["label"].to(device)
-                
-                logits = model(input_ids, attention_mask)
-                loss = criterion(logits, labels)
-                
+                input_ids = batch["input_ids"].to(device, non_blocking=True)
+                attention_mask = batch["attention_mask"].to(device, non_blocking=True)
+                labels = batch["label"].to(device, non_blocking=True)
+               
+                with torch.amp.autocast('cuda'):
+                    logits = model(input_ids, attention_mask)
+                    loss = criterion(logits, labels)
+               
                 total_loss += loss.item()
                 predictions = torch.argmax(logits, dim=1)
                 correct += (predictions == labels).sum().item()
                 total += labels.size(0)
-                
+               
         avg_loss = total_loss / len(dataloader)
         accuracy = correct / total
         return avg_loss, accuracy
@@ -136,33 +145,35 @@ def train_and_evaluate():
     patience = 2
     best_val_loss = float('inf')
     patience_counter = 0
-    
+   
     train_losses = []
     val_losses = []
 
     for epoch in range(epochs):
         model.train()
         total_train_loss = 0
-        
+       
         for batch in tqdm(train_loader, desc=f"Epoch {epoch+1}"):
-            input_ids = batch["input_ids"].to(device)
-            attention_mask = batch["attention_mask"].to(device)
-            labels = batch["label"].to(device)
+            input_ids = batch["input_ids"].to(device, non_blocking=True)
+            attention_mask = batch["attention_mask"].to(device, non_blocking=True)
+            labels = batch["label"].to(device, non_blocking=True)
 
             optimizer.zero_grad()
-            logits = model(input_ids, attention_mask)
-            loss = criterion(logits, labels)
-            loss.backward()
-            optimizer.step()
-            
+           
+            with torch.amp.autocast('cuda'):
+                logits = model(input_ids, attention_mask)
+                loss = criterion(logits, labels)
+               
+            scaler.scale(loss).backward()
+            scaler.step(optimizer)
+            scaler.update()
+           
             total_train_loss += loss.item()
-            
+           
         avg_train_loss = total_train_loss / len(train_loader)
         val_loss, val_acc = evaluate(model, valid_loader)
-        
         train_losses.append(avg_train_loss)
         val_losses.append(val_loss)
-        
         print(f"Epoch {epoch+1} | Train Loss: {avg_train_loss:.4f} | Val Loss: {val_loss:.4f} | Val Acc: {val_acc * 100:.2f}%")
 
         if val_loss < best_val_loss:
@@ -176,8 +187,7 @@ def train_and_evaluate():
                 print(f"Early stopping triggered after {epoch+1} epochs.")
                 break
 
-    plot_losses(train_losses, val_losses)
-    
+    plot_losses(train_losses, val_losses)  
     model.load_state_dict(torch.load("bert_best_model.pt"))
     test_loss, test_acc = evaluate(model, test_loader)
     print(f"Final Test Accuracy (Fine-tuned): {test_acc * 100:.2f}%")
