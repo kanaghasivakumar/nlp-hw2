@@ -258,22 +258,21 @@ class AsterPipeline:
         return seq_log_prob / (n_choice_toks ** 0.7)
 
     def compute_bertscore(self, text1, text2):
-        """Token-level BERTScore F1 using Aster's own word embeddings."""
+        if not text1.strip() or not text2.strip():
+            return 0.0
         ids1 = self.tokenizer(text1, add_special_tokens=False, return_tensors="pt")["input_ids"].to(self.device)
         ids2 = self.tokenizer(text2, add_special_tokens=False, return_tensors="pt")["input_ids"].to(self.device)
+        if ids1.size(1) == 0 or ids2.size(1) == 0:
+            return 0.0
 
         with torch.no_grad(), torch.amp.autocast('cuda'):
             embs1 = self.model.wte(ids1).squeeze(0)
             embs2 = self.model.wte(ids2).squeeze(0)
-
             embs1_norm = F.normalize(embs1, p=2, dim=1)
             embs2_norm = F.normalize(embs2, p=2, dim=1)
-
             sim_matrix = torch.matmul(embs1_norm, embs2_norm.T)
-
-            precision = sim_matrix.max(dim=1)[0].mean().item()
-            recall    = sim_matrix.max(dim=0)[0].mean().item()
-
+            precision  = sim_matrix.max(dim=1)[0].mean().item()
+            recall     = sim_matrix.max(dim=0)[0].mean().item()
             if precision + recall == 0:
                 return 0.0
             return 2 * precision * recall / (precision + recall)
@@ -300,10 +299,10 @@ class AsterPipeline:
                     step_score = top_probs[i].item()
 
                     if guided:
-                        gen_text   = self.tokenizer.decode(
+                        gen_text = self.tokenizer.decode(
                             new_seq[len(initial_ids):], skip_special_tokens=True
-                        )
-                        bert_score      = self.compute_bertscore(prompt, gen_text)
+                        ).strip()
+                        bert_score      = self.compute_bertscore(prompt, gen_text) if gen_text else 0.0
                         composite_score = step_score + 0.5 * bert_score
                         new_beams.append((new_seq, score + composite_score))
                     else:
@@ -313,8 +312,9 @@ class AsterPipeline:
             if beams[0][0][-1].item() == self.tokenizer.eos_token_id:
                 break
 
-        best_seq = beams[0][0][len(initial_ids):]
-        return self.tokenizer.decode(best_seq, skip_special_tokens=True)
+        best_seq  = beams[0][0][len(initial_ids):]
+        decoded   = self.tokenizer.decode(best_seq, skip_special_tokens=True).strip()
+        return decoded if decoded else "unknown"
 
 
 def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt",
