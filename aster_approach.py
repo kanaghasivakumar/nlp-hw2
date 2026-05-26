@@ -26,31 +26,29 @@ class AsterOBQADataset(Dataset):
                 
                 correct_choice = choices[answer_key]
                 prompt_text = f"{fact} {stem} [ANSWER] "
-                full_text = prompt_text + correct_choice + (tokenizer.eos_token if tokenizer.eos_token else "")
+                choice_text = correct_choice + (tokenizer.eos_token if tokenizer.eos_token else "")
 
-                prompt_encoded = tokenizer(prompt_text, add_special_tokens=False)
-                prompt_len = len(prompt_encoded['input_ids'])
-
-                encoded = tokenizer(
-                    full_text,
-                    truncation=True,
-                    max_length=max_length,
-                    padding="max_length",
-                    return_tensors="pt"
-                )
+                prompt_encoded = tokenizer(prompt_text, add_special_tokens=False)['input_ids']
+                choice_encoded = tokenizer(choice_text, add_special_tokens=False)['input_ids']
                 
-                input_ids = encoded['input_ids'].squeeze(0)
-                attention_mask = encoded['attention_mask'].squeeze(0)
+                input_ids = prompt_encoded + choice_encoded
+                labels = [-100] * len(prompt_encoded) + choice_encoded
+                attention_mask = [1] * len(input_ids)
                 
-                labels = input_ids.clone()
-                for i in range(len(labels)):
-                    if i < prompt_len or input_ids[i] == tokenizer.pad_token_id:
-                        labels[i] = -100
+                pad_len = max_length - len(input_ids)
+                if pad_len > 0:
+                    input_ids.extend([tokenizer.pad_token_id] * pad_len)
+                    labels.extend([-100] * pad_len)
+                    attention_mask.extend([0] * pad_len)
+                else:
+                    input_ids = input_ids[:max_length]
+                    labels = labels[:max_length]
+                    attention_mask = attention_mask[:max_length]
                 
                 self.data.append({
-                    "input_ids": input_ids,
-                    "attention_mask": attention_mask,
-                    "labels": labels,
+                    "input_ids": torch.tensor(input_ids),
+                    "attention_mask": torch.tensor(attention_mask),
+                    "labels": torch.tensor(labels),
                     "raw_fact": fact,
                     "raw_stem": stem,
                     "raw_choices": list(choices.values()),
@@ -155,20 +153,24 @@ class AsterPipeline:
         plt.savefig(filename)
         plt.close()
 
-    def sequence_probability(self, text):
+    def sequence_probability(self, prompt, choice):
         self.model.eval()
-        input_ids = self.tokenizer(text, return_tensors="pt")["input_ids"].to(self.device)
+        prompt_ids = self.tokenizer(prompt, return_tensors="pt")["input_ids"].to(self.device)
+        choice_ids = self.tokenizer(choice, return_tensors="pt")["input_ids"].to(self.device)
+        input_ids = torch.cat([prompt_ids, choice_ids], dim=1)
         
         with torch.no_grad(), torch.amp.autocast('cuda'):
             _, logits = self.model(input_ids)
             log_probs = F.log_softmax(logits, dim=-1)
             
             seq_log_prob = 0.0
-            for i in range(input_ids.size(1) - 1):
+            prompt_len = prompt_ids.size(1)
+            
+            for i in range(prompt_len - 1, input_ids.size(1) - 1):
                 target_token = input_ids[0, i+1]
                 seq_log_prob += log_probs[0, i, target_token].item()
                 
-        return seq_log_prob
+        return seq_log_prob / choice_ids.size(1)
 
     def compute_bertscore(self, text1, text2):
         ids1 = self.tokenizer(text1, return_tensors="pt")["input_ids"].to(self.device)
@@ -235,12 +237,13 @@ def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt"):
         choices = item["raw_choices"]
         true_label = item["label_idx"]
         
-        probs = [pipeline.sequence_probability(f"{fact} {stem} [ANSWER] {c}") for c in choices]
+        prompt = f"{fact} {stem} [ANSWER] "
+        
+        probs = [pipeline.sequence_probability(prompt, c) for c in choices]
         pred2 = probs.index(max(probs))
         if pred2 == true_label:
             task2_correct += 1
             
-        prompt = f"{fact} {stem} [ANSWER] "
         vanilla_gen = pipeline.beam_search(prompt, guided=False)
         guided_gen = pipeline.beam_search(prompt, guided=True)
         
