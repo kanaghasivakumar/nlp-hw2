@@ -16,8 +16,8 @@ Fact: migration is an instinctive behavior
 Stem: When birds migrate south for the winter, they do it because
 Choices: ['they are genetically called to', 'their children ask for them to', 'it is important to their happiness', 'they decide to each year']
 Gold: 0
-Vanilla Gen: _____. Question: When birds migrate north for the winter, they do it | Pred: 2 | Scores: [0.8749150037765503, 0.9544076323509216, 0.9593260288238525, 0.8806381225585938]
-Guided Gen: _____. Question: When birds migrate north for the winter, they do it | Pred: 2 | Scores: [0.8749150037765503, 0.9544076323509216, 0.9593260288238525, 0.8806381225585938]
+Vanilla Gen: _________________ (1) What is the difference between migration and migration? ( | Pred: 2 | Scores: [0.8006609678268433, 0.8951297998428345, 0.9310200214385986, 0.7965784072875977]
+Guided Gen: _________________ (1) What is the difference between migration and migration? ( | Pred: 2 | Scores: [0.8006609678268433, 0.8951297998428345, 0.9310200214385986, 0.7965784072875977]
 
 Fact: a compass is a kind of tool for determining direction by pointing north
 Stem: If a person walks in the opposite direction of a compass arrow they are walking
@@ -30,7 +30,7 @@ Fact: as an object moves , the kinetic energy of that object will increase
 Stem: An example of lots kinetic energy would be
 Choices: ['Drinking a cold glass of water', 'A snail moving across the sidewalk', 'sitting without moving anywhere', 'An aircraft taking a trip']
 Gold: 3
-Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 2 | Scores: [0.9225820302963257, 0.9123735427856445, 0.9553408622741699, 0.9535146355628967]
+Vanilla Gen: _________________ Re: An example of lots kinetic energy would be [ANSWER | Pred: 3 | Scores: [0.9410865306854248, 0.8782649636268616, 0.9170573949813843, 0.9557831287384033]
 Guided Gen: _________________ Re: An example of lots kinetic energy would be [ANSWER | Pred: 3 | Scores: [0.9410865306854248, 0.8782649636268616, 0.9170573949813843, 0.9557831287384033]
 
 Fact: a single-cell organism cannot specialize
@@ -79,7 +79,7 @@ Fact: An example of collecting data is measuring
 Stem: An example of data collection is
 Choices: ['Deleting case files on the computer', 'Touching evidence without gloves', 'speaking with a witness', 'Throwing documents in the trash']
 Gold: 2
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 1 | Scores: [0.8926759958267212, 0.9598276615142822, 0.8643845319747925, 0.9501641392707825]
+Vanilla Gen: _________________ Re: An example of collecting data [#permalink] ### | Pred: 0 | Scores: [0.9580162167549133, 0.8721646666526794, 0.9288727641105652, 0.8893800377845764]
 Guided Gen: _________________ Re: An example of collecting data [#permalink] ### | Pred: 0 | Scores: [0.9580162167549133, 0.8721646666526794, 0.9288727641105652, 0.8893800377845764]
 
 Fact: An example of hunting is an otter cracking open clams with a rock
@@ -93,8 +93,8 @@ Fact: oil is a nonrenewable resource
 Stem: Oil is a nonrenewable resource which tells us that when
 Choices: ['it can be remade', 'it can be found in other places', 'there is an endless supply', 'the final barrel is gone, there supply is finished']
 Gold: 3
-Vanilla Gen: _____, what is oil? Answer: Oil is a nonrenewable | Pred: 3 | Scores: [0.8880427479743958, 0.9089905023574829, 0.7983464002609253, 0.9393966197967529]
-Guided Gen: _____, what is oil? Answer: Oil is a nonrenewable | Pred: 3 | Scores: [0.8880427479743958, 0.9089905023574829, 0.7983464002609253, 0.9393966197967529]
+Vanilla Gen: _____, what is the value of oil? Answer: Oil is a non | Pred: 1 | Scores: [0.7459056377410889, 0.9484100341796875, 0.6054440140724182, 0.8231013417243958]
+Guided Gen: _____, what is the value of oil? Answer: Oil is a non | Pred: 1 | Scores: [0.7459056377410889, 0.9484100341796875, 0.6054440140724182, 0.8231013417243958]
 
 Fact: magma is found below the ground
 Stem: Magma contains
@@ -107,8 +107,8 @@ Fact: dew is formed when water vapor condenses over night
 Stem: Dew is formed when what condenses?
 Choices: ['carbon dioxide', 'warm air', 'H2O haze', 'oxygen']
 Gold: 2
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 1 | Scores: [0.9305907487869263, 0.9416975975036621, 0.8976675271987915, 0.9297195672988892]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 1 | Scores: [0.9305907487869263, 0.9416975975036621, 0.8976675271987915, 0.9297195672988892]
+Vanilla Gen: _________________ Re: Dew is formed when what condenses? [ANSWER | Pred: 2 | Scores: [0.8524673581123352, 0.885208785533905, 0.8861604332923889, 0.8631176352500916]
+Guided Gen: _________________ Re: Dew is formed when what condenses? [ANSWER | Pred: 2 | Scores: [0.8524673581123352, 0.885208785533905, 0.8861604332923889, 0.8631176352500916]
 
 Fact: the Earth revolving around the sun causes stars to appear in different areas in the sky at different times of year
 Stem: The Earth revolving around the sun can cause
@@ -128,8 +128,8 @@ Fact: tunnels in soil loosen that soil
 Stem: Tunnels
 Choices: ['lead to less impacted soil', 'pact down soil to make it denser', 'firm up the ground', 'help prevent the effects of erosion']
 Gold: 0
-Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 0 | Scores: [0.9462894201278687, 0.9091336131095886, 0.8830987215042114, 0.9121804237365723]
-Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 0 | Scores: [0.9462894201278687, 0.9091336131095886, 0.8830987215042114, 0.9121804237365723]
+Vanilla Gen: _________________ Re: Tunnels in soil loosen that soil [#permalink | Pred: 0 | Scores: [0.9606216549873352, 0.9587274789810181, 0.9275034666061401, 0.9570817947387695]
+Guided Gen: _________________ Re: Tunnels in soil loosen that soil [#permalink | Pred: 0 | Scores: [0.9606216549873352, 0.9587274789810181, 0.9275034666061401, 0.9570817947387695]
 
 Fact: lightning can cause a forest fire
 Stem: A fire starts in a wide, open field and catches onto a forest. The fire started even though people were far away from the woods. A potential cause for the start of it could have been
@@ -163,8 +163,8 @@ Fact: a plant requires sunlight for photosynthesis
 Stem: plant requires what for photosynthesis
 Choices: ['light that changes color', 'light from our closest star', 'the reflection of something shiny', 'light reflected from our orbiting rock']
 Gold: 1
-Vanilla Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 3 | Scores: [0.9034770131111145, 0.9417994022369385, 0.930679976940155, 0.9590662121772766]
-Guided Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 3 | Scores: [0.9034770131111145, 0.9417994022369385, 0.930679976940155, 0.9590662121772766]
+Vanilla Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 1 | Scores: [0.9025842547416687, 0.9106643199920654, 0.9055948257446289, 0.9088009595870972]
+Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 1 | Scores: [0.9025842547416687, 0.9106643199920654, 0.9055948257446289, 0.9088009595870972]
 
 Fact: the amount of daylight is least on the winter solstice
 Stem: Winter solstice occurs on a day when
@@ -184,7 +184,7 @@ Fact: dew is formed when water vapor condenses over night
 Stem: When vapor condenses overnight it often ends up on
 Choices: ['bees', 'clothing', 'rosebuds', 'people']
 Gold: 2
-Vanilla Gen: _________________ Re: When vapor condenses overnight it often ends up on [ | Pred: 2 | Scores: [0.8065255284309387, 0.8614943623542786, 0.890885591506958, 0.8369609117507935]
+Vanilla Gen: _____. Question: When vapor condenses overnight it often ends up on [ | Pred: 2 | Scores: [0.7812697291374207, 0.8465849161148071, 0.8756394982337952, 0.8186593055725098]
 Guided Gen: _________________ Re: When vapor condenses overnight it often ends up on [ | Pred: 2 | Scores: [0.8065255284309387, 0.8614943623542786, 0.890885591506958, 0.8369609117507935]
 
 Fact: dead organisms are the source of nutrients for decomposers
@@ -219,8 +219,8 @@ Fact: alligators eat fish
 Stem: Alligators
 Choices: ['eat gar', 'eat only foliage', 'have live births', 'are warm-blooded']
 Gold: 0
-Vanilla Gen: _________________ Kudos [?]: 1 [0], given: 0 Re | Pred: 3 | Scores: [0.5860781669616699, 0.7025165557861328, 0.7283076047897339, 0.8545640110969543]
-Guided Gen: _________________ Kudos [?]: 1 [0], given: 0 Re | Pred: 3 | Scores: [0.5860781669616699, 0.7025165557861328, 0.7283076047897339, 0.8545640110969543]
+Vanilla Gen: _________________ Re: Alligators [ANSWER] [#permalink] | Pred: 3 | Scores: [0.8215440511703491, 0.8813912868499756, 0.9112719297409058, 0.9577960968017578]
+Guided Gen: _________________ Re: Alligators [ANSWER] [#permalink] | Pred: 3 | Scores: [0.8215440511703491, 0.8813912868499756, 0.9112719297409058, 0.9577960968017578]
 
 Fact: chemical splashing sometimes occurs during experiments
 Stem: What might occur during an experiment
@@ -289,8 +289,8 @@ Fact: An example of stormy weather is rain
 Stem: A person is trapped in a cabin while it storms outside. The person knows it is storming because of
 Choices: ['the precipitation', 'the sun', 'the sea', 'the stars']
 Gold: 0
-Vanilla Gen: _____. Question: A person is trapped in a cabin while it storms outside | Pred: 2 | Scores: [0.7471262216567993, 0.7805800437927246, 0.8065868616104126, 0.7520866990089417]
-Guided Gen: _________________ Re: An example of stormy weather is rain Question: A | Pred: 2 | Scores: [0.7481268644332886, 0.7773227095603943, 0.803460955619812, 0.7477792501449585]
+Vanilla Gen: _________________ [#permalink] ### Show Tags Updated on: 12- | Pred: 2 | Scores: [0.8231774568557739, 0.8518408536911011, 0.8752230405807495, 0.8414584398269653]
+Guided Gen: _________________ [#permalink] ### Show Tags Updated on: 12- | Pred: 2 | Scores: [0.8231774568557739, 0.8518408536911011, 0.8752230405807495, 0.8414584398269653]
 
 Fact: mammals give birth to live young
 Stem: Which would best store new whale offspring?
@@ -310,28 +310,28 @@ Fact: herbivores only eat plants
 Stem: An herbivore like a giraffe will only consume
 Choices: ['green matter', 'sticks', 'algae', 'cheese']
 Gold: 0
-Vanilla Gen: ???? Question: An herbivore like a giraffe will only eat [ | Pred: 3 | Scores: [0.8888211846351624, 0.8041356801986694, 0.8668961524963379, 0.9044956564903259]
-Guided Gen: ???? Question: An herbivore like a giraffe will only eat [ | Pred: 3 | Scores: [0.8888211846351624, 0.8041356801986694, 0.8668961524963379, 0.9044956564903259]
+Vanilla Gen: __________. Question: An herbivore like a giraffe will only | Pred: 3 | Scores: [0.8756769299507141, 0.7819832563400269, 0.8518385887145996, 0.896200954914093]
+Guided Gen: __________. Question: An herbivore like a giraffe will only | Pred: 3 | Scores: [0.8756769299507141, 0.7819832563400269, 0.8518385887145996, 0.896200954914093]
 
 Fact: carbon dioxide concentrations in the air have increased over the last decade dramatically
 Stem: Climate change has sped up dramatically because
 Choices: ['CO2 production has accelerated', 'a rapid decline the production of carbon dioxide', 'oxygen levels have spiked', 'Fe has been present in an overabundance']
 Gold: 0
-Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 0 | Scores: [0.9612470269203186, 0.8934597969055176, 0.9481585621833801, 0.8767823576927185]
-Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 0 | Scores: [0.9594441652297974, 0.9093123078346252, 0.9304375648498535, 0.9024536609649658]
+Vanilla Gen: _________________ I am not sure what you mean by that. I am not | Pred: 3 | Scores: [0.5826807618141174, 0.7546537518501282, 0.42884066700935364, 0.8262622356414795]
+Guided Gen: _________________ I am not sure what you mean by that. I am not | Pred: 3 | Scores: [0.5826807618141174, 0.7546537518501282, 0.42884066700935364, 0.8262622356414795]
 
 Fact: metal is an electrical energy conductor
 Stem: What is most necessary for a  bitcoin operation
 Choices: ['abacus', 'metal', 'plastic', 'wood']
 Gold: 1
-Vanilla Gen: _________________ Re: What is most necessary for a  bitcoin operation [ANS | Pred: 2 | Scores: [0.6999589800834656, 0.5370738506317139, 0.7113770246505737, 0.685628354549408]
-Guided Gen: ???? Question: What is most necessary for a bitcoin operation [ANSWER] | Pred: 2 | Scores: [0.8271093964576721, 0.6981301307678223, 0.827702522277832, 0.8082402348518372]
+Vanilla Gen: ???? [ANSWER] ???? [ANSWER] ???? [ANS | Pred: 0 | Scores: [0.9407315254211426, 0.8931512832641602, 0.9319526553153992, 0.9119222164154053]
+Guided Gen: ???? [ANSWER] ???? [ANSWER] ???? [ANS | Pred: 0 | Scores: [0.9407315254211426, 0.8931512832641602, 0.9319526553153992, 0.9119222164154053]
 
 Fact: if something is outside during the day then that something will receive sunlight
 Stem: If something is outside during the day what will it receive?
 Choices: ['food', 'sunbeams', 'energy', 'water']
 Gold: 1
-Vanilla Gen: _________________ Re: If something is outside during the day what will it receive | Pred: 3 | Scores: [0.5647099614143372, 0.5913879871368408, 0.5751152634620667, 0.6122613549232483]
+Vanilla Gen: _________________ Re: If something is outside during the day then what will it | Pred: 3 | Scores: [0.4961032271385193, 0.5244442224502563, 0.5087182521820068, 0.5496440529823303]
 Guided Gen: _________________ Re: If something is outside during the day what will it receive | Pred: 3 | Scores: [0.5647099614143372, 0.5913879871368408, 0.5751152634620667, 0.6122613549232483]
 
 Fact: as the number of eggs laid by an animal increases , the number of eggs that hatch will increase
@@ -352,14 +352,14 @@ Fact: as the amount of water received by a plant increases , that plant will usu
 Stem: Plant growth may be positively affected by
 Choices: ['extra rainfall', 'freezing temperatures', 'increase in pests', 'long droughts']
 Gold: 0
-Vanilla Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 2 | Scores: [0.8298429250717163, 0.8292202949523926, 0.8981325626373291, 0.8940645456314087]
-Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 2 | Scores: [0.8298429250717163, 0.8292202949523926, 0.8981325626373291, 0.8940645456314087]
+Vanilla Gen: _____. Question: Plant growth may be negatively affected by [ANSWER] | Pred: 3 | Scores: [0.8095149397850037, 0.8170636892318726, 0.896904468536377, 0.9105184078216553]
+Guided Gen: _____. Question: Plant growth may be negatively affected by [ANSWER] | Pred: 3 | Scores: [0.8095149397850037, 0.8170636892318726, 0.896904468536377, 0.9105184078216553]
 
 Fact: an electric car uses less gasoline than a regular car
 Stem: An electric car uses less gasoline than a regular car because
 Choices: ['parts of the engine are flawed', 'gas is unable to be used', 'electricity is more expensive', 'power is prioritized over gas']
 Gold: 3
-Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 3 | Scores: [0.9363195896148682, 0.7803894281387329, 0.9328608512878418, 0.9599617123603821]
+Vanilla Gen: _________________ [#permalink] ### Show Tags Updated on: 12- | Pred: 0 | Scores: [0.9071352481842041, 0.9008653163909912, 0.901650071144104, 0.8722226619720459]
 Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.9456788897514343, 0.8159734010696411, 0.9394885897636414, 0.957477867603302]
 
 Fact: a revolution is when something revolves around something else
@@ -380,8 +380,8 @@ Fact: plants are the source of spices
 Stem: Pumpkin pie spice comes from
 Choices: ['animals', 'plants', 'rocks', 'air']
 Gold: 1
-Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 1 | Scores: [0.912251353263855, 0.9311795234680176, 0.9212059378623962, 0.908473789691925]
-Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 1 | Scores: [0.912251353263855, 0.9311795234680176, 0.9212059378623962, 0.908473789691925]
+Vanilla Gen: _________________ Re: Pumpkin pie spice comes from [ANSWER] [# | Pred: 1 | Scores: [0.8964887261390686, 0.9228755235671997, 0.9145582914352417, 0.8943742513656616]
+Guided Gen: _________________ Re: Pumpkin pie spice comes from [ANSWER] [# | Pred: 1 | Scores: [0.8964887261390686, 0.9228755235671997, 0.9145582914352417, 0.8943742513656616]
 
 Fact: if all members of a species cannot produce offspring then that species will likely become extinct
 Stem: Were the situation to be that all zebra were sterile,
@@ -429,7 +429,7 @@ Fact: snow falls during the winter in some environments
 Stem: Some areas are known for experiencing all four seasons, and winter is one of those seasons. During said season, one may partake in activities such as
 Choices: ['swimming', 'leaf peeping', 'sledding', 'surfing']
 Gold: 2
-Vanilla Gen: _____, _____, _____, _____, _____,  | Pred: 2 | Scores: [0.46151435375213623, 0.37766510248184204, 0.5253121852874756, 0.30941152572631836]
+Vanilla Gen: _____, [AND] _____, [AND] _____, [ | Pred: 2 | Scores: [0.6330012083053589, 0.5542250275611877, 0.680638313293457, 0.49839726090431213]
 Guided Gen: _____, _____, _____, _____, _____,  | Pred: 2 | Scores: [0.46151435375213623, 0.37766510248184204, 0.5253121852874756, 0.30941152572631836]
 
 Fact: loss of resources has a negative impact on the organisms in an area
@@ -513,7 +513,7 @@ Fact: reproduction occurs during adulthood
 Stem: A mark of adulthood common in most species is
 Choices: ['paying bills', 'reproduction', 'fighting', 'death']
 Gold: 1
-Vanilla Gen: _____. Question: A mark of maturity common in most species is [ANS | Pred: 1 | Scores: [0.5508863925933838, 0.6998627781867981, 0.5224934816360474, 0.5634245872497559]
+Vanilla Gen: __________. Question: A mark of adulthood common in most species is [ | Pred: 1 | Scores: [0.5522428750991821, 0.7019110918045044, 0.5225613117218018, 0.5637996792793274]
 Guided Gen: __________. Question: A mark of adulthood common in most species is [ | Pred: 1 | Scores: [0.5522428750991821, 0.7019110918045044, 0.5225613117218018, 0.5637996792793274]
 
 Fact: if an animal eats another animal then that animal is a carnivore or omnivore or predator
@@ -527,15 +527,15 @@ Fact: the crust is a layer of the Earth
 Stem: Layers of the earth include all but
 Choices: ['mantle', 'center', 'crust', 'inner core']
 Gold: 1
-Vanilla Gen: _________________ Re: Layers of the earth [#permalink] ### | Pred: 0 | Scores: [0.8391610980033875, 0.7323573231697083, 0.7722941040992737, 0.7751470804214478]
+Vanilla Gen: _________________ Re: The crust is a layer of the Earth [#per | Pred: 0 | Scores: [0.6842101216316223, 0.541208028793335, 0.5894911289215088, 0.5932842493057251]
 Guided Gen: _________________ Re: Layers of the earth [#permalink] ### | Pred: 0 | Scores: [0.8391610980033875, 0.7323573231697083, 0.7722941040992737, 0.7751470804214478]
 
 Fact: some flowers become fruits
 Stem: What core ingredient of red pasta sauce comes from a flower?
 Choices: ['Tomato', 'Bell Pepper', 'Oregano', 'Onion']
 Gold: 0
-Vanilla Gen: _________________ Re: What core ingredient of red pasta sauce comes from a flower | Pred: 3 | Scores: [0.8406317234039307, 0.8037630319595337, 0.8716139197349548, 0.8897655010223389]
-Guided Gen: _________________ Re: What core ingredient of red pasta sauce comes from a flower | Pred: 3 | Scores: [0.8406317234039307, 0.8037630319595337, 0.8716139197349548, 0.8897655010223389]
+Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.942787766456604, 0.9316229224205017, 0.9684454202651978, 0.9358944892883301]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.942787766456604, 0.9316229224205017, 0.9684454202651978, 0.9358944892883301]
 
 Fact: melting is when solids are heated above their melting point
 Stem: If something were to be melted, it would be heated above its melting point, like
@@ -583,8 +583,8 @@ Fact: a bat births live young
 Stem: Bats have many quirks, with the exception of
 Choices: ['using echolocation', 'laying eggs', 'hanging upside down', 'eating bugs']
 Gold: 1
-Vanilla Gen: ____________. Question: Bats have many weaknesses, with the exception of | Pred: 0 | Scores: [0.7735804319381714, 0.6844027042388916, 0.6845852136611938, 0.5119044780731201]
-Guided Gen: ____________. Question: Bats have many weaknesses, with the exception of | Pred: 0 | Scores: [0.7735804319381714, 0.6844027042388916, 0.6845852136611938, 0.5119044780731201]
+Vanilla Gen: _____. Question: Bats have many weaknesses, with the exception of [ | Pred: 0 | Scores: [0.671218991279602, 0.5685402154922485, 0.5647901892662048, 0.37090232968330383]
+Guided Gen: _____. Question: Bats have many weaknesses, with the exception of [ | Pred: 0 | Scores: [0.671218991279602, 0.5685402154922485, 0.5647901892662048, 0.37090232968330383]
 
 Fact: eating food that contains pesticides can have a negative impact on humans
 Stem: Organic food is currently considered best for people because
@@ -597,8 +597,8 @@ Fact: the breaking down of food into simple substances occurs in the digestive s
 Stem: A horse eats some hay, an apple and a sugar cube, then peacefully roams a field after eating while digesting the meal. During this time
 Choices: ['the horse throws up', 'the food is deconstructed', 'the horse is hungry', 'the food is poisoned']
 Gold: 1
-Vanilla Gen: __________, the horse eats some hay, an apple and a sugar cube | Pred: 3 | Scores: [0.8916194438934326, 0.8882777690887451, 0.9096747636795044, 0.926253616809845]
-Guided Gen: __________, the horse eats some hay, an apple and a sugar cube | Pred: 3 | Scores: [0.8916194438934326, 0.8882777690887451, 0.9096747636795044, 0.926253616809845]
+Vanilla Gen: _________________ (1) The horse eats some hay, an apple and a | Pred: 3 | Scores: [0.7362209558486938, 0.7317399382591248, 0.7761269211769104, 0.8112099170684814]
+Guided Gen: _________________ (1) The horse eats some hay, an apple and a | Pred: 3 | Scores: [0.7362209558486938, 0.7317399382591248, 0.7761269211769104, 0.8112099170684814]
 
 Fact: rest has a positive impact on a health
 Stem: Who would be healthier?
@@ -611,15 +611,15 @@ Fact: as distance from water decreases , humidity will increase
 Stem: When you get farther from water, the water vapor in the air will ______.
 Choices: ['increase', 'decrease', 'condense', 'form clouds']
 Gold: 1
-Vanilla Gen: _____. Question: When you get farther from water, the water vapor in | Pred: 1 | Scores: [0.49960583448410034, 0.593601405620575, 0.47013455629348755, 0.531540036201477]
-Guided Gen: _____. Question: When you get farther from water, the water vapor in | Pred: 1 | Scores: [0.49960583448410034, 0.593601405620575, 0.47013455629348755, 0.531540036201477]
+Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 1 | Scores: [0.9350982904434204, 0.940575122833252, 0.9191077947616577, 0.8922948837280273]
+Guided Gen: _________________ Re: When you get farther from water, the water vapor in | Pred: 1 | Scores: [0.5494786500930786, 0.6379643678665161, 0.5202894806861877, 0.5870915055274963]
 
 Fact: An example of camouflage is when something changes color in order to have the same color as its environment
 Stem: What is a good example of camouflage?
 Choices: ['when a creature adjusts the shape and color of its body to appear as something else', 'when a rabbit hides in a patch of grass', 'when a cat presses its body flat to the ground to hide', 'when a fish swims with a large group of fish to hide itself']
 Gold: 0
 Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.8202191591262817, 0.8717115521430969, 0.8871654272079468, 0.8379086256027222]
-Guided Gen: _________________ Re: An example of camouflage is when something changes color in order | Pred: 0 | Scores: [0.97339928150177, 0.8800172805786133, 0.9180191159248352, 0.9652812480926514]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.8202191591262817, 0.8717115521430969, 0.8871654272079468, 0.8379086256027222]
 
 Fact: plants are the source of fruit
 Stem: plants are the source of
@@ -653,8 +653,8 @@ Fact: a sea turtle lives in the ocean
 Stem: Where did Puppigerus live?
 Choices: ['bog', 'ocean', 'land', 'marsh']
 Gold: 1
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 1 | Scores: [0.7909061908721924, 0.9357742071151733, 0.8422409296035767, 0.9122832417488098]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 1 | Scores: [0.7909061908721924, 0.9357742071151733, 0.8422409296035767, 0.9122832417488098]
+Vanilla Gen: _________________ Kudos [?]: 5 [0], given: 0 Re | Pred: 0 | Scores: [0.8492516279220581, 0.7865359783172607, 0.7884220480918884, 0.825405478477478]
+Guided Gen: _________________ Kudos [?]: 5 [0], given: 0 Re | Pred: 0 | Scores: [0.8492516279220581, 0.7865359783172607, 0.7884220480918884, 0.825405478477478]
 
 Fact: the circulatory system brings oxygen from the lungs to the rest of the body
 Stem: The circulatory system brings oxygen to the body from where?
@@ -723,8 +723,8 @@ Fact: the volume of an object can be used to describe the size of that object
 Stem: A man is trying to describe a single vat of juice he has. He needs the best way to tell his friend about the object, so he says
 Choices: ['20 meters of juice', '20 vats of juice', '20 ounces of juice', '20 feet of juice']
 Gold: 2
-Vanilla Gen: _________________ Re: A man is trying to describe a single vat of | Pred: 1 | Scores: [0.6697891354560852, 0.8163391351699829, 0.6125603914260864, 0.6879744529724121]
-Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 0 | Scores: [0.9226785898208618, 0.8993603587150574, 0.9047729969024658, 0.9208284616470337]
+Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 0 | Scores: [0.9017051458358765, 0.8665639758110046, 0.8856891393661499, 0.8982447385787964]
+Guided Gen: _________________ Kudos [?]: 0 [0], given: 0 Re | Pred: 1 | Scores: [0.8798454403877258, 0.9338387846946716, 0.8436250686645508, 0.886006236076355]
 
 Fact: a plant requires photosynthesis to grow
 Stem: plant life is completely dependent on what?
@@ -779,8 +779,8 @@ Fact: most chloroplasts are found in the leaves of a plant
 Stem: Chloroplasts exist in plants and can be located by knowing where
 Choices: ['how many petals most plants have', 'food is stored in plants', 'the greenest part of a plant is', 'if a plant has a thick stem']
 Gold: 2
-Vanilla Gen: _____ is located. Answer: Chloroplasts are found in the leaves | Pred: 1 | Scores: [0.8999202251434326, 0.9631019830703735, 0.9249536395072937, 0.9395769238471985]
-Guided Gen: _____ is located. Answer: Chloroplasts are found in the leaves | Pred: 1 | Scores: [0.8999202251434326, 0.9631019830703735, 0.9249536395072937, 0.9395769238471985]
+Vanilla Gen: _____ is located in the plant. Question: Chloroplasts are found | Pred: 1 | Scores: [0.8945629596710205, 0.9633198380470276, 0.9321814775466919, 0.9403728246688843]
+Guided Gen: _____ is located in the plant. Question: Chloroplasts are found | Pred: 1 | Scores: [0.8945629596710205, 0.9633198380470276, 0.9321814775466919, 0.9403728246688843]
 
 Fact: the sun transfers heat energy from itself to the planets through sunlight
 Stem: Sunlight transfers heat energy to
@@ -849,8 +849,8 @@ Fact: water vapor cooling causes that water vapor to condense
 Stem: Some vapor is condensing now because it has less
 Choices: ['gas', 'heat', 'water', 'steam']
 Gold: 1
-Vanilla Gen: ???? Question: Some vapor is condensing now because it has less [ANS | Pred: 2 | Scores: [0.7763696312904358, 0.8148775100708008, 0.8592698574066162, 0.7985676527023315]
-Guided Gen: ???? Question: Some vapor is condensing now because it has less [ANS | Pred: 2 | Scores: [0.7763696312904358, 0.8148775100708008, 0.8592698574066162, 0.7985676527023315]
+Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.8701105713844299, 0.9034901857376099, 0.9233187437057495, 0.8995295763015747]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.8701105713844299, 0.9034901857376099, 0.9233187437057495, 0.8995295763015747]
 
 Fact: an organism is a source of organic matter
 Stem: Herbivores contribute to the same type of plants they eat when:
@@ -871,7 +871,7 @@ Stem: A person wants to turn on their fan to cool down their room. In order to d
 Choices: ['plug it in', 'spin a wire', 'make some noise', 'turn it off']
 Gold: 0
 Vanilla Gen: __________. Question: A person wants to turn on their fan to cool | Pred: 0 | Scores: [0.9002317190170288, 0.8191745281219482, 0.8013148307800293, 0.8587411046028137]
-Guided Gen: _____. Question: A person wants to turn on their fan to cool down | Pred: 0 | Scores: [0.9163644313812256, 0.7680308818817139, 0.7449998259544373, 0.8192276954650879]
+Guided Gen: __________. Question: A person wants to turn on their fan to cool | Pred: 0 | Scores: [0.9002317190170288, 0.8191745281219482, 0.8013148307800293, 0.8587411046028137]
 
 Fact: if a body of water loses all water then that body of water does not exist any more
 Stem: A river can disappear over a period of time?
@@ -912,15 +912,15 @@ Fact: sunlight produces heat
 Stem: Sunlight
 Choices: ['makes car steering wheels hard to handle in the summer', 'means your pets need sweaters when outdoors', 'causes ice to refreeze', 'cools down the water in local ponds']
 Gold: 0
-Vanilla Gen: _________________ Re: Sunlight [ANSWER] [#permalink] | Pred: 0 | Scores: [0.9512115716934204, 0.9385255575180054, 0.948240339756012, 0.8928626775741577]
-Guided Gen: _________________ Re: Sunlight [ANSWER] [#permalink] | Pred: 0 | Scores: [0.9512115716934204, 0.9385255575180054, 0.948240339756012, 0.8928626775741577]
+Vanilla Gen: _________________ Kudos [?]: 5 [0], given: 0 Re | Pred: 3 | Scores: [0.9139581918716431, 0.7954588532447815, 0.8248562812805176, 0.9221338033676147]
+Guided Gen: _________________ Kudos [?]: 5 [0], given: 0 Re | Pred: 3 | Scores: [0.9139581918716431, 0.7954588532447815, 0.8248562812805176, 0.9221338033676147]
 
 Fact: a cavern is formed by carbonic acid in groundwater seeping through rock and dissolving limestone
 Stem: Science fact: a cavern is formed by carbonic acid in groundwater seeping through rock and dissolving
 Choices: ['sedimentary rock which is  composed mainly of skeletal fragments of marine organisms such as coral, forams and molluscs,', 'metamorphic rocks that are formed under the surface of the earth from the metamorphosis,', 'igneous rocks which are formed when magma  cools and hardens or', 'artist who play the music genre called rock and roll.']
 Gold: 0
-Vanilla Gen: _________________ Re: A cavern is formed by carbonic acid in groundwater se | Pred: 0 | Scores: [0.9686088562011719, 0.9592177271842957, 0.9632822871208191, 0.9410399198532104]
-Guided Gen: _________________ Re: A cavern is formed by carbonic acid in groundwater se | Pred: 0 | Scores: [0.9686088562011719, 0.9592177271842957, 0.9632822871208191, 0.9410399198532104]
+Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.9077253937721252, 0.861860990524292, 0.9079146981239319, 0.9111559391021729]
+Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.9077253937721252, 0.861860990524292, 0.9079146981239319, 0.9111559391021729]
 
 Fact: if a habitat can no longer support animals then those animals will move to another area
 Stem: Deer entered the city
@@ -975,8 +975,8 @@ Fact: An example of creating an alternative fuel is turning plant material into 
 Stem: One step in creating an alternative fuel is
 Choices: ['coal miners looking for coal', 'gold being sifted from dirt', 'growing crops of corn', 'drilling for fossil fuels']
 Gold: 2
-Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 0 | Scores: [0.9344131350517273, 0.9252594709396362, 0.9251737594604492, 0.9316090941429138]
-Guided Gen: _________________ Re: An example of creating an alternative fuel [#permalink | Pred: 2 | Scores: [0.8720198273658752, 0.8962495923042297, 0.904340386390686, 0.8647421598434448]
+Vanilla Gen: __________. Question: One step in creating an alternative fuel is [ANS | Pred: 2 | Scores: [0.8215799331665039, 0.8529635667800903, 0.8545031547546387, 0.8070778250694275]
+Guided Gen: __________. Question: One step in creating an alternative fuel is [ANS | Pred: 2 | Scores: [0.8215799331665039, 0.8529635667800903, 0.8545031547546387, 0.8070778250694275]
 
 Fact: a desert environment has low rainfall
 Stem: So many environments receive large amounts of rain, though an exception is
@@ -1003,8 +1003,8 @@ Fact: eagles eat fish
 Stem: A golden eagle will hunt using its talons to collect
 Choices: ['groupers', 'berries', 'bears', 'humans']
 Gold: 0
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 0 | Scores: [0.9234463572502136, 0.918175458908081, 0.9199472665786743, 0.9087293744087219]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 0 | Scores: [0.9234463572502136, 0.918175458908081, 0.9199472665786743, 0.9087293744087219]
+Vanilla Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 1 | Scores: [0.9256020784378052, 0.9257872700691223, 0.9185945391654968, 0.9170054197311401]
+Guided Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 1 | Scores: [0.9256020784378052, 0.9257872700691223, 0.9185945391654968, 0.9170054197311401]
 
 Fact: if an organism makes food for itself then that organism does not need to eat other organisms
 Stem: which of these would most likely reject a really nice burger?
@@ -1031,7 +1031,7 @@ Fact: a solar eclipse could only happen during the new moon
 Stem: The next moon phase after a solar eclipse is
 Choices: ['first quarter', 'full moon', 'third quarter', 'super moon']
 Gold: 0
-Vanilla Gen: _________________ The next moon phase after a solar eclipse is [ANSWER] | Pred: 3 | Scores: [0.8702230453491211, 0.852613091468811, 0.8788857460021973, 0.8846553564071655]
+Vanilla Gen: _________________ (1) The next moon phase after a solar eclipse is [ | Pred: 3 | Scores: [0.660611093044281, 0.636178731918335, 0.6679388284683228, 0.6832753419876099]
 Guided Gen: _________________ The next moon phase after a solar eclipse is [ANSWER] | Pred: 3 | Scores: [0.8702230453491211, 0.852613091468811, 0.8788857460021973, 0.8846553564071655]
 
 Fact: rain is a source of water
@@ -1108,21 +1108,21 @@ Fact: a thermal conductor is made of materials that conduct thermal energy
 Stem: The element that heats toast is an example of:
 Choices: ['a semi-conductor?', 'a thermal insulator', 'a poor conductor', 'a thermal conductor']
 Gold: 3
-Vanilla Gen: _________________ Re: A thermal conductor is made of materials that conduct thermal energy | Pred: 0 | Scores: [0.8826091885566711, 0.8583514094352722, 0.8448178172111511, 0.8483326435089111]
-Guided Gen: _________________ Re: A thermal conductor is made of materials that conduct thermal energy | Pred: 0 | Scores: [0.8826091885566711, 0.8583514094352722, 0.8448178172111511, 0.8483326435089111]
+Vanilla Gen: _________________ [1] [2] [3] [4] [ | Pred: 0 | Scores: [0.8073838949203491, 0.749970555305481, 0.747481644153595, 0.7520430088043213]
+Guided Gen: _________________ [1] [2] [3] [4] [ | Pred: 0 | Scores: [0.8073838949203491, 0.749970555305481, 0.747481644153595, 0.7520430088043213]
 
 Fact: sleet is made of ice
 Stem: Ice can fall down as
 Choices: ['sleet and hail', 'ice cubes', 'rain', 'glaciers']
 Gold: 0
-Vanilla Gen: _________________ Re: Ice is made of ice [#permalink] ### | Pred: 3 | Scores: [0.8311247825622559, 0.7508589029312134, 0.6760154366493225, 0.8313283920288086]
-Guided Gen: _________________ Re: Ice is made of ice [#permalink] ### | Pred: 3 | Scores: [0.8311247825622559, 0.7508589029312134, 0.6760154366493225, 0.8313283920288086]
+Vanilla Gen: _________________ Kudos [?]: 5 [0], given: 0 Re | Pred: 0 | Scores: [0.7880775332450867, 0.7043379545211792, 0.6242830753326416, 0.7878425121307373]
+Guided Gen: _________________ Kudos [?]: 5 [0], given: 0 Re | Pred: 0 | Scores: [0.7880775332450867, 0.7043379545211792, 0.6242830753326416, 0.7878425121307373]
 
 Fact: female birds sit in nests
 Stem: nest sitting is left up to the
 Choices: ['daddy', "the embryo's creator", 'strangers', 'male siblings']
 Gold: 1
-Vanilla Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 1 | Scores: [0.8838420510292053, 0.9035868048667908, 0.8299392461776733, 0.7713909149169922]
+Vanilla Gen: __________. Question: female birds sit in nests Question: female birds sit | Pred: 1 | Scores: [0.9097945690155029, 0.9463959336280823, 0.891649603843689, 0.8511580228805542]
 Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 1 | Scores: [0.8838420510292053, 0.9035868048667908, 0.8299392461776733, 0.7713909149169922]
 
 Fact: the cocoons being created occurs during the the pupa stage in a life cycle
@@ -1157,8 +1157,8 @@ Fact: if a magnet is attracted to a metal then that magnet will stick to that me
 Stem: A magnet will stick to which of the following?
 Choices: ['indium', 'diamond', 'wood', 'hydrochloric acid']
 Gold: 0
-Vanilla Gen: _________ A. B. C. D. Question: A magnet will | Pred: 0 | Scores: [0.24922356009483337, 0.21717461943626404, 0.15092062950134277, 0.11811823397874832]
-Guided Gen: _________ A. B. C. D. Question: A magnet will | Pred: 0 | Scores: [0.24922356009483337, 0.21717461943626404, 0.15092062950134277, 0.11811823397874832]
+Vanilla Gen: _____. [ANSWER] _____. [ANSWER] _____ | Pred: 1 | Scores: [0.8943594098091125, 0.9236835837364197, 0.8770531415939331, 0.8991296887397766]
+Guided Gen: _____. [ANSWER] _____. [ANSWER] _____ | Pred: 1 | Scores: [0.8943594098091125, 0.9236835837364197, 0.8770531415939331, 0.8991296887397766]
 
 Fact: if a living thing becomes too cold then that living thing will die
 Stem: Hypothermia will set in under which conditions:
@@ -1178,8 +1178,8 @@ Fact: sometimes weathering rounds rocks
 Stem: Rocks may be rounded by
 Choices: ['photosynthesis', 'audio feedback', 'hydro-erosion', 'Cloudy conditions']
 Gold: 2
-Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 2 | Scores: [0.8965283632278442, 0.9192614555358887, 0.9547705054283142, 0.9510975480079651]
-Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 2 | Scores: [0.8965283632278442, 0.9192614555358887, 0.9547705054283142, 0.9510975480079651]
+Vanilla Gen: _________________ Math Expert Joined: 02 Sep 2009 Posts: 6073 Re | Pred: 2 | Scores: [0.7962449789047241, 0.8347443342208862, 0.9305601119995117, 0.8951839208602905]
+Guided Gen: _________________ Math Expert Joined: 02 Sep 2009 Posts: 6073 Re | Pred: 2 | Scores: [0.7962449789047241, 0.8347443342208862, 0.9305601119995117, 0.8951839208602905]
 
 Fact: octopuses releasing ink into the water causes predators to have difficulty seeing the octopus
 Stem: What do octopuses release to blind predators?
@@ -1220,7 +1220,7 @@ Fact: an animal requires air for survival
 Stem: What animal can live without oxygen
 Choices: ['shark', 'Loriciferans', 'platypus', 'Turtle']
 Gold: 1
-Vanilla Gen: _________________ Re: What animal can live without oxygen [#permalink] | Pred: 2 | Scores: [0.8713042736053467, 0.8938485383987427, 0.9185248613357544, 0.862656831741333]
+Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.9309693574905396, 0.9501286745071411, 0.938519299030304, 0.9545011520385742]
 Guided Gen: _________________ Re: What animal can live without oxygen [#permalink] | Pred: 2 | Scores: [0.8713042736053467, 0.8938485383987427, 0.9185248613357544, 0.862656831741333]
 
 Fact: the number of body parts of an organism is an inherited characteristic
@@ -1255,8 +1255,8 @@ Fact: lighting a candle causes that candle to burn
 Stem: Lighting a candle will cause the candle to
 Choices: ['combust', 'petrify', 'float', 'yell']
 Gold: 0
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 1 | Scores: [0.9305227994918823, 0.9432687163352966, 0.9213470816612244, 0.8152598738670349]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 1 | Scores: [0.9305227994918823, 0.9432687163352966, 0.9213470816612244, 0.8152598738670349]
+Vanilla Gen: __________. Question: Lighting a candle will cause the candle to [ANS | Pred: 3 | Scores: [0.8146218657493591, 0.8476731777191162, 0.7846973538398743, 0.8608503341674805]
+Guided Gen: __________. Question: Lighting a candle will cause the candle to [ANS | Pred: 3 | Scores: [0.8146218657493591, 0.8476731777191162, 0.7846973538398743, 0.8608503341674805]
 
 Fact: vaccines can help prevent illness
 Stem: Vaccines
@@ -1276,15 +1276,15 @@ Fact: nerves can be used to feel heat and pressure on the skin
 Stem: Nerves are used to feel what on the skin?
 Choices: ['creativity', 'stares', 'emotions', 'coldness']
 Gold: 3
-Vanilla Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 1 | Scores: [0.813390851020813, 0.8774014115333557, 0.8557027578353882, 0.8319832682609558]
-Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 1 | Scores: [0.813390851020813, 0.8774014115333557, 0.8557027578353882, 0.8319832682609558]
+Vanilla Gen: _________________ Re: [ANSWER] [#permalink] ### Show | Pred: 1 | Scores: [0.8570563197135925, 0.9128320813179016, 0.8751076459884644, 0.8705982565879822]
+Guided Gen: _________________ Re: [ANSWER] [#permalink] ### Show | Pred: 1 | Scores: [0.8570563197135925, 0.9128320813179016, 0.8751076459884644, 0.8705982565879822]
 
 Fact: An example of combining two substances is pouring one substance into the other substance
 Stem: Substances may be combined by the pouring of one into another, for example when
 Choices: ['filling up a tub', 'putting a lemon in water', 'adding grenadine to soda', 'putting food in a bowl']
 Gold: 2
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.9136199951171875, 0.887966513633728, 0.94563889503479, 0.9130779504776001]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.9136199951171875, 0.887966513633728, 0.94563889503479, 0.9130779504776001]
+Vanilla Gen: __________ is poured into a glass __________ __________ ________ | Pred: 2 | Scores: [0.9491224884986877, 0.9333111047744751, 0.9557448029518127, 0.9490424394607544]
+Guided Gen: __________ is poured into a glass __________ __________ ________ | Pred: 2 | Scores: [0.9491224884986877, 0.9333111047744751, 0.9557448029518127, 0.9490424394607544]
 
 Fact: a telescope is used for observing stars
 Stem: Viewing stars is made easier by
@@ -1318,15 +1318,15 @@ Fact: the winter solstice is on June 21st in the southern hemisphere
 Stem: The southern and northern hemisphere's seasons are opposite each other, so when the northern hemisphere is having it's longest day, it's the southern hemisphere's
 Choices: ['winter solstice', 'fall equinox', 'summer solstice', 'spring equinox']
 Gold: 0
-Vanilla Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 2 | Scores: [0.9506472945213318, 0.9447325468063354, 0.9559359550476074, 0.9521923065185547]
-Guided Gen: _________________ Re: The winter solstice is on June 21st in the | Pred: 1 | Scores: [0.5536270141601562, 0.6606197357177734, 0.6490417718887329, 0.6233564615249634]
+Vanilla Gen: _________________ The winter solstice is on June 21st in the southern hemisphere | Pred: 1 | Scores: [0.7494354248046875, 0.8207257986068726, 0.8194338083267212, 0.7963969111442566]
+Guided Gen: _________________ The winter solstice is on June 21st in the southern hemisphere | Pred: 1 | Scores: [0.7494354248046875, 0.8207257986068726, 0.8194338083267212, 0.7963969111442566]
 
 Fact: a leaf absorbs sunlight to perform photosynthesis
 Stem: What does photosynthesis require
 Choices: ['a daffodil to absorb rays of Sol', 'a torrential amount of rainfall', 'a bee to pollinate the bud', 'a tree to absorb argon']
 Gold: 0
-Vanilla Gen: __________? Answer: Photosynthesis is required for photosynthesis. Photosynthesis | Pred: 0 | Scores: [0.9171650409698486, 0.9043788313865662, 0.9125939607620239, 0.9099868535995483]
-Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 0 | Scores: [0.9244300127029419, 0.9148306250572205, 0.9030455946922302, 0.920381486415863]
+Vanilla Gen: _____? Answer: Photosynthesis is required for photosynthesis. Photosynthesis is | Pred: 0 | Scores: [0.9230455160140991, 0.8726769685745239, 0.8757036924362183, 0.8940383195877075]
+Guided Gen: _____? Answer: Photosynthesis is required for photosynthesis. Photosynthesis is | Pred: 0 | Scores: [0.9230455160140991, 0.8726769685745239, 0.8757036924362183, 0.8940383195877075]
 
 Fact: dropping an object into water causes vibrations in the water
 Stem: which of these would disturb a standing body of water?
@@ -1347,7 +1347,7 @@ Stem: We are trying to use air as sources of energy because there is an infinite
 Choices: ['Coal sources', 'Fossil Fuels', 'Limited resources', 'Renewable resources']
 Gold: 3
 Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 1 | Scores: [0.9356123805046082, 0.9550111293792725, 0.9465669393539429, 0.950063943862915]
-Guided Gen: _________________ Re: A renewable resource can be replaced by water? [# | Pred: 1 | Scores: [0.7083914279937744, 0.7583547234535217, 0.6363824605941772, 0.6876733303070068]
+Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 1 | Scores: [0.9356123805046082, 0.9550111293792725, 0.9465669393539429, 0.950063943862915]
 
 Fact: aluminum is recyclable
 Stem: Which is recyclable
@@ -1374,8 +1374,8 @@ Fact: as flatness of a leaf increases , the amount of sunlight that leaf can abs
 Stem: More sunlight will be absorbed by
 Choices: ['a rose with tiny leaves', 'a daisy with thin, short leaves', 'a peony with wide, smooth leaves', 'a daffodil with curled leaves']
 Gold: 2
-Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 3 | Scores: [0.9307241439819336, 0.8955902457237244, 0.9077937602996826, 0.9440580606460571]
-Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 3 | Scores: [0.9307241439819336, 0.8955902457237244, 0.9077937602996826, 0.9440580606460571]
+Vanilla Gen: _________________ Math Expert Joined: 02 Sep 2009 Posts: 6073 Re | Pred: 3 | Scores: [0.9258239269256592, 0.9278308749198914, 0.9323583841323853, 0.9337093830108643]
+Guided Gen: _________________ Math Expert Joined: 02 Sep 2009 Posts: 6073 Re | Pred: 3 | Scores: [0.9258239269256592, 0.9278308749198914, 0.9323583841323853, 0.9337093830108643]
 
 Fact: adaptation is when an organism develops a trait over time for survival
 Stem: Some fish species, when hunting, will lurk in the shallowest portions of water and actually leave the water in order to capture prey. These fish are able to hunt in this fashion after years of
@@ -1395,8 +1395,8 @@ Fact: storms cause bodies of water to increase amount of water they contain
 Stem: Storms lead to
 Choices: ['an increase in water temperature', 'an uptick in local ponds fish supply', 'an increase in issues from drought conditions', 'an uptick in local ponds water level']
 Gold: 3
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 1 | Scores: [0.7266000509262085, 0.9478744864463806, 0.7995351552963257, 0.9170638918876648]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 1 | Scores: [0.7266000509262085, 0.9478744864463806, 0.7995351552963257, 0.9170638918876648]
+Vanilla Gen: __________. Question: Storms lead to __________. Question: | Pred: 2 | Scores: [0.922053337097168, 0.8741632103919983, 0.9418345093727112, 0.9122246503829956]
+Guided Gen: _________________ (1) _________________ (2) _________________ ( | Pred: 0 | Scores: [0.9089148640632629, 0.7490026354789734, 0.89203941822052, 0.8068577647209167]
 
 Fact: creating paper requires cutting down trees
 Stem: What is the ultimate source of greeting cards?
@@ -1416,7 +1416,7 @@ Fact: a revolution is when something revolves around something else
 Stem: The stars in the night sky make a yearly
 Choices: ['donation', 'resolve', 'restructuring', 'revolution']
 Gold: 3
-Vanilla Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 2 | Scores: [0.9336384534835815, 0.9313899874687195, 0.9389560222625732, 0.9119852781295776]
+Vanilla Gen: __________. Question: The stars in the night sky make a yearly [ | Pred: 1 | Scores: [0.7134351134300232, 0.7167589068412781, 0.6724010705947876, 0.6117889881134033]
 Guided Gen: __________. Question: The stars in the night sky make a yearly [ | Pred: 1 | Scores: [0.7134351134300232, 0.7167589068412781, 0.6724010705947876, 0.6117889881134033]
 
 Fact: claws are used to catch prey by some predators
@@ -1451,14 +1451,14 @@ Fact: a planet rotating causes cycles of day and night on that planet
 Stem: when it turns day and night on a planet, what cause this?
 Choices: ['the sun goes to take a rest in a different place', 'the world itself spins, causing it', 'the moon causes this to happen', 'the planet puts off the lights']
 Gold: 1
-Vanilla Gen: _________________ Re: A planet rotating causes cycles of day and night on that | Pred: 1 | Scores: [0.9246220588684082, 0.9370276927947998, 0.934277355670929, 0.8525142669677734]
-Guided Gen: _________________ Re: A planet rotating causes cycles of day and night on that | Pred: 1 | Scores: [0.9246220588684082, 0.9370276927947998, 0.934277355670929, 0.8525142669677734]
+Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.6664938926696777, 0.903508186340332, 0.9163792133331299, 0.9300352931022644]
+Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.6664938926696777, 0.903508186340332, 0.9163792133331299, 0.9300352931022644]
 
 Fact: a forest environment is often green in color
 Stem: Environments which are forested are often green; what is an example of this?
 Choices: ['a thriving jungle canopy', 'a dry, sandy desert', 'a snowy icy glacier', 'a cold, empty mountaintop']
 Gold: 0
-Vanilla Gen: _________________ Re: Environments which are forested [#permalink] | Pred: 3 | Scores: [0.8143540620803833, 0.8972223997116089, 0.7766467332839966, 0.9354389905929565]
+Vanilla Gen: _________________ Re: Environments which are forested are often green in color | Pred: 3 | Scores: [0.6866518259048462, 0.84810471534729, 0.6575970649719238, 0.8528376817703247]
 Guided Gen: _________________ Re: Environments which are forested [#permalink] | Pred: 3 | Scores: [0.8143540620803833, 0.8972223997116089, 0.7766467332839966, 0.9354389905929565]
 
 Fact: extreme temperatures cause an organism 's energy levels to decrease
@@ -1479,8 +1479,8 @@ Fact: large fins can be used to move quickly through water
 Stem: What does a tuna have that causes it to swim faster than a seahorse?
 Choices: ['Lower body temperature', 'Bigger scales', 'Bigger fins', 'Thicker caudal fin']
 Gold: 2
-Vanilla Gen: _________________ Re: What does a tuna have that causes it to swim faster | Pred: 3 | Scores: [0.7786729335784912, 0.7113577127456665, 0.6754396557807922, 0.843948483467102]
-Guided Gen: _________________ Re: What does a tuna have that causes it to swim faster | Pred: 3 | Scores: [0.7786729335784912, 0.7113577127456665, 0.6754396557807922, 0.843948483467102]
+Vanilla Gen: _________________ Re: A tuna has that causes it to swim faster than a | Pred: 3 | Scores: [0.7372351884841919, 0.6691908836364746, 0.63359534740448, 0.8098962903022766]
+Guided Gen: _________________ Re: A tuna has that causes it to swim faster than a | Pred: 3 | Scores: [0.7372351884841919, 0.6691908836364746, 0.63359534740448, 0.8098962903022766]
 
 Fact: as the amount of fragrance of a flower increases , the number of pollinators it will attract increases
 Stem: Pollinators are attracted to
@@ -1500,7 +1500,7 @@ Fact: sending electricity through a conductor causes electricity to flow through
 Stem: A man wants to create a room that he can light up with the flick of a switch. To do this, he sends some electricity into a completed electrical circuit, through a conductor, which allows
 Choices: ['light from the sun to shine', 'lights to be burned out', 'sunlight to shine through bulbs', 'his plan to succeed']
 Gold: 3
-Vanilla Gen: _________________ Kudos [?]: 8 [0], given: 0 Re | Pred: 0 | Scores: [0.9186575412750244, 0.9155898094177246, 0.7868651747703552, 0.8840423226356506]
+Vanilla Gen: __________ to light up the room. A man wants to create a room | Pred: 1 | Scores: [0.9197778701782227, 0.9323397278785706, 0.7042199969291687, 0.8325902223587036]
 Guided Gen: __________ to light up the room. A man wants to create a room | Pred: 1 | Scores: [0.9197778701782227, 0.9323397278785706, 0.7042199969291687, 0.8325902223587036]
 
 Fact: Louis Pasteur invented pasteurization
@@ -1535,15 +1535,15 @@ Fact: Earth 's surface is made of rock
 Stem: The basic outside of our planet is comprised of
 Choices: ['types of stone', 'frozen green grass', 'solid ice balls', 'molten hot lava']
 Gold: 0
-Vanilla Gen: _____. Question: The basic inside of our planet is comprised of [ANS | Pred: 0 | Scores: [0.831635594367981, 0.7108780145645142, 0.6124199628829956, 0.613983154296875]
-Guided Gen: _____. Question: The basic inside of our planet is comprised of [ANS | Pred: 0 | Scores: [0.831635594367981, 0.7108780145645142, 0.6124199628829956, 0.613983154296875]
+Vanilla Gen: _____. Question: The Earth's surface is made of rock Question: The | Pred: 0 | Scores: [0.6471092700958252, 0.492059588432312, 0.36564376950263977, 0.36906272172927856]
+Guided Gen: _____. Question: The Earth's surface is made of rock Question: The | Pred: 0 | Scores: [0.6471092700958252, 0.492059588432312, 0.36564376950263977, 0.36906272172927856]
 
 Fact: a nest is made of branches
 Stem: A bird would find nest making materials in a
 Choices: ['building', 'pond', 'cave', 'tree']
 Gold: 3
-Vanilla Gen: _____. Question: A bird would find nest making materials in a [ANS | Pred: 1 | Scores: [0.691799521446228, 0.818393349647522, 0.8075873255729675, 0.5880638360977173]
-Guided Gen: _____. Question: A bird would find nest making materials in a [ANS | Pred: 1 | Scores: [0.691799521446228, 0.818393349647522, 0.8075873255729675, 0.5880638360977173]
+Vanilla Gen: __________. Question: A bird would find nest making materials in a [ | Pred: 1 | Scores: [0.6910032033920288, 0.8191298842430115, 0.8077192306518555, 0.5850725769996643]
+Guided Gen: __________. Question: A bird would find nest making materials in a [ | Pred: 1 | Scores: [0.6910032033920288, 0.8191298842430115, 0.8077192306518555, 0.5850725769996643]
 
 Fact: a canyon forming occurs over a period of millions of years
 Stem: Canyons are rock formations with cliffs that
@@ -1598,8 +1598,8 @@ Fact: natural gas is a nonrenewable resource
 Stem: What source of power can be used up completely?
 Choices: ['Water', 'wind', 'sunlight', 'natural gas']
 Gold: 3
-Vanilla Gen: _________________ Re: What source of power can be used up entirely? [ | Pred: 3 | Scores: [0.4380727708339691, 0.3859238028526306, 0.4411139488220215, 0.5812906622886658]
-Guided Gen: _________________ Re: What source of power can be used up entirely? [ | Pred: 3 | Scores: [0.4380727708339691, 0.3859238028526306, 0.4411139488220215, 0.5812906622886658]
+Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.882122278213501, 0.8427702784538269, 0.8790172934532166, 0.9088674783706665]
+Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.882122278213501, 0.8427702784538269, 0.8790172934532166, 0.9088674783706665]
 
 Fact: panting is when an animal hangs its tongue out of its mouth to adjust to hot temperatures
 Stem: What might Lassie do to beat the heat?
@@ -1626,8 +1626,8 @@ Fact: natural magnetism is used for pointing north by a compass
 Stem: A device may locate the northern portion of a forest through
 Choices: ['Fe pulls', 'series of attractions', 'large robots', 'metal conductors']
 Gold: 0
-Vanilla Gen: _____. (a) (b) (c) (d) ( | Pred: 1 | Scores: [-0.09057731926441193, 0.2100612223148346, -0.03940024971961975, 0.037329670041799545]
-Guided Gen: __________. (a) (b) (c) (d) | Pred: 1 | Scores: [0.11518841981887817, 0.3991003632545471, 0.1666298508644104, 0.24037131667137146]
+Vanilla Gen: _____. (a) What is the direction of the magnetic field? ( | Pred: 1 | Scores: [0.11080557107925415, 0.43687859177589417, 0.16605862975120544, 0.25872519612312317]
+Guided Gen: __________. (a) What is the magnetic field in the forest? | Pred: 1 | Scores: [0.3220748007297516, 0.6121344566345215, 0.3750849962234497, 0.4595409035682678]
 
 Fact: chickens cluck
 Stem: A sound that is made by an animal with two legs is
@@ -1647,22 +1647,22 @@ Fact: an animal requires nutrients for survival
 Stem: Life sustaining substances are required for
 Choices: ['air', 'zebras', 'plastic', 'the sun']
 Gold: 1
-Vanilla Gen: _________________ Re: An animal requires nutrients for survival [#permalink] | Pred: 3 | Scores: [0.8376627564430237, 0.9120848178863525, 0.8894332051277161, 0.9137546420097351]
-Guided Gen: _________________ Re: An animal requires nutrients for survival [#permalink] | Pred: 3 | Scores: [0.8376627564430237, 0.9120848178863525, 0.8894332051277161, 0.9137546420097351]
+Vanilla Gen: _________________ Re: Life sustaining substances are required for survival [#permalink | Pred: 3 | Scores: [0.8622798323631287, 0.9083598852157593, 0.9052075743675232, 0.9146286249160767]
+Guided Gen: _________________ Re: Life sustaining substances are required for survival [#permalink | Pred: 3 | Scores: [0.8622798323631287, 0.9083598852157593, 0.9052075743675232, 0.9146286249160767]
 
 Fact: food spoiling has a negative impact on the health of the animal that eats that food
 Stem: Creatures such as opossums and raccoons are scavengers, meaning that they get their food from various sources, wherever and however they can, even from trash cans. This can negatively impact the creature's health if
 Choices: ['the food is warm', 'the food is past its prime', 'the food is yummy', 'the food is fresh']
 Gold: 1
-Vanilla Gen: _________________ If you liked this post then why not add us on Google+ | Pred: 1 | Scores: [0.9111075401306152, 0.9531384706497192, 0.9472682476043701, 0.9159794449806213]
-Guided Gen: _________________ If you liked this post then why not add us on Google+ | Pred: 1 | Scores: [0.9111075401306152, 0.9531384706497192, 0.9472682476043701, 0.9159794449806213]
+Vanilla Gen: __________. Question: What is the difference between the two? Answer: | Pred: 1 | Scores: [0.829465389251709, 0.8882491588592529, 0.8672558665275574, 0.8490739464759827]
+Guided Gen: __________. Question: What is the difference between the two? Answer: | Pred: 1 | Scores: [0.829465389251709, 0.8882491588592529, 0.8672558665275574, 0.8490739464759827]
 
 Fact: January is during the winter in the northern hemisphere
 Stem: A few weeks after the month of December in the heart of Australia is often referred to as?
 Choices: ['winter', 'springtime', 'summer', 'Halloween']
 Gold: 2
-Vanilla Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 2 | Scores: [0.7412663698196411, 0.7957254648208618, 0.8595763444900513, 0.8218315839767456]
-Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 2 | Scores: [0.7412663698196411, 0.7957254648208618, 0.8595763444900513, 0.8218315839767456]
+Vanilla Gen: ???? [ANSWER] ???? [ANSWER] ???? [ANS | Pred: 3 | Scores: [0.9106018543243408, 0.9338967204093933, 0.9132846593856812, 0.9349609613418579]
+Guided Gen: ???? [ANSWER] ???? [ANSWER] ???? [ANS | Pred: 3 | Scores: [0.9106018543243408, 0.9338967204093933, 0.9132846593856812, 0.9349609613418579]
 
 Fact: carnivores only eat animals
 Stem: What is an instance of carnivores only eating animals?
@@ -1675,8 +1675,8 @@ Fact: An example of conservation is avoiding waste
 Stem: An example of conservation would be
 Choices: ['burning', 'sinking', 'burying', 'going green']
 Gold: 3
-Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 1 | Scores: [0.8957772850990295, 0.9166842699050903, 0.886580228805542, 0.8872228860855103]
-Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 1 | Scores: [0.8957772850990295, 0.9166842699050903, 0.886580228805542, 0.8872228860855103]
+Vanilla Gen: _________________ Re: An example of conservation is avoiding waste Question: An example | Pred: 1 | Scores: [0.6323157548904419, 0.7880918979644775, 0.6341446042060852, 0.691169261932373]
+Guided Gen: _________________ Re: An example of conservation is avoiding waste Question: An example | Pred: 1 | Scores: [0.6323157548904419, 0.7880918979644775, 0.6341446042060852, 0.691169261932373]
 
 Fact: Vitamin D heals bones
 Stem: What vitamins help heal bones?
@@ -1689,21 +1689,21 @@ Fact: brick is an electrical insulator
 Stem: An example of an electric insulator is
 Choices: ['a circuit board', 'a light bulb', 'a brick wall', 'a wire']
 Gold: 2
-Vanilla Gen: __________. Question: An example of an electric insulator is [ANS | Pred: 0 | Scores: [0.8891738653182983, 0.8284107446670532, 0.8282409906387329, 0.8315586447715759]
-Guided Gen: __________. Question: An example of an electric insulator is [ANS | Pred: 0 | Scores: [0.8891738653182983, 0.8284107446670532, 0.8282409906387329, 0.8315586447715759]
+Vanilla Gen: __________. Solution: An example of an electric insulator is [ANS | Pred: 0 | Scores: [0.8924673199653625, 0.8316773772239685, 0.8319677114486694, 0.8354779481887817]
+Guided Gen: __________. Solution: An example of an electric insulator is [ANS | Pred: 0 | Scores: [0.8924673199653625, 0.8316773772239685, 0.8319677114486694, 0.8354779481887817]
 
 Fact: An example of playing a musical instrument is hitting the keys of a piano
 Stem: Hitting the keys of a piano is like playing
 Choices: ['a lute', 'a broadcast', 'a concert', 'a recital']
 Gold: 0
-Vanilla Gen: __________ Question: Hitting the keys of a piano is like playing [ | Pred: 0 | Scores: [0.8790234923362732, 0.816045880317688, 0.8311527371406555, 0.8198366165161133]
-Guided Gen: _________________ Re: An example of playing a musical instrument is hitting the keys | Pred: 0 | Scores: [0.8815401792526245, 0.829761266708374, 0.8434239029884338, 0.8336354494094849]
+Vanilla Gen: _____. Question: Hitting the keys of a piano is like playing [ | Pred: 0 | Scores: [0.8709192276000977, 0.7215856313705444, 0.7460993528366089, 0.7034798264503479]
+Guided Gen: _____. Question: Hitting the keys of a piano is like playing [ | Pred: 0 | Scores: [0.8709192276000977, 0.7215856313705444, 0.7460993528366089, 0.7034798264503479]
 
 Fact: seed dispersal is when the seeds of a plant are moved from the plant to a new environment
 Stem: Seeds can be dispersed through all sorts of creative ways, such as
 Choices: ['a person orders flowers from a florist', 'a man looks at a bed of flowers', 'a dog sneezes in a field and disrupts the air around plants', 'a man asks his dog if it wants some flowers']
 Gold: 2
-Vanilla Gen: __________, __________, __________, __________, | Pred: 3 | Scores: [0.9312797784805298, 0.8499425649642944, 0.9368782043457031, 0.9425196647644043]
+Vanilla Gen: _____. Question: Seeds can be dispersed through all sorts of creative ways, | Pred: 2 | Scores: [0.9326596260070801, 0.9203794002532959, 0.940690815448761, 0.9242268800735474]
 Guided Gen: _____. Question: Seeds can be dispersed through all sorts of creative ways, | Pred: 2 | Scores: [0.9326596260070801, 0.9203794002532959, 0.940690815448761, 0.9242268800735474]
 
 Fact: as distance from an object decreases , that object will appear larger
@@ -1731,7 +1731,7 @@ Fact: birds build nests in the spring
 Stem: In the springtime, animals engage in ritual behavior such as
 Choices: ['creating bedding for young', 'picking flowers for mates', 'hunting for new prey', 'migrating to cold environments']
 Gold: 0
-Vanilla Gen: _____. Question: In the springtime, animals engage in ritual behavior such | Pred: 3 | Scores: [0.8504070043563843, 0.7078078985214233, 0.7830968499183655, 0.8512000441551208]
+Vanilla Gen: _____. Answer: In the springtime, animals engage in ritual behavior such | Pred: 3 | Scores: [0.854568600654602, 0.7145932912826538, 0.7885026931762695, 0.8558211922645569]
 Guided Gen: _____. Question: In the springtime, animals engage in ritual behavior such | Pred: 3 | Scores: [0.8504070043563843, 0.7078078985214233, 0.7830968499183655, 0.8512000441551208]
 
 Fact: casting an image of an object through a pinhole onto a screen does not require looking directly at the object
@@ -1808,15 +1808,15 @@ Fact: a body of water is a source of water
 Stem: A lake, pond, or stream can all be used to
 Choices: ['collect fluid from', 'make extra food', 'rain water down', 'create new houses']
 Gold: 0
-Vanilla Gen: __________. Question: A lake, pond, or stream can all be | Pred: 0 | Scores: [0.7355197072029114, 0.6078879833221436, 0.6809420585632324, 0.6267091631889343]
+Vanilla Gen: __________. A lake, pond, or stream can all be used to | Pred: 0 | Scores: [0.6953954696655273, 0.5612594485282898, 0.6408153772354126, 0.5834015607833862]
 Guided Gen: _____. A lake, pond, or stream can all be used to [ | Pred: 0 | Scores: [0.5679770708084106, 0.411068856716156, 0.5059968829154968, 0.43811458349227905]
 
 Fact: the vanes rotating in an electric fan causes air to move
 Stem: On a particularly hot day, a young woman clicks on a fan in the room, and the blades of the fan begin to quietly rotate in a circular motion, which
 Choices: ['heats up the surrounding air', 'rustles the air around it', 'pulls dust into a vacuum', 'blasts cold air outdoors']
 Gold: 1
-Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 2 | Scores: [0.9040158987045288, 0.9199298024177551, 0.9343652725219727, 0.9282828569412231]
-Guided Gen: _____. Question: On a particularly hot day, a young woman clicks on | Pred: 0 | Scores: [0.9043222665786743, 0.8801300525665283, 0.8228464126586914, 0.6337084770202637]
+Vanilla Gen: __________. Question: On a particularly hot day, a young woman clicks | Pred: 0 | Scores: [0.9443351030349731, 0.9368070960044861, 0.9017128348350525, 0.7701998353004456]
+Guided Gen: __________. Question: On a particularly hot day, a young woman clicks | Pred: 0 | Scores: [0.9443351030349731, 0.9368070960044861, 0.9017128348350525, 0.7701998353004456]
 
 Fact: windy means high wind speeds
 Stem: Windy means what is going at high speeds?
@@ -1829,15 +1829,15 @@ Fact: weathering usually occurs over a period of many years
 Stem: What is an example of weathering occurring over several years?
 Choices: ['a stone becoming smoother', 'wood becoming rotten over time', 'a cabin being shut down for the season', 'a tree becoming taller']
 Gold: 0
-Vanilla Gen: _________________ Re: What is an example of weathering occurring over several years | Pred: 2 | Scores: [0.7294976711273193, 0.7759941816329956, 0.9260528087615967, 0.7299109101295471]
-Guided Gen: _________________ Re: What is an example of weathering occurring over several years | Pred: 2 | Scores: [0.7294976711273193, 0.7759941816329956, 0.9260528087615967, 0.7299109101295471]
+Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 0 | Scores: [0.9228054881095886, 0.9224666953086853, 0.9053598046302795, 0.921960711479187]
+Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 0 | Scores: [0.9228054881095886, 0.9224666953086853, 0.9053598046302795, 0.921960711479187]
 
 Fact: as the amount of fragrance of a flower increases , the number of pollinators it will attract increases
 Stem: As the amount of fragrance of a flower increases, the better chances it has at
 Choices: ['growing', 'dying', 'reproducing', 'looking pretty']
 Gold: 2
 Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 2 | Scores: [0.9160671830177307, 0.933681845664978, 0.9467432498931885, 0.9161572456359863]
-Guided Gen: _________________ Re: As the amount of scent of a flower increases , the | Pred: 2 | Scores: [0.5665116310119629, 0.6939377784729004, 0.6993221044540405, 0.5846973061561584]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 2 | Scores: [0.9160671830177307, 0.933681845664978, 0.9467432498931885, 0.9161572456359863]
 
 Fact: bacteria can help digest food in humans
 Stem: Food digestion in humans can be aided by
@@ -1857,8 +1857,8 @@ Fact: national parks limit hunting
 Stem: Efforts to preserve the ecosystem might lead national parks to
 Choices: ['encourage hunting', 'promote logging', 'ban fishing', 'encourage new species']
 Gold: 2
-Vanilla Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 3 | Scores: [0.940048336982727, 0.9456760287284851, 0.9369293451309204, 0.9563252329826355]
-Guided Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 3 | Scores: [0.940048336982727, 0.9456760287284851, 0.9369293451309204, 0.9563252329826355]
+Vanilla Gen: ____________. Question: Efforts to preserve the ecosystem might lead national parks | Pred: 3 | Scores: [0.8353936076164246, 0.8486132621765137, 0.8643311262130737, 0.905298113822937]
+Guided Gen: __________ __________ __________ __________ __________  | Pred: 3 | Scores: [0.9350526332855225, 0.9402375817298889, 0.9360194206237793, 0.953610897064209]
 
 Fact: a stove generates heat for cooking usually
 Stem: The thermal production of a stove is generically used for
@@ -1976,8 +1976,8 @@ Fact: bees convert nectar into honey
 Stem: What do bees convert nectar into?
 Choices: ['different types of corn syrup', 'rather large rock formations', 'bees of different sizes', 'sweet stuff sold in grocery stores']
 Gold: 3
-Vanilla Gen: _________________ Re: bees convert nectar into honey [#permalink] | Pred: 3 | Scores: [0.9530148506164551, 0.9210962653160095, 0.9538110494613647, 0.961873471736908]
-Guided Gen: _________________ Re: bees convert nectar into honey [#permalink] | Pred: 3 | Scores: [0.9530148506164551, 0.9210962653160095, 0.9538110494613647, 0.961873471736908]
+Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 3 | Scores: [0.936996579170227, 0.9082000851631165, 0.9468976855278015, 0.9647347927093506]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 3 | Scores: [0.936996579170227, 0.9082000851631165, 0.9468976855278015, 0.9647347927093506]
 
 Fact: as the amount of food an animal eats increases , the weight of that animal will increase
 Stem: what happens when an animals' food intake increases
@@ -1991,7 +1991,7 @@ Stem: What would a rabbit most likely eat
 Choices: ['squirrel', 'squid', 'rhododendron', 'mouse']
 Gold: 2
 Vanilla Gen: ?" Answer: A rabbit would eat a plant. A rabbit would eat a | Pred: 2 | Scores: [0.622378945350647, 0.736172080039978, 0.8284963965415955, 0.645167350769043]
-Guided Gen: ?" Answer: A rabbit would eat plants. A rabbit would eat plants. | Pred: 2 | Scores: [0.6880379915237427, 0.8102954030036926, 0.8861889839172363, 0.721477746963501]
+Guided Gen: ?" Answer: A rabbit would eat a plant. A rabbit would eat a | Pred: 2 | Scores: [0.622378945350647, 0.736172080039978, 0.8284963965415955, 0.645167350769043]
 
 Fact: decomposition is when a decomposer recycles nutrients from dead organisms to the soil by eating those dead organisms
 Stem: Decomposition occurs when a decomposer recycles nutrients from dead organisms back to the soil by eating them; what is an example of this?
@@ -2018,36 +2018,36 @@ Fact: the surface of the Moon contains mountains
 Stem: The moon has
 Choices: ['water sources', 'large diamonds', 'rolling grassy hills', 'raised portions']
 Gold: 3
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.9396726489067078, 0.8973430395126343, 0.94089674949646, 0.9330528378486633]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.9396726489067078, 0.8973430395126343, 0.94089674949646, 0.9330528378486633]
+Vanilla Gen: ____________. The surface of the Moon contains mountains Question: The moon has | Pred: 0 | Scores: [0.7609333395957947, 0.5773587226867676, 0.7126762270927429, 0.6192367076873779]
+Guided Gen: ____________. The surface of the Moon contains mountains Question: The moon has | Pred: 0 | Scores: [0.7609333395957947, 0.5773587226867676, 0.7126762270927429, 0.6192367076873779]
 
 Fact: chlorophyll is used for absorbing light energy by plants
 Stem: Chlorophyll allows plants to soak up
 Choices: ['solar rays', 'acid rain', 'pollen', 'fertilizer']
 Gold: 0
 Vanilla Gen: _________________ Re: Chlorophyll is used for absorbing light energy by | Pred: 3 | Scores: [0.8380558490753174, 0.7238737344741821, 0.8492196798324585, 0.8843015432357788]
-Guided Gen: _________________ Re: chlorophyll is used for absorbing light energy by plants | Pred: 3 | Scores: [0.8684017658233643, 0.7635558843612671, 0.8626494407653809, 0.8994065523147583]
+Guided Gen: _________________ Re: Chlorophyll is used for absorbing light energy by | Pred: 3 | Scores: [0.8380558490753174, 0.7238737344741821, 0.8492196798324585, 0.8843015432357788]
 
 Fact: eating food is used to get nutrients by living things
 Stem: If something living requires sustenance, it will likely
 Choices: ['seek out a form of nutrients', 'feel like it could eat', 'try to enjoy life', 'gather nutrients for friends']
 Gold: 0
-Vanilla Gen: ???? Question: If something living requires sustenance, it will likely [ANS | Pred: 1 | Scores: [0.9051175713539124, 0.9767853617668152, 0.9577417373657227, 0.9576188921928406]
-Guided Gen: ???? Question: If something living requires sustenance, it will likely [ANS | Pred: 1 | Scores: [0.9051175713539124, 0.9767853617668152, 0.9577417373657227, 0.9576188921928406]
+Vanilla Gen: __________. Question: If something living requires sustenance, it will likely | Pred: 1 | Scores: [0.9210636615753174, 0.9709953665733337, 0.9479851722717285, 0.9569758176803589]
+Guided Gen: __________. Question: If something living requires sustenance, it will likely | Pred: 1 | Scores: [0.9210636615753174, 0.9709953665733337, 0.9479851722717285, 0.9569758176803589]
 
 Fact: a plant absorbs carbon dioxide from the air for photosynthesis
 Stem: Plants grow because they
 Choices: ['decide the time is right', 'can breathe a lot of air', 'use what people breathe out to survive', 'take photos of other plants']
 Gold: 2
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 3 | Scores: [0.8169508576393127, 0.8919117450714111, 0.8811801075935364, 0.9266871213912964]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 3 | Scores: [0.8169508576393127, 0.8919117450714111, 0.8811801075935364, 0.9266871213912964]
+Vanilla Gen: _____. Question: Plants grow because they [ANSWER] _____. | Pred: 2 | Scores: [0.9131921529769897, 0.9375918507575989, 0.9546419382095337, 0.9107579588890076]
+Guided Gen: _____. Question: Plants grow because they [ANSWER] _____. | Pred: 2 | Scores: [0.9131921529769897, 0.9375918507575989, 0.9546419382095337, 0.9107579588890076]
 
 Fact: a plant light is used for help plants by mimicking sunlight
 Stem: Plant lights can be useful in order to
 Choices: ['dry up several plants', 'lower energy costs at home', 'recreate effects of the sun', 'give dogs good lighting']
 Gold: 2
-Vanilla Gen: _________________ Re: A plant light is used for help plants by mimicking | Pred: 2 | Scores: [0.8785907030105591, 0.927834153175354, 0.9539591073989868, 0.7751040458679199]
-Guided Gen: _________________ Re: A plant light is used for help plants by mimicking | Pred: 2 | Scores: [0.8785907030105591, 0.927834153175354, 0.9539591073989868, 0.7751040458679199]
+Vanilla Gen: __________. Question: Plant lights can be useful in order to [ANS | Pred: 2 | Scores: [0.835011899471283, 0.9036585092544556, 0.9370395541191101, 0.7226282358169556]
+Guided Gen: __________. Question: Plant lights can be useful in order to [ANS | Pred: 2 | Scores: [0.835011899471283, 0.9036585092544556, 0.9370395541191101, 0.7226282358169556]
 
 Fact: as distance from a source of light increases , that source of light will appear dimmer
 Stem: As a car drives off in the night
@@ -2074,8 +2074,8 @@ Fact: an electrical insulator slows the transfer of electricity
 Stem: in electricity ceramics are sometimes used to
 Choices: ['increase voltage', 'decrease wattage', 'slow transfers', 'multiply amperage']
 Gold: 2
-Vanilla Gen: _____. Question: in electricity ceramics are sometimes used to [ANS | Pred: 3 | Scores: [0.751031219959259, 0.7761492729187012, 0.6131201386451721, 0.8615149259567261]
-Guided Gen: _____. Question: in electricity ceramics are sometimes used to [ANS | Pred: 3 | Scores: [0.751031219959259, 0.7761492729187012, 0.6131201386451721, 0.8615149259567261]
+Vanilla Gen: __________. Question: in electricity ceramics are sometimes used to [ | Pred: 3 | Scores: [0.7501653432846069, 0.7764290571212769, 0.6115860342979431, 0.8612754344940186]
+Guided Gen: __________. Question: in electricity ceramics are sometimes used to [ | Pred: 3 | Scores: [0.7501653432846069, 0.7764290571212769, 0.6115860342979431, 0.8612754344940186]
 
 Fact: An example of a seasonal change is an animal growing thick fur for keeping warm in the winter
 Stem: A rabbit has thicker fur in
@@ -2124,7 +2124,7 @@ Stem: Things people eat come from
 Choices: ['mountains', 'canyons', 'cities', 'farms']
 Gold: 3
 Vanilla Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 3 | Scores: [0.9374964833259583, 0.9024184942245483, 0.8727995157241821, 0.9386882781982422]
-Guided Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 3 | Scores: [0.9374964833259583, 0.9024184942245483, 0.8727995157241821, 0.9386882781982422]
+Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 1 | Scores: [0.7959771156311035, 0.8840274810791016, 0.8751915693283081, 0.8521732687950134]
 
 Fact: carpet absorbs sound
 Stem: What would you use in an apartment to keep your neighbor below from hearing you shuffle around a room?
@@ -2144,15 +2144,15 @@ Fact: uneven heating of the Earth 's surface cause wind
 Stem: If the north is cold and the midnorth is warm, there will be
 Choices: ['snow', 'stars', 'air motion', 'fires']
 Gold: 2
-Vanilla Gen: _____. Question: If the north is cold and the midnorth is warm | Pred: 0 | Scores: [0.7142577171325684, 0.44585347175598145, 0.6438233852386475, 0.4771491587162018]
+Vanilla Gen: __________. Question: If the north is cold and the midnorth is | Pred: 0 | Scores: [0.7278234958648682, 0.4709692895412445, 0.6641309261322021, 0.5009886026382446]
 Guided Gen: _____. Question: If the north is cold and the midnorth is warm | Pred: 0 | Scores: [0.7142577171325684, 0.44585347175598145, 0.6438233852386475, 0.4771491587162018]
 
 Fact: if food is cooked then heat energy is added to that food
 Stem: A guy wants to make dinner for his family, so he puts a pan on the stove, adds some meat, and turns on the stove so that heat is being added to the pan. As the meat is warmed through, beginning to sizzle, it is
 Choices: ['being juiced', 'being seared', 'being frozen', 'being smoked']
 Gold: 1
-Vanilla Gen: _________________ Re: A guy wants to make dinner for his family, so | Pred: 1 | Scores: [0.548842191696167, 0.6867022514343262, 0.5211199522018433, 0.5357929468154907]
-Guided Gen: _________________ Re: A guy wants to make dinner for his family, so | Pred: 1 | Scores: [0.548842191696167, 0.6867022514343262, 0.5211199522018433, 0.5357929468154907]
+Vanilla Gen: _________________ Kudos [?]: 0 [0], given: 0 Re | Pred: 1 | Scores: [0.7059656977653503, 0.8063051700592041, 0.6823859214782715, 0.7000697255134583]
+Guided Gen: _________________ Kudos [?]: 0 [0], given: 0 Re | Pred: 1 | Scores: [0.7059656977653503, 0.8063051700592041, 0.6823859214782715, 0.7000697255134583]
 
 Fact: new land can be formed by volcanoes erupting by lava cooling
 Stem: What is needed to make an island?
@@ -2193,8 +2193,8 @@ Fact: sediment is formed by weathering
 Stem: Sediment built up around the shed due to:
 Choices: ['magic', 'tornado', 'luck.', 'cars']
 Gold: 1
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 1 | Scores: [0.9265317320823669, 0.9394339323043823, 0.9078047871589661, 0.8978577852249146]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 1 | Scores: [0.9265317320823669, 0.9394339323043823, 0.9078047871589661, 0.8978577852249146]
+Vanilla Gen: _________________ Re: Sediment built up around the shed due to: [ | Pred: 2 | Scores: [0.649017870426178, 0.6925897598266602, 0.856181263923645, 0.5806363821029663]
+Guided Gen: _________________ Re: Sediment built up around the shed due to: [ | Pred: 2 | Scores: [0.649017870426178, 0.6925897598266602, 0.856181263923645, 0.5806363821029663]
 
 Fact: friction causes the temperature of an object to increase
 Stem: Two gears grinding against each other will raise which of their properties?
@@ -2249,8 +2249,8 @@ Fact: boiling is when liquids are heated above their boiling point
 Stem: Which of the following is true?
 Choices: ['Ice will turn to water vapor when it stays under its boiling point', 'Liquid water will turn to ice below its freezing point', 'Ice will turn to liquid water below its freezing point', 'Liquid water will turn to water vapor when the temperature is more than its boiling point']
 Gold: 3
-Vanilla Gen: _________ _________ _________ _________ _________  | Pred: 0 | Scores: [0.9258077144622803, 0.9237069487571716, 0.9176909923553467, 0.911794900894165]
-Guided Gen: _________ _________ _________ _________ _________  | Pred: 0 | Scores: [0.9258077144622803, 0.9237069487571716, 0.9176909923553467, 0.911794900894165]
+Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.9170398712158203, 0.9246731996536255, 0.9313259124755859, 0.8435508012771606]
+Guided Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.9170398712158203, 0.9246731996536255, 0.9313259124755859, 0.8435508012771606]
 
 Fact: hibernation is used for conserving resources by some animals
 Stem: A bear hibernates through cold weather because
@@ -2277,8 +2277,8 @@ Fact: eyes are used for seeing by animals by sensing light
 Stem: A jellyfish's abilities exclude
 Choices: ['sting', 'poison', 'sense light', 'move']
 Gold: 2
-Vanilla Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 2 | Scores: [0.6332381963729858, 0.9362537860870361, 0.951572060585022, 0.9327480792999268]
-Guided Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 2 | Scores: [0.6332381963729858, 0.9362537860870361, 0.951572060585022, 0.9327480792999268]
+Vanilla Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 2 | Scores: [0.7738884687423706, 0.8101251125335693, 0.8533786535263062, 0.7946799397468567]
+Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 2 | Scores: [0.7738884687423706, 0.8101251125335693, 0.8533786535263062, 0.7946799397468567]
 
 Fact: a plant requires a specific climate to grow and survive
 Stem: In order to grow a rosebush needs a specific
@@ -2326,8 +2326,8 @@ Fact: preferences are generally learned characteristics
 Stem: A young boy decides that he likes dogs better than he likes cats. A reason for this may be that
 Choices: ['his dogs are cats', 'his parents only have dogs', 'his parents hate dogs', 'his parents are cats']
 Gold: 1
-Vanilla Gen: _________________ Re: A young boy decides that he likes dogs better than he | Pred: 1 | Scores: [0.887370765209198, 0.9439859390258789, 0.8353569507598877, 0.9089371562004089]
-Guided Gen: _________________ Re: A young boy decides that he likes dogs better than he | Pred: 1 | Scores: [0.887370765209198, 0.9439859390258789, 0.8353569507598877, 0.9089371562004089]
+Vanilla Gen: _________________ Math Expert Joined: 02 Sep 2009 Posts: 6073 Re | Pred: 1 | Scores: [0.8814740777015686, 0.9264023303985596, 0.8472703099250793, 0.9041086435317993]
+Guided Gen: _________________ Math Expert Joined: 02 Sep 2009 Posts: 6073 Re | Pred: 1 | Scores: [0.8814740777015686, 0.9264023303985596, 0.8472703099250793, 0.9041086435317993]
 
 Fact: reproduction occurs during adulthood
 Stem: A girl is turning sixteen and is experiencing changes to her breasts and other areas as she matures. These changes as she enters adulthood signify
@@ -2340,8 +2340,8 @@ Fact: as temperature increases , the ability of that liquid to dissolve solids w
 Stem: When you heat liquids, what happens to it's ability to break down solids?
 Choices: ['nothing significant', 'it enhances it', 'it lessens it', 'it stops']
 Gold: 1
-Vanilla Gen: _________________ Re: When you heat liquids, what happens to it's ability | Pred: 2 | Scores: [0.6554670929908752, 0.8819769024848938, 0.9238964319229126, 0.7223314046859741]
-Guided Gen: _________________ Re: When you heat liquids, what happens to it's ability | Pred: 2 | Scores: [0.6554670929908752, 0.8819769024848938, 0.9238964319229126, 0.7223314046859741]
+Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 0 | Scores: [0.9234225153923035, 0.8972475528717041, 0.8398260474205017, 0.8971136212348938]
+Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 0 | Scores: [0.9234225153923035, 0.8972475528717041, 0.8398260474205017, 0.8971136212348938]
 
 Fact: the amount of daylight is least in the winter
 Stem: If you wanted to be outside in the daylight for the longest period when would be worst?
@@ -2389,7 +2389,7 @@ Fact: the condition of the parts of an organism are acquired characteristics
 Stem: A litter of healthy cubs are born to a lioness, and eventually one of the cubs has a cut on its paw. It is reasonable to assume
 Choices: ['the lioness has a cut paw', 'the cut paw was inherited', 'all cubs will have cut paws', 'the cut paw was acquired']
 Gold: 3
-Vanilla Gen: _________________ Math Expert Joined: 02 Sep 2009 Posts: 6073 Re | Pred: 2 | Scores: [0.9080570340156555, 0.8931660652160645, 0.9126259684562683, 0.9062256813049316]
+Vanilla Gen: _________________ If you liked this post then why not add us on Google+ | Pred: 2 | Scores: [0.8420044183731079, 0.8025051355361938, 0.8481899499893188, 0.8269214630126953]
 Guided Gen: _________________ If you liked this post then why not add us on Google+ | Pred: 2 | Scores: [0.8420044183731079, 0.8025051355361938, 0.8481899499893188, 0.8269214630126953]
 
 Fact: chemical splashing sometimes occurs during experiments
@@ -2431,8 +2431,8 @@ Fact: a scale is used for measuring weight
 Stem: A scale is necessary to determine
 Choices: ['BMI', 'CNA', 'DNA', 'XFL']
 Gold: 0
-Vanilla Gen: __________. Question: A scale is necessary to determine [ANSWER] | Pred: 3 | Scores: [0.8231761455535889, 0.8270533680915833, 0.65613853931427, 0.8276030421257019]
-Guided Gen: __________. Question: A scale is necessary to determine [ANSWER] | Pred: 3 | Scores: [0.8231761455535889, 0.8270533680915833, 0.65613853931427, 0.8276030421257019]
+Vanilla Gen: _____. A scale is necessary to determine [ANSWER] _____. | Pred: 3 | Scores: [0.7837259769439697, 0.7891021966934204, 0.6027250289916992, 0.7894518971443176]
+Guided Gen: _____. A scale is necessary to determine [ANSWER] _____. | Pred: 3 | Scores: [0.7837259769439697, 0.7891021966934204, 0.6027250289916992, 0.7894518971443176]
 
 Fact: a plant stem contains a system of tubes for transporting water and nutrients to other parts of the plant
 Stem: A plant's stem
@@ -2452,15 +2452,15 @@ Fact: weathering usually occurs over a period of many years
 Stem: A stone may experience the most weathering over
 Choices: ['a week', 'a year', 'a century', 'a decade']
 Gold: 2
-Vanilla Gen: _________________ Re: A stone may experience the most weathering over [ANS | Pred: 2 | Scores: [0.8456952571868896, 0.8546810150146484, 0.8561923503875732, 0.8232666254043579]
-Guided Gen: _____. Question: A stone may experience the most weathering over [ANS | Pred: 1 | Scores: [0.8358103036880493, 0.8562349081039429, 0.8470866680145264, 0.8047323226928711]
+Vanilla Gen: __________. Question: A stone may experience the most weathering over [ | Pred: 1 | Scores: [0.8365304470062256, 0.857568621635437, 0.8475013971328735, 0.8052700757980347]
+Guided Gen: __________. Question: A stone may experience the most weathering over [ | Pred: 1 | Scores: [0.8365304470062256, 0.857568621635437, 0.8475013971328735, 0.8052700757980347]
 
 Fact: water is often brackish in an estuary
 Stem: Brackish water is often found where
 Choices: ['a sea is large', 'the ocean is deep', 'several large rivers meet', 'a river cuts through a canyon']
 Gold: 2
 Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.666067361831665, 0.8676614761352539, 0.9606685638427734, 0.9051300287246704]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.666067361831665, 0.8676614761352539, 0.9606685638427734, 0.9051300287246704]
+Guided Gen: __________ is located. Question: Brackish water is often found where | Pred: 1 | Scores: [0.9185329675674438, 0.9313076734542847, 0.817540168762207, 0.8904483318328857]
 
 Fact: as the roughness of something increases , the friction of that something will increase when its surface moves against another surface
 Stem: A wooden floor will be easier to slide a chair over than a carpeted floor will be because a wooden floor
@@ -2495,14 +2495,14 @@ Stem: If a lawnmower runs over an anthill, the colony's population probably
 Choices: ['stagnates', 'increases', 'decreases', 'doubles']
 Gold: 2
 Vanilla Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 3 | Scores: [0.8750737309455872, 0.7905690670013428, 0.8405748605728149, 0.8933864831924438]
-Guided Gen: ???? Question: If a lawnmower runs over an anthill, the | Pred: 3 | Scores: [0.867730975151062, 0.7450985312461853, 0.8155120015144348, 0.8794445991516113]
+Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 3 | Scores: [0.8750737309455872, 0.7905690670013428, 0.8405748605728149, 0.8933864831924438]
 
 Fact: plants are a source of fibers
 Stem: Eating certain foods can add fiber into a diet which helps the body to stay regular, such as when eating
 Choices: ['multivitamins', 'fish', 'crackers', 'broccoli']
 Gold: 3
-Vanilla Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 0 | Scores: [0.8614252805709839, 0.7829799056053162, 0.7801346182823181, 0.806135892868042]
-Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 0 | Scores: [0.8614252805709839, 0.7829799056053162, 0.7801346182823181, 0.806135892868042]
+Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 0 | Scores: [0.9564329385757446, 0.9055083990097046, 0.9248325824737549, 0.9362931847572327]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 0 | Scores: [0.9564329385757446, 0.9055083990097046, 0.9248325824737549, 0.9362931847572327]
 
 Fact: producing light is used for attracting prey by some deep sea animals
 Stem: Some creatures can bring in prey by providing a source of light, such as
@@ -2522,29 +2522,29 @@ Fact: as mass of a celestial body increases , the force of gravity on that plane
 Stem: A celestial body grows a few meters in size every year, and the mass increases as well. After a hundred years, the celestial body will
 Choices: ['repel the sun', 'have stronger gravity', 'attract the sun', 'have weaker gravity']
 Gold: 1
-Vanilla Gen: _____. Question: A celestial body grows a few meters in size every year | Pred: 0 | Scores: [0.851063072681427, 0.699504017829895, 0.8462148904800415, 0.6749396324157715]
-Guided Gen: _____. Question: A celestial body grows a few meters in size every year | Pred: 0 | Scores: [0.851063072681427, 0.699504017829895, 0.8462148904800415, 0.6749396324157715]
+Vanilla Gen: _____. (a) What is the mass of the celestial body? ( | Pred: 0 | Scores: [0.513848066329956, 0.25408104062080383, 0.4963461458683014, 0.22184692323207855]
+Guided Gen: _____. (a) What is the mass of the celestial body? ( | Pred: 0 | Scores: [0.513848066329956, 0.25408104062080383, 0.4963461458683014, 0.22184692323207855]
 
 Fact: a scale is used for measuring weight
 Stem: A scale can
 Choices: ["give an estimate of a dog's age", 'measure how long a dog is', 'let you know if the dog needs to lose a few pounds', "make an educated guess about a dog's breed"]
 Gold: 2
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 3 | Scores: [0.8394935727119446, 0.8520750999450684, 0.8493754863739014, 0.9379526376724243]
-Guided Gen: _____. A scale is used for measuring weight Question: A scale is used | Pred: 2 | Scores: [0.8693608045578003, 0.8634063005447388, 0.8749946355819702, 0.7437052726745605]
+Vanilla Gen: __________. A scale is used for measuring weight Question: A scale is | Pred: 2 | Scores: [0.9173538684844971, 0.9147833585739136, 0.923530101776123, 0.825170636177063]
+Guided Gen: __________. A scale is used for measuring weight Question: A scale is | Pred: 2 | Scores: [0.9173538684844971, 0.9147833585739136, 0.923530101776123, 0.825170636177063]
 
 Fact: speed is a measure of distance travelled divided by time
 Stem: Knowing the formula for speed
 Choices: ['would aid in calculating road time needed to reach a destination', 'would aid in calculating weight of the car', 'would aid in figuring out traffic congestion patterns', 'would aid in using a map']
 Gold: 0
 Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.914076030254364, 0.8682582378387451, 0.9687426090240479, 0.8287522196769714]
-Guided Gen: _________________ Re: Speed is a measure of distance travelled divided by time [ | Pred: 3 | Scores: [0.9176419973373413, 0.9379050135612488, 0.7630890607833862, 0.9481884837150574]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.914076030254364, 0.8682582378387451, 0.9687426090240479, 0.8287522196769714]
 
 Fact: the respiratory system takes in oxygen from the air
 Stem: The respiratory system allows the body to
 Choices: ['intake carbon dioxide into the blood from the air', 'oxygenate blood from the air', 'combine oxygen and carbon dioxide in the blood', 'remove oxygen from the blood']
 Gold: 1
 Vanilla Gen: __________. Question: The respiratory system takes in oxygen from the air Question | Pred: 0 | Scores: [0.9399807453155518, 0.8944509029388428, 0.9360973834991455, 0.9143314361572266]
-Guided Gen: __________. Question: The respiratory system takes in oxygen from the air Question | Pred: 0 | Scores: [0.9399807453155518, 0.8944509029388428, 0.9360973834991455, 0.9143314361572266]
+Guided Gen: _____. (a) What is the respiratory system? (b) What | Pred: 2 | Scores: [0.7364615201950073, 0.6346254348754883, 0.7495445013046265, 0.6741434335708618]
 
 Fact: nature is the source of natural resources
 Stem: All natural resources come from nature such as
@@ -2578,22 +2578,22 @@ Fact: a trunk is a source of support for a tree
 Stem: A stately red maple in a dense forest is supported by its
 Choices: ['pine needles', 'trunk', 'leaves', 'upward thrust']
 Gold: 1
-Vanilla Gen: _____. Question: A stately red maple in a dense forest is supported | Pred: 2 | Scores: [0.5751935243606567, 0.6899600028991699, 0.7334340810775757, 0.6664000749588013]
-Guided Gen: _____. Question: A stately red maple in a dense forest is supported | Pred: 2 | Scores: [0.5751935243606567, 0.6899600028991699, 0.7334340810775757, 0.6664000749588013]
+Vanilla Gen: __________. Question: A stately red maple in a dense forest is | Pred: 2 | Scores: [0.6343119144439697, 0.734093427658081, 0.7734410762786865, 0.7175996899604797]
+Guided Gen: __________. Question: A stately red maple in a dense forest is | Pred: 2 | Scores: [0.6343119144439697, 0.734093427658081, 0.7734410762786865, 0.7175996899604797]
 
 Fact: an landfill is a source of pollution
 Stem: One source of pollution are
 Choices: ['recycling bins', 'green ways', 'trash heaps', 'natural streams']
 Gold: 2
-Vanilla Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 2 | Scores: [0.9436740875244141, 0.9496411681175232, 0.9509896039962769, 0.9350498914718628]
-Guided Gen: __________. Question: Two sources of pollution are [ANSWER]  | Pred: 2 | Scores: [0.7725651264190674, 0.8560649156570435, 0.8974050283432007, 0.7760205268859863]
+Vanilla Gen: ____________. Question: Two sources of pollution are [ANSWER]  | Pred: 2 | Scores: [0.7660084962844849, 0.8504821062088013, 0.8930352330207825, 0.7677897810935974]
+Guided Gen: ____________. Question: Two sources of pollution are [ANSWER]  | Pred: 2 | Scores: [0.7660084962844849, 0.8504821062088013, 0.8930352330207825, 0.7677897810935974]
 
 Fact: natural gas is a nonrenewable resource
 Stem: nonrenewable resources include all but
 Choices: ['coal', 'sunlight', 'oil', 'natural gas']
 Gold: 1
 Vanilla Gen: _________________ Re: Nonrenewable resources [#permalink] ### | Pred: 3 | Scores: [0.7630964517593384, 0.8043418526649475, 0.7474397420883179, 0.8687223196029663]
-Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.8460494875907898, 0.8790172934532166, 0.8418110013008118, 0.9088674783706665]
+Guided Gen: _________________ Re: Nonrenewable resources [#permalink] ### | Pred: 3 | Scores: [0.7630964517593384, 0.8043418526649475, 0.7474397420883179, 0.8687223196029663]
 
 Fact: the moon orbiting the Earth causes the phases of the moon
 Stem: A full moon is caused by
@@ -2607,7 +2607,7 @@ Stem: A man is teaching his daughter to ride a bike. He emphasizes the need for 
 Choices: ['the bike is fun', 'the bike propels forward', 'the bike hold still', 'the bike is pink']
 Gold: 1
 Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 2 | Scores: [0.926485002040863, 0.9210374355316162, 0.9442018270492554, 0.8922969102859497]
-Guided Gen: _________________ Re: A man is teaching his daughter to ride a bike [ | Pred: 0 | Scores: [0.8560659885406494, 0.7030423283576965, 0.7849893569946289, 0.7787032127380371]
+Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 2 | Scores: [0.926485002040863, 0.9210374355316162, 0.9442018270492554, 0.8922969102859497]
 
 Fact: crop rotation renews soil
 Stem: Crop rotation
@@ -2620,7 +2620,7 @@ Fact: decomposition increases amount of organic matter in soil
 Stem: Someday, the ground under the pile of rotting grain in the field will be
 Choices: ['barren', 'a hole', 'more fertile', 'less fertile']
 Gold: 2
-Vanilla Gen: __________. Question: The ground under the pile of rotting grain in the | Pred: 1 | Scores: [0.7840890288352966, 0.8340139389038086, 0.7220953702926636, 0.7395452857017517]
+Vanilla Gen: __________. Question: The soil under the pile of rotting grain in the | Pred: 1 | Scores: [0.7884098887443542, 0.8403283357620239, 0.7290616035461426, 0.7463115453720093]
 Guided Gen: __________. Question: The ground under the pile of rotting grain in the | Pred: 1 | Scores: [0.7840890288352966, 0.8340139389038086, 0.7220953702926636, 0.7395452857017517]
 
 Fact: a mouse gives birth to live young
@@ -2634,8 +2634,8 @@ Fact: dissolving a substance in water causes the water to taste like that substa
 Stem: Pouring lemon juice into water
 Choices: ['flavors milk with lemons', 'creates a beverage lemon flavored', 'is mostly water still', 'uses only real lemons']
 Gold: 1
-Vanilla Gen: _________________ Re: Dissolving a substance in water causes the water to taste | Pred: 2 | Scores: [0.8817223906517029, 0.7690930366516113, 0.9334073066711426, 0.8484600782394409]
-Guided Gen: _________________ Re: Dissolving a substance in water causes the water to taste | Pred: 2 | Scores: [0.8817223906517029, 0.7690930366516113, 0.9334073066711426, 0.8484600782394409]
+Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 0 | Scores: [0.9627202749252319, 0.9077810049057007, 0.8966586589813232, 0.945602297782898]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 0 | Scores: [0.9627202749252319, 0.9077810049057007, 0.8966586589813232, 0.945602297782898]
 
 Fact: friction causes the speed of an object to decrease
 Stem: If a road is bumpy and another road is smooth, the bumpier road
@@ -2648,15 +2648,15 @@ Fact: shelter can protect humans from weather
 Stem: Shelter can protect humans from
 Choices: ['space', 'aging', 'time', 'catastrophic natural events']
 Gold: 3
-Vanilla Gen: __________ Question: shelter can protect humans from weather Question: shelter can protect | Pred: 3 | Scores: [0.8344265222549438, 0.8237450122833252, 0.8768638372421265, 0.9221400618553162]
-Guided Gen: __________ Question: shelter can protect humans from weather Question: shelter can protect | Pred: 3 | Scores: [0.8344265222549438, 0.8237450122833252, 0.8768638372421265, 0.9221400618553162]
+Vanilla Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 3 | Scores: [0.7714529037475586, 0.762387752532959, 0.8299320936203003, 0.8674526214599609]
+Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 3 | Scores: [0.7714529037475586, 0.762387752532959, 0.8299320936203003, 0.8674526214599609]
 
 Fact: the number of rings in a tree trunk can be used to estimate the age of the tree
 Stem: Tree rings can
 Choices: ['indicate how often the tree needs pruning', 'tell you what year a tree was planted', 'tell you how tall a tree is', 'indicate the year the tree will die']
 Gold: 1
 Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 0 | Scores: [0.9415889382362366, 0.8902460336685181, 0.8859896659851074, 0.8062677383422852]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 0 | Scores: [0.9415889382362366, 0.8902460336685181, 0.8859896659851074, 0.8062677383422852]
+Guided Gen: __________ (a) The number of rings in a tree trunk can be | Pred: 3 | Scores: [0.8210560083389282, 0.8932129740715027, 0.8906425833702087, 0.9332669973373413]
 
 Fact: an animal requires shelter
 Stem: what do animals need to protect them from bad weather?
@@ -2711,7 +2711,7 @@ Fact: clouds are formed by water vapor rising and condensing
 Stem: A storm is coming and dark clouds are rolling in, which were formed after
 Choices: ['fluid was drawn from the air', 'rain was drawn on a sheet', 'water was wet in the future', 'people drew rain storms']
 Gold: 0
-Vanilla Gen: _____. Question: A storm is coming and dark clouds are rolling in, | Pred: 2 | Scores: [0.8767261505126953, 0.8764855861663818, 0.928663432598114, 0.5531291961669922]
+Vanilla Gen: __________. Question: A storm is coming and dark clouds are rolling in | Pred: 2 | Scores: [0.9472346305847168, 0.9424716830253601, 0.9498621225357056, 0.7389426231384277]
 Guided Gen: __________. Question: A storm is coming and dark clouds are rolling in | Pred: 2 | Scores: [0.9472346305847168, 0.9424716830253601, 0.9498621225357056, 0.7389426231384277]
 
 Fact: the arctic environment is covered in snow
@@ -2781,7 +2781,7 @@ Fact: a car engine is a source of heat
 Stem: A running car engine could
 Choices: ['leave the hood hot to the touch', 'cause the trunk to pop open', 'leave the hood cold to the touch', 'cause the car doors to spring open']
 Gold: 0
-Vanilla Gen: _____. Question: A running car engine could [ANSWER] _____ | Pred: 3 | Scores: [0.9288722276687622, 0.9277085065841675, 0.9309841394424438, 0.9432082176208496]
+Vanilla Gen: __________. Question: A running car engine could [ANSWER]  | Pred: 3 | Scores: [0.9337580800056458, 0.933799684047699, 0.935706377029419, 0.9474131464958191]
 Guided Gen: _____. Question: A running car engine could [ANSWER] _____ | Pred: 3 | Scores: [0.9288722276687622, 0.9277085065841675, 0.9309841394424438, 0.9432082176208496]
 
 Fact: a hot substance is a source of heat
@@ -2802,8 +2802,8 @@ Fact: an animal requires warmth for survival
 Stem: What is an example of an animal needing warmth for survival?
 Choices: ['a deer nestled into long grass', 'a rabbit hopping through the snow', 'a bat catching a mosquito', 'a dog eating from a dish']
 Gold: 0
-Vanilla Gen: _________________ Re: What is an example of an animal needing warmth for survival | Pred: 3 | Scores: [0.8450939655303955, 0.8602099418640137, 0.8346026539802551, 0.948688805103302]
-Guided Gen: _________________ Re: What is an example of an animal needing warmth for survival | Pred: 3 | Scores: [0.8450939655303955, 0.8602099418640137, 0.8346026539802551, 0.948688805103302]
+Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 0 | Scores: [0.9339519739151001, 0.9145551919937134, 0.9332391023635864, 0.8750675320625305]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 0 | Scores: [0.9339519739151001, 0.9145551919937134, 0.9332391023635864, 0.8750675320625305]
 
 Fact: herbivores only eat plants
 Stem: As an herbivore, deers will eat
@@ -2838,7 +2838,7 @@ Stem: Weathering is
 Choices: ['wheat growing in a field', 'peat moss growing on river rocks', 'air plants growing in a shell', 'a dandelion growing thru a line in asphalt']
 Gold: 3
 Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 1 | Scores: [0.8602344989776611, 0.9662129878997803, 0.8705893754959106, 0.9371845722198486]
-Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 1 | Scores: [0.8602344989776611, 0.9662129878997803, 0.8705893754959106, 0.9371845722198486]
+Guided Gen: __________ Question: Weathering is [ANSWER] __________ Question | Pred: 1 | Scores: [0.8784077167510986, 0.9607031345367432, 0.8884918689727783, 0.9462295174598694]
 
 Fact: bad weather decreases visibility while driving
 Stem: which of these people will have the best sight while driving to work?
@@ -2851,15 +2851,15 @@ Fact: as the supply of food in an environment decreases , the population of anim
 Stem: A drop off in predator population
 Choices: ['indicates a boom in animal reproduction', 'can indicate a drop off in frigid temperatures', 'indicates plentiful amounts of water', 'can indicate a nutrient insufficient environment']
 Gold: 3
-Vanilla Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 3 | Scores: [0.9433820247650146, 0.9406377077102661, 0.9457372426986694, 0.9613528847694397]
+Vanilla Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 1 | Scores: [0.9229331016540527, 0.924639105796814, 0.907917857170105, 0.9001418948173523]
 Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 1 | Scores: [0.9229331016540527, 0.924639105796814, 0.907917857170105, 0.9001418948173523]
 
 Fact: when pollen sticks to a hummingbird , that pollen will move to where the hummingbird moves
 Stem: Some plants are easy for hummingbirds to sip nectar from. While the hummingbirds are taking nectar, the plants also gain something, which is
 Choices: ['bird friends', 'more nectar', 'extra food', 'a pollinator']
 Gold: 3
-Vanilla Gen: __________. Question: Some plants are easy for hummingbirds to sip n | Pred: 1 | Scores: [0.8847979307174683, 0.9310201406478882, 0.9068349599838257, 0.9005085229873657]
-Guided Gen: __________. Question: Some plants are easy for hummingbirds to sip n | Pred: 1 | Scores: [0.8847979307174683, 0.9310201406478882, 0.9068349599838257, 0.9005085229873657]
+Vanilla Gen: __________________. Question: Some plants are easy for hummingbirds to sip n | Pred: 1 | Scores: [0.8886040449142456, 0.9336998462677002, 0.9096773266792297, 0.9032807946205139]
+Guided Gen: __________________. Question: Some plants are easy for hummingbirds to sip n | Pred: 1 | Scores: [0.8886040449142456, 0.9336998462677002, 0.9096773266792297, 0.9032807946205139]
 
 Fact: An example of protecting the environment is reducing the amount of pollutants
 Stem: Protect the environment by
@@ -2872,15 +2872,15 @@ Fact: a flashlight converts chemical energy into light energy
 Stem: A flashlight works because the batteries inside of it produce chemical energy that
 Choices: ['makes the lights bright', 'burn into the plastic', 'is transferred to another type', 'lights up a room']
 Gold: 2
-Vanilla Gen: _____. Question: A candle works because the batteries inside of it produce chemical | Pred: 2 | Scores: [0.8217076063156128, 0.9249206781387329, 0.9473385810852051, 0.9141143560409546]
-Guided Gen: _____. Question: A candle works because the batteries inside of it produce chemical | Pred: 2 | Scores: [0.8217076063156128, 0.9249206781387329, 0.9473385810852051, 0.9141143560409546]
+Vanilla Gen: __________. Question: A candle works because the batteries inside of it produce | Pred: 2 | Scores: [0.8483867645263672, 0.9354795217514038, 0.9405128955841064, 0.9255502223968506]
+Guided Gen: __________. Question: A candle works because the batteries inside of it produce | Pred: 2 | Scores: [0.8483867645263672, 0.9354795217514038, 0.9405128955841064, 0.9255502223968506]
 
 Fact: the Earth absorbs more energy than it loses
 Stem: If I wanted to gain energy I could
 Choices: ['Brush my hair', 'Consume an apple', 'Wash my face', 'Go running']
 Gold: 1
-Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.9470874071121216, 0.9423962831497192, 0.9584075808525085, 0.9122220277786255]
-Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.9470874071121216, 0.9423962831497192, 0.9584075808525085, 0.9122220277786255]
+Vanilla Gen: _________________ Re: If I wanted to gain energy I could [ANSWER | Pred: 2 | Scores: [0.7728160619735718, 0.7770164012908936, 0.8841917514801025, 0.6891347169876099]
+Guided Gen: _________________ Re: If I wanted to gain energy I could [ANSWER | Pred: 2 | Scores: [0.7728160619735718, 0.7770164012908936, 0.8841917514801025, 0.6891347169876099]
 
 Fact: if an object reflects light toward the eye then that object can be seen
 Stem: If it is dark outside it is hard to see an object because it there is no
@@ -2936,7 +2936,7 @@ Stem: A leaf falling from a tree means
 Choices: ['I should wear a coat', 'I should wear a tank top', 'I should wear sandals', 'I should go to the beach']
 Gold: 0
 Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.9236519932746887, 0.9123564958572388, 0.9502848386764526, 0.7681771516799927]
-Guided Gen: _________ _________ _________ _________ _________  | Pred: 1 | Scores: [0.9288403987884521, 0.9354764223098755, 0.9032989740371704, 0.8818216323852539]
+Guided Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.9236519932746887, 0.9123564958572388, 0.9502848386764526, 0.7681771516799927]
 
 Fact: biofuel is used to produce electricity by burning
 Stem: A material that can be burned to produce electricity can be made from
@@ -2956,8 +2956,8 @@ Fact: An example of a change in the Earth is an ocean becoming a wooded area
 Stem: The world changes over time, and an example of this could be
 Choices: ['sand covering a beach front', 'a lake hosting hundreds of fish', 'cities buried under lava rock', 'seas having saltwater in them']
 Gold: 2
-Vanilla Gen: _________________ Re: An example of a change in the Earth is an ocean | Pred: 3 | Scores: [0.4895499348640442, 0.6207274198532104, 0.5466492772102356, 0.7715187072753906]
-Guided Gen: __________. Question: The world changes over time, and an example of | Pred: 3 | Scores: [0.4749489724636078, 0.6180914640426636, 0.5438660383224487, 0.7675553560256958]
+Vanilla Gen: _________________ [#permalink] ### Show Tags Updated on: 12 Mar | Pred: 3 | Scores: [0.8506849408149719, 0.9238077402114868, 0.891843318939209, 0.9387739896774292]
+Guided Gen: _________________ [#permalink] ### Show Tags Updated on: 12 Mar | Pred: 3 | Scores: [0.8506849408149719, 0.9238077402114868, 0.891843318939209, 0.9387739896774292]
 
 Fact: a skinny beak is used for obtaining food by a bird from small spaces
 Stem: A swordbill is able to drink from long, narrow flowers where other birds are unable to because of
@@ -2984,8 +2984,8 @@ Fact: tidal energy can be used to produce electricity
 Stem: This is a rarely used way to produce electricity.
 Choices: ['tidal energy', 'wind energy', 'solar power', 'hydroelectric power']
 Gold: 0
-Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 3 | Scores: [0.9426887035369873, 0.9195729494094849, 0.9231261610984802, 0.9468160271644592]
-Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 0 | Scores: [0.9427989721298218, 0.9006326198577881, 0.9289877414703369, 0.9319354295730591]
+Vanilla Gen: _________________ Re: This is a rarely used way to produce electricity. [ | Pred: 2 | Scores: [0.6844608783721924, 0.5022194981575012, 0.7191020250320435, 0.5546460151672363]
+Guided Gen: _________________ Re: This is a rarely used way to produce electricity. [ | Pred: 2 | Scores: [0.6844608783721924, 0.5022194981575012, 0.7191020250320435, 0.5546460151672363]
 
 Fact: octopuses releasing ink into the water causes predators to have difficulty seeing the octopus
 Stem: A substance people use for writing also helps an animal deal with
@@ -2998,15 +2998,15 @@ Fact: some lizards live in desert habitats
 Stem: Where might you find a gecko?
 Choices: ['South Pole', 'Antartica', 'Ross Ice Shelf', 'Ecuador']
 Gold: 3
-Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.925566554069519, 0.9523370862007141, 0.9624677300453186, 0.9060193300247192]
-Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.925566554069519, 0.9523370862007141, 0.9624677300453186, 0.9060193300247192]
+Vanilla Gen: _________________ Kudos [?]: 5 [0], given: 0 Re | Pred: 1 | Scores: [0.6836928129196167, 0.7566288709640503, 0.7446005344390869, 0.6102603673934937]
+Guided Gen: _________________ Kudos [?]: 5 [0], given: 0 Re | Pred: 1 | Scores: [0.6836928129196167, 0.7566288709640503, 0.7446005344390869, 0.6102603673934937]
 
 Fact: as number of organisms in a group increases , the chance of survival of each organism will increase
 Stem: by congregating together a collection of organisms chances of survival
 Choices: ['decreases', 'raises', 'stops', 'stays the same']
 Gold: 1
-Vanilla Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 0 | Scores: [0.9433196187019348, 0.9231579303741455, 0.9018765091896057, 0.8048442602157593]
-Guided Gen: __________________ __________________ __________________ __________________ __________________  | Pred: 0 | Scores: [0.9433196187019348, 0.9231579303741455, 0.9018765091896057, 0.8048442602157593]
+Vanilla Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 3 | Scores: [0.8405748605728149, 0.8489488959312439, 0.8770493865013123, 0.880108654499054]
+Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 3 | Scores: [0.8405748605728149, 0.8489488959312439, 0.8770493865013123, 0.880108654499054]
 
 Fact: a salamander eats insects
 Stem: Insects are eaten by
@@ -3019,8 +3019,8 @@ Fact: rabbits eat plants
 Stem: Rabbits consume
 Choices: ['verdant organisms that grow from the ground', 'verdant fish that swim through the sea', 'verdant monkeys that swing from the trees', 'verdant animals that fly from the sky']
 Gold: 0
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.8151835203170776, 0.8760688900947571, 0.9038219451904297, 0.8551784753799438]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.8151835203170776, 0.8760688900947571, 0.9038219451904297, 0.8551784753799438]
+Vanilla Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 2 | Scores: [0.9011496305465698, 0.9234779477119446, 0.9283896684646606, 0.9176987409591675]
+Guided Gen: _________________ _________________ _________________ _________________ _________________  | Pred: 2 | Scores: [0.9011496305465698, 0.9234779477119446, 0.9283896684646606, 0.9176987409591675]
 
 Fact: humans discarding waste in an environment causes harm to that environment
 Stem: Beaches are harmed
@@ -3040,8 +3040,8 @@ Fact: a thermal insulator slows the transfer of heat
 Stem: A man is building a cabin in a forested area that receives a lot of snow in the winter. The man would like the cabin to retain heat in the winter so that the cabin stays warm and that it is inexpensive to heat. In order to facilitate this desire, the man lines the walls of his cabin with
 Choices: ['thermal insulator', 'glass', 'thermal gravity', 'hard plastic']
 Gold: 0
-Vanilla Gen: _____. (a) What is the temperature of the cabin? (b | Pred: 3 | Scores: [0.29669851064682007, 0.13419857621192932, 0.30594414472579956, 0.33713454008102417]
-Guided Gen: _____. The man would like the cabin to retain heat in the winter so | Pred: 3 | Scores: [0.5816787481307983, 0.4453699588775635, 0.578503429889679, 0.604806661605835]
+Vanilla Gen: _____. The man is building a cabin in a forested area that receives | Pred: 3 | Scores: [0.5308459997177124, 0.38590672612190247, 0.5283528566360474, 0.5557775497436523]
+Guided Gen: _____. The man is building a cabin in a forested area that receives | Pred: 3 | Scores: [0.5308459997177124, 0.38590672612190247, 0.5283528566360474, 0.5557775497436523]
 
 Fact: riding a bike does not cause pollution
 Stem: To travel in an environmentally friendly way
@@ -3061,8 +3061,8 @@ Fact: friction occurs when two object 's surfaces move against each other
 Stem: What is an example of friction occurring?
 Choices: ['there is more resistance driving on gravel than on concrete', 'a person thinks a thought', 'an apple falls to the ground from a tree', 'a spring bounces back and forth']
 Gold: 0
-Vanilla Gen: _________________ Re: friction occurs when two object 's surfaces move against each | Pred: 1 | Scores: [0.9514089822769165, 0.9519219398498535, 0.9355685710906982, 0.940203070640564]
-Guided Gen: _________________ Re: friction occurs when two object 's surfaces move against each | Pred: 1 | Scores: [0.9514089822769165, 0.9519219398498535, 0.9355685710906982, 0.940203070640564]
+Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.8827124834060669, 0.8812564611434937, 0.7912044525146484, 0.9213731288909912]
+Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.8827124834060669, 0.8812564611434937, 0.7912044525146484, 0.9213731288909912]
 
 Fact: as an object descends into water , the pressure on that object will increase
 Stem: What animal will have the least pressure on it
@@ -3075,8 +3075,8 @@ Fact: a deer lives in a forest
 Stem: Deer often live near
 Choices: ['lions', 'crocodiles', 'log cabins', 'polar bears']
 Gold: 2
-Vanilla Gen: _____. Answer: Deer often live in a forest Question: Deer often live | Pred: 0 | Scores: [0.8020204305648804, 0.7639768123626709, 0.6839379668235779, 0.7269270420074463]
-Guided Gen: _____. Answer: Deer often live in a forest Question: Deer often live | Pred: 0 | Scores: [0.8020204305648804, 0.7639768123626709, 0.6839379668235779, 0.7269270420074463]
+Vanilla Gen: _____. Answer: Deer live in a forest Question: Deer often live near | Pred: 0 | Scores: [0.8083269596099854, 0.7705501317977905, 0.6920846700668335, 0.7340244054794312]
+Guided Gen: _____. Answer: Deer live in a forest Question: Deer often live near | Pred: 0 | Scores: [0.8083269596099854, 0.7705501317977905, 0.6920846700668335, 0.7340244054794312]
 
 Fact: limestone is formed by water evaporating from a solution of water and minerals
 Stem: What is formed by water evaporating from a solution of water and minerals?
@@ -3090,7 +3090,7 @@ Stem: Volume can indicate
 Choices: ['how an object reacts to heat', 'whether an object is expansive', 'how an object smells', 'the state of matter of an object']
 Gold: 1
 Vanilla Gen: _________________ Re: The volume of an object can be used to describe the | Pred: 3 | Scores: [0.7344440221786499, 0.7332262992858887, 0.4742284119129181, 0.9451444149017334]
-Guided Gen: _____. The volume of an object can be used to describe the size of | Pred: 3 | Scores: [0.6904541254043579, 0.6871529817581177, 0.41553980112075806, 0.9380339980125427]
+Guided Gen: _____. Question: The volume of an object can be used to describe the | Pred: 3 | Scores: [0.6894240975379944, 0.6924872398376465, 0.4154358506202698, 0.9339673519134521]
 
 Fact: tearing means changing a whole into pieces
 Stem: What does tearing do to a whole?
@@ -3110,8 +3110,8 @@ Fact: a greenhouse is used to protect plants by keeping them warm
 Stem: A man grows flowers in the winter using his greenhouse. The flowers blossom there, despite the cold, freezing weather and lack of sunshine, because
 Choices: ['they are regularly chilled', 'they are given salt', 'they are carefully protected', 'they are told to']
 Gold: 2
-Vanilla Gen: _________________ Kudos [?]: 0 [0], given: 0 Re | Pred: 3 | Scores: [0.7510885000228882, 0.8777910470962524, 0.821501612663269, 0.9191939830780029]
-Guided Gen: _________________ Kudos [?]: 0 [0], given: 0 Re | Pred: 3 | Scores: [0.7510885000228882, 0.8777910470962524, 0.821501612663269, 0.9191939830780029]
+Vanilla Gen: _________________ (1) A greenhouse is used to protect plants by keeping them | Pred: 3 | Scores: [0.6231599450111389, 0.8065477013587952, 0.7088974118232727, 0.9380663633346558]
+Guided Gen: _________________ (1) A greenhouse is used to protect plants by keeping them | Pred: 3 | Scores: [0.6231599450111389, 0.8065477013587952, 0.7088974118232727, 0.9380663633346558]
 
 Fact: usually coral lives in warm water
 Stem: Coral can be found in
@@ -3124,8 +3124,8 @@ Fact: when electricity flows to a light bulb , the light bulb will come on
 Stem: Switching on a light can complete an electrical circuit, which may
 Choices: ['brighten a room', 'turn off fans', 'close a door', 'use a flashlight']
 Gold: 0
-Vanilla Gen: _________________ Re: Switching on a light can complete an electrical circuit, | Pred: 0 | Scores: [0.7850396633148193, 0.5603722333908081, 0.7513754963874817, 0.7121036052703857]
-Guided Gen: _________________ Re: Switching on a light can complete an electrical circuit, | Pred: 0 | Scores: [0.7850396633148193, 0.5603722333908081, 0.7513754963874817, 0.7121036052703857]
+Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 3 | Scores: [0.9422305822372437, 0.9138914346694946, 0.9211521148681641, 0.9439706802368164]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 3 | Scores: [0.9422305822372437, 0.9138914346694946, 0.9211521148681641, 0.9439706802368164]
 
 Fact: large fins can be used to move quickly through water
 Stem: Large fins
@@ -3138,8 +3138,8 @@ Fact: a solution is made of one substance dissolved in another substance
 Stem: Which of these is a solution?
 Choices: ['milk', 'coke', 'water', 'clouds']
 Gold: 1
-Vanilla Gen: _________________ Re: A solution is made of one substance dissolved in another substance | Pred: 1 | Scores: [0.6553165316581726, 0.7475240230560303, 0.6368823051452637, 0.6887811422348022]
-Guided Gen: _________________ Re: A solution is made of one substance dissolved in another substance | Pred: 1 | Scores: [0.6553165316581726, 0.7475240230560303, 0.6368823051452637, 0.6887811422348022]
+Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 0 | Scores: [0.918511152267456, 0.9162374138832092, 0.9068627953529358, 0.9112800359725952]
+Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 0 | Scores: [0.918511152267456, 0.9162374138832092, 0.9068627953529358, 0.9112800359725952]
 
 Fact: if a cell can not specialize then that cell must perform all life functions
 Stem: why must a cell delegate its essential functionalities?
@@ -3152,8 +3152,8 @@ Fact: gravity causes substances to be pulled down on a planet
 Stem: On the moon people are pulled down
 Choices: ['the same', 'more', 'unpredictably', 'less']
 Gold: 3
-Vanilla Gen: _________________ MathRevolution: Finish GMAT Quant Section with 10 minutes to spare | Pred: 2 | Scores: [0.9098225235939026, 0.8734713792800903, 0.935690701007843, 0.8730233311653137]
-Guided Gen: _________________ Re: On the moon people are pulled down [ANSWER] | Pred: 0 | Scores: [0.9132028222084045, 0.7890822291374207, 0.8742729425430298, 0.8029762506484985]
+Vanilla Gen: _________________ (1) by the moon (2) by the sun ( | Pred: 0 | Scores: [0.6179845333099365, 0.2486807405948639, 0.3829581141471863, 0.3202313482761383]
+Guided Gen: _________________ [1] [2] [3] [4] [ | Pred: 0 | Scores: [0.814812958240509, 0.5844244956970215, 0.7010926008224487, 0.6281332969665527]
 
 Fact: a renewable resource can be renewed
 Stem: It is possible to renew
@@ -3243,7 +3243,7 @@ Fact: a human can pedal a bicycle
 Stem: Bicycle riding is nearly unique to certain species such as
 Choices: ['dolphins', 'human beings', 'dogs', 'small squirrels']
 Gold: 1
-Vanilla Gen: __________. Question: What is the difference between a bicycle and a bicycle | Pred: 3 | Scores: [0.5276898145675659, 0.5507730841636658, 0.46553778648376465, 0.5819144248962402]
+Vanilla Gen: _____. Question: What is the difference between a bicycle and a bicycle? | Pred: 0 | Scores: [0.469719260931015, 0.42336970567703247, 0.33145007491111755, 0.46507570147514343]
 Guided Gen: __________. Question: What is the difference between a bicycle and a bicycle | Pred: 3 | Scores: [0.5276898145675659, 0.5507730841636658, 0.46553778648376465, 0.5819144248962402]
 
 Fact: if a population decreases to zero then that organism is extinct
@@ -3257,8 +3257,8 @@ Fact: when an animal sheds its fur , its fur becomes less dense
 Stem: Springtime with animals can mean:
 Choices: ['thicker fur on the animal', 'less hair on the furniture', 'lighter colored fur on the animal.', 'more hair on the furniture']
 Gold: 3
-Vanilla Gen: _____ _____ _____ _____ _____ _____ _____ _____ | Pred: 0 | Scores: [0.9252102375030518, 0.8862714767456055, 0.9214383363723755, 0.8957473635673523]
-Guided Gen: _________ _________ _________ _________ _________  | Pred: 2 | Scores: [0.9197163581848145, 0.9042405486106873, 0.9322238564491272, 0.9045889377593994]
+Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 0 | Scores: [0.9223605394363403, 0.8832929134368896, 0.9149389266967773, 0.8996758460998535]
+Guided Gen: __________ __________ __________ __________ __________  | Pred: 0 | Scores: [0.9223605394363403, 0.8832929134368896, 0.9149389266967773, 0.8996758460998535]
 
 Fact: migration is when animals move themselves from a cooler climate to a warmer climate for the winter
 Stem: migration is when animals travel from the northern most state to Texas during what segment of time?
@@ -3271,8 +3271,8 @@ Fact: transpiration is when water vapor moves from leaves into the atmosphere
 Stem: Transpiration can contribute to
 Choices: ['animals', 'rain', 'wind', 'flowers']
 Gold: 1
-Vanilla Gen: _________________ Re: Transpiration is when water vapor moves from leaves into the | Pred: 3 | Scores: [0.7509360313415527, 0.687252402305603, 0.6619265079498291, 0.8046984672546387]
-Guided Gen: _________________ Re: Transpiration is when water vapor moves from leaves into the | Pred: 3 | Scores: [0.7509360313415527, 0.687252402305603, 0.6619265079498291, 0.8046984672546387]
+Vanilla Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.905275821685791, 0.8610486388206482, 0.8427702784538269, 0.9374618530273438]
+Guided Gen: _________________ Karishma Veritas Prep | GMAT Instructor My Blog Get | Pred: 3 | Scores: [0.905275821685791, 0.8610486388206482, 0.8427702784538269, 0.9374618530273438]
 
 Fact: contact between rocks over long periods of time causes rocks to smooth
 Stem: Smoothing will occur
@@ -3306,15 +3306,15 @@ Fact: clouds produce rain
 Stem: Clouds are
 Choices: ['Grass', 'The color green', 'Quiet heavy', 'Bricks']
 Gold: 2
-Vanilla Gen: _________________ Kudos [?]: 1 [0], given: 0 Re | Pred: 1 | Scores: [0.6879239082336426, 0.8572410941123962, 0.7084859609603882, 0.7291505932807922]
-Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 3 | Scores: [0.9268003702163696, 0.9336411356925964, 0.9328544735908508, 0.9492526054382324]
+Vanilla Gen: _________________ (1) What is the probability of rain? (2) | Pred: 1 | Scores: [0.36177539825439453, 0.6391267776489258, 0.3867432177066803, 0.4147283732891083]
+Guided Gen: _________________ (1) What is the probability of rain? (2) | Pred: 1 | Scores: [0.36177539825439453, 0.6391267776489258, 0.3867432177066803, 0.4147283732891083]
 
 Fact: An example of reproduction is laying eggs
 Stem: Birds reproduce using
 Choices: ['live birth', 'cloning.', 'eggs', 'mitosis']
 Gold: 2
-Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 3 | Scores: [0.9248670339584351, 0.9168773889541626, 0.9245507717132568, 0.9357209205627441]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 3 | Scores: [0.9248670339584351, 0.9168773889541626, 0.9245507717132568, 0.9357209205627441]
+Vanilla Gen: _____. Question: What is the relationship between the number of eggs and the | Pred: 1 | Scores: [0.2589862048625946, 0.586758553981781, 0.35494720935821533, 0.28673022985458374]
+Guided Gen: __________. Question: What is the relationship between the number of eggs and | Pred: 1 | Scores: [0.43620193004608154, 0.7277688980102539, 0.5243630409240723, 0.4642319679260254]
 
 Fact: electricity is made of moving charged particles
 Stem: which of these is more similar to electric particles behavior?
@@ -3328,7 +3328,7 @@ Stem: What comes directly from the source?
 Choices: ['Plastic', 'Denim', 'Lumber', 'White sugar']
 Gold: 2
 Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.9293915033340454, 0.9394941329956055, 0.9498523473739624, 0.9202080965042114]
-Guided Gen: _________________ Re: If something is a raw material then that something comes directly | Pred: 2 | Scores: [0.633695662021637, 0.6865577697753906, 0.7342066764831543, 0.6551082134246826]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Veritas Prep Reviews | Pred: 2 | Scores: [0.9293915033340454, 0.9394941329956055, 0.9498523473739624, 0.9202080965042114]
 
 Fact: a desert environment is usually hot in temperature
 Stem: deserts are known for having what type of climates?
@@ -3348,15 +3348,15 @@ Fact: a flashlight emits light
 Stem: A flashlight emits
 Choices: ['particles', 'water', 'bugs', 'sound']
 Gold: 0
-Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 1 | Scores: [0.9112825393676758, 0.9137194156646729, 0.8718797564506531, 0.8700233697891235]
-Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 1 | Scores: [0.9112825393676758, 0.9137194156646729, 0.8718797564506531, 0.8700233697891235]
+Vanilla Gen: __________ Question: A candle emits [ANSWER] __________ Question | Pred: 0 | Scores: [0.9283016920089722, 0.9211753606796265, 0.8986160755157471, 0.9002358913421631]
+Guided Gen: __________ Question: A candle emits [ANSWER] __________ Question | Pred: 0 | Scores: [0.9283016920089722, 0.9211753606796265, 0.8986160755157471, 0.9002358913421631]
 
 Fact: as the distance of a location from the North Pole becomes smaller, the amount of daylight received by that location will decrease during the winter
 Stem: When the Earth's Northern axis is tilted away from the Sun the amount of daylight is
 Choices: ['brighter', 'lengthened', 'shortened', 'turned back']
 Gold: 2
-Vanilla Gen: _________________ Re: When the Earth's Northern axis is tilted away from the | Pred: 1 | Scores: [0.7199642658233643, 0.8140363693237305, 0.6587421298027039, 0.7958279252052307]
-Guided Gen: _________________ Re: When the Earth's Northern axis is tilted away from the | Pred: 1 | Scores: [0.7199642658233643, 0.8140363693237305, 0.6587421298027039, 0.7958279252052307]
+Vanilla Gen: __________. Question: When the Earth's Northern axis is tilted away from | Pred: 1 | Scores: [0.7895171642303467, 0.8650169372558594, 0.7322711944580078, 0.8504347801208496]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 3 | Scores: [0.9341838359832764, 0.9402613639831543, 0.8971070051193237, 0.9421432018280029]
 
 Fact: the sun is located directly overhead at noon
 Stem: Where is the sun located at 12:00 PM?
@@ -3369,15 +3369,15 @@ Fact: a plant requires water to grow
 Stem: We made sure to use the hose on the begonia daily so it would
 Choices: ['melt', 'survive', 'die', 'freeze.']
 Gold: 1
-Vanilla Gen: _____. Question: We made sure to use the hose on the begonia | Pred: 3 | Scores: [0.7905477285385132, 0.6611340045928955, 0.5516797304153442, 0.8972486257553101]
-Guided Gen: _____. Question: We made sure to use the hose on the begonia | Pred: 3 | Scores: [0.7905477285385132, 0.6611340045928955, 0.5516797304153442, 0.8972486257553101]
+Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 1 | Scores: [0.8558971881866455, 0.9414433836936951, 0.9057568311691284, 0.7790440320968628]
+Guided Gen: __________. Question: We made sure to use the hose on the beg | Pred: 3 | Scores: [0.7946308851242065, 0.6648430228233337, 0.5565859079360962, 0.8982329368591309]
 
 Fact: In the tree reproduction process a squirrel has the role of seed disperser
 Stem: Squirrels are seed dispersers because
 Choices: ['they bury their food', 'they prefer to eat acorns', 'squirrels live in trees', 'they eat lots of nuts']
 Gold: 0
-Vanilla Gen: _________________ (1) In the tree reproduction process a squirrel has the role | Pred: 2 | Scores: [0.8033865690231323, 0.7991024255752563, 0.829012393951416, 0.816679835319519]
-Guided Gen: _________________ In the tree reproduction process a squirrel has the role of seed dispers | Pred: 3 | Scores: [0.9193698763847351, 0.9194693565368652, 0.9062327146530151, 0.9293407201766968]
+Vanilla Gen: __________ is a seed disperser Question: Squirrels are seed dispersers | Pred: 3 | Scores: [0.9504209160804749, 0.9577256441116333, 0.9563759565353394, 0.9587090611457825]
+Guided Gen: __________ is a seed disperser Question: Squirrels are seed dispersers | Pred: 3 | Scores: [0.9504209160804749, 0.9577256441116333, 0.9563759565353394, 0.9587090611457825]
 
 Fact: cows only eat plants
 Stem: What type of human diet would be most comparable to a cow
@@ -3398,7 +3398,7 @@ Stem: pushing against a rolling boulder will decrease its
 Choices: ['size', 'height', 'impetus', 'ambitions']
 Gold: 2
 Vanilla Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 2 | Scores: [0.9061459302902222, 0.887914776802063, 0.9306751489639282, 0.930250346660614]
-Guided Gen: _________________ Re: A force acting on an object in the opposite direction that | Pred: 2 | Scores: [0.5390108227729797, 0.48726892471313477, 0.6463570594787598, 0.5732359886169434]
+Guided Gen: _________________ Karishma Veritas Prep GMAT Instructor Joined: 16 Oct | Pred: 2 | Scores: [0.9061459302902222, 0.887914776802063, 0.9306751489639282, 0.930250346660614]
 
 Fact: a plants require water for to grow
 Stem: In a desert area plants grow
@@ -3419,7 +3419,7 @@ Stem: If something good is increased, survival of organisms needing it increase,
 Choices: ['cars get food', 'kittens get yarn', 'babies get toys', 'amoeba get nutrients']
 Gold: 3
 Vanilla Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.952211856842041, 0.9565905332565308, 0.9577011466026306, 0.9442520141601562]
-Guided Gen: __________ __________ __________ __________ __________  | Pred: 2 | Scores: [0.952211856842041, 0.9565905332565308, 0.9577011466026306, 0.9442520141601562]
+Guided Gen: __________ is increased, such as when [ANSWER] __________ | Pred: 3 | Scores: [0.9021316766738892, 0.9042055010795593, 0.9043050408363342, 0.9229246973991394]
 
 Fact: cooking food requires adding heat energy
 Stem: Turning beef from red to brown requires energy from
@@ -3461,7 +3461,7 @@ Stem: What room in a house would signify the excretory system?
 Choices: ['dining room', 'bathroom', 'living room', 'kitchen']
 Gold: 1
 Vanilla Gen: _________________ Re: What room in a house would signify the excretory | Pred: 0 | Scores: [0.8816040754318237, 0.7528151273727417, 0.8297368288040161, 0.8063034415245056]
-Guided Gen: _________________ Re: What room in a house would signify the excretory | Pred: 0 | Scores: [0.8816040754318237, 0.7528151273727417, 0.8297368288040161, 0.8063034415245056]
+Guided Gen: _________________ Re: The excretory system removes waste from the body [ | Pred: 0 | Scores: [0.8776876330375671, 0.7407515048980713, 0.8227888345718384, 0.8020365238189697]
 
 Fact: a tree can be replaced by planting a new tree
 Stem: If a tree burns down, it can be made right by

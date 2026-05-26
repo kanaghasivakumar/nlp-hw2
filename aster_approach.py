@@ -197,7 +197,7 @@ class AsterPipeline:
             
         return similarity.item()
 
-    def beam_search(self, prompt, beam_width=5, max_len=15, guided=False):
+    def beam_search(self, prompt, beam_width=3, max_len=15, guided=False):
         self.model.eval()
         initial_ids = self.tokenizer(prompt, return_tensors="pt")["input_ids"].to(self.device)[0]
         beams = [(initial_ids, 0.0)]
