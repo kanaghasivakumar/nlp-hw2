@@ -25,7 +25,7 @@ class AsterOBQADataset(Dataset):
                 answer_key = tokens[6]
                 
                 correct_choice = choices[answer_key]
-                prompt_text = f"Fact: {fact} Question: {stem} [ANSWER] "
+                prompt_text = f"Fact: {fact} Question: {stem} Options: A) {choices['A']} B) {choices['B']} C) {choices['C']} D) {choices['D']} [ANSWER] "
                 choice_text = correct_choice + (tokenizer.eos_token if tokenizer.eos_token else "")
 
                 prompt_encoded = tokenizer(prompt_text, add_special_tokens=False)['input_ids']
@@ -78,7 +78,7 @@ class AsterPipeline:
 
     def fine_tune(self, train_loader, valid_loader, epochs=5, patience=2, save_name="aster_finetuned.pt"):
         optimizer = torch.optim.AdamW(self.model.parameters(), lr=3e-5)
-        criterion = torch.nn.CrossEntropyLoss(ignore_index=-100)
+        criterion = torch.nn.CrossEntropyLoss(ignore_index=-100, label_smoothing=0.1)
         scaler = torch.amp.GradScaler('cuda')
         
         best_val_loss = float('inf')
