@@ -26,7 +26,7 @@ class AsterOBQADataset(Dataset):
                 answer_key = tokens[6]
                 label_idx  = self.label_map[answer_key]
 
-                prompt_text    = f"{fact} {stem}"
+                prompt_text = f"{fact} {stem} The answer is"
                 prompt_encoded = tokenizer(prompt_text, add_special_tokens=False)['input_ids']
 
                 all_input_ids      = []
@@ -88,7 +88,7 @@ class AsterPipeline:
         self.model.load_state_dict(state_dict, strict=True)
         self.model.to(self.device)
 
-    def fine_tune(self, train_loader, valid_loader, epochs=5, patience=2,
+    def fine_tune(self, train_loader, valid_loader, epochs=8, patience=3,
               save_name="aster_finetuned.pt"):
 
         for name, param in self.model.named_parameters():
@@ -101,39 +101,42 @@ class AsterPipeline:
         print(f"Trainable params: {len(trainable)}")
 
         optimizer = torch.optim.AdamW(trainable, lr=5e-6, weight_decay=0.1)
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=1)
-        ce        = torch.nn.CrossEntropyLoss(ignore_index=-100, reduction='sum')
-        scaler    = torch.amp.GradScaler('cuda')
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+            optimizer, mode='min', factor=0.5, patience=1
+        )
+        ce     = torch.nn.CrossEntropyLoss(ignore_index=-100, reduction='sum')
+        scaler = torch.amp.GradScaler('cuda')
 
         best_val_loss    = float('inf')
         patience_counter = 0
         train_losses, val_losses = [], []
 
+        # warmup epochs: LM loss only, let model adapt to domain first
+        LM_ONLY_EPOCHS   = 2
+        RANKING_WEIGHT   = 0.5   # scale ranking loss down relative to LM loss
+
         for epoch in range(epochs):
             self.model.train()
             total_train_loss = 0
+            use_ranking = (epoch >= LM_ONLY_EPOCHS)
 
-            for batch in tqdm(train_loader, desc=f"Epoch {epoch+1}"):
-                # batch["input_ids"] shape: [B, 4, max_length]
-                B          = batch["input_ids"].size(0)
-                label_idx  = batch["label_idx"].to(self.device)          # [B]
-                input_ids  = batch["input_ids"].to(self.device)          # [B, 4, L]
-                attn_mask  = batch["attention_mask"].to(self.device)     # [B, 4, L]
-                labels     = batch["labels"].to(self.device)             # [B, 4, L]
+            for batch in tqdm(train_loader, desc=f"Epoch {epoch+1} ({'rank' if use_ranking else 'lm'})"):
+                B         = batch["input_ids"].size(0)
+                label_idx = batch["label_idx"].to(self.device)
+                input_ids = batch["input_ids"].to(self.device)
+                attn_mask = batch["attention_mask"].to(self.device)
+                labels    = batch["labels"].to(self.device)
 
-                optimizer.zero_grad()
-
-                # flatten to [B*4, L] for a single forward pass
                 input_ids_flat = input_ids.view(B * 4, -1)
                 attn_flat      = attn_mask.view(B * 4, -1)
                 labels_flat    = labels.view(B * 4, -1)
 
+                optimizer.zero_grad()
                 with torch.amp.autocast('cuda'):
                     _, logits    = self.model(input_ids_flat, attention_mask=attn_flat)
                     shift_logits = logits[..., :-1, :].contiguous()
                     shift_labels = labels_flat[..., 1:].contiguous()
 
-                    # per-sequence CE loss: sum over tokens, then normalize by non-masked count
                     losses_flat = torch.zeros(B * 4, device=self.device)
                     for k in range(B * 4):
                         n_toks = (shift_labels[k] != -100).sum().clamp(min=1)
@@ -142,18 +145,18 @@ class AsterPipeline:
                             shift_labels[k].view(-1)
                         ) / n_toks
 
-                    losses     = losses_flat.view(B, 4)          # [B, 4] — lower = better
-                    scores     = -losses                          # [B, 4] — higher = better
-
-                    correct_scores = scores[torch.arange(B), label_idx].unsqueeze(1)  # [B, 1]
-                    margins        = 1.0 - correct_scores + scores                    # [B, 4]
-                    margins[torch.arange(B), label_idx] = 0.0                        # exclude correct
-                    ranking_loss   = F.relu(margins).sum(dim=1).mean()
-
-                    # also keep LM loss on correct choice only to maintain fluency
+                    losses = losses_flat.view(B, 4)
                     lm_loss = losses[torch.arange(B), label_idx].mean()
 
-                    loss = lm_loss + ranking_loss
+                    if use_ranking:
+                        scores         = -losses
+                        correct_scores = scores[torch.arange(B), label_idx].unsqueeze(1)
+                        margins        = 1.0 - correct_scores + scores
+                        margins[torch.arange(B), label_idx] = 0.0
+                        ranking_loss   = F.relu(margins).sum(dim=1).mean()
+                        loss           = lm_loss + RANKING_WEIGHT * ranking_loss
+                    else:
+                        loss = lm_loss
 
                 scaler.scale(loss).backward()
                 torch.nn.utils.clip_grad_norm_(trainable, max_norm=1.0)
@@ -190,14 +193,14 @@ class AsterPipeline:
                                 shift_labels[k].view(-1)
                             ) / n_toks
 
-                        losses       = losses_flat.view(B, 4)
-                        scores       = -losses
+                        losses         = losses_flat.view(B, 4)
+                        scores         = -losses
                         correct_scores = scores[torch.arange(B), label_idx].unsqueeze(1)
-                        margins      = 1.0 - correct_scores + scores
+                        margins        = 1.0 - correct_scores + scores
                         margins[torch.arange(B), label_idx] = 0.0
-                        ranking_loss = F.relu(margins).sum(dim=1).mean()
-                        lm_loss      = losses[torch.arange(B), label_idx].mean()
-                        loss         = lm_loss + ranking_loss
+                        ranking_loss   = F.relu(margins).sum(dim=1).mean()
+                        lm_loss        = losses[torch.arange(B), label_idx].mean()
+                        loss           = lm_loss + RANKING_WEIGHT * ranking_loss
 
                     total_val_loss += loss.item()
 
@@ -206,7 +209,7 @@ class AsterPipeline:
             val_losses.append(avg_val_loss)
             scheduler.step(avg_val_loss)
 
-            print(f"Epoch {epoch+1} | Train Loss: {avg_train_loss:.4f} | Val Loss: {avg_val_loss:.4f}")
+            print(f"Epoch {epoch+1} | Train: {avg_train_loss:.4f} | Val: {avg_val_loss:.4f} | {'ranking' if use_ranking else 'lm-only'}")
 
             if avg_val_loss < best_val_loss:
                 best_val_loss    = avg_val_loss
@@ -329,7 +332,7 @@ def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt",
         choices    = item["raw_choices"]
         true_label = item["label_idx"]
 
-        prompt = f"{fact} {stem}"
+        prompt = f"{fact} {stem} The answer is"
 
         probs = [pipeline.sequence_probability(prompt, c) for c in choices]
         pred2 = probs.index(max(probs))
