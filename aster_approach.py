@@ -98,7 +98,7 @@ class AsterPipeline:
 
         optimizer = torch.optim.AdamW(trainable_params, lr=2e-5, weight_decay=0.01)
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-            optimizer, mode='min', factor=0.5, patience=1, verbose=True
+            optimizer, mode='min', factor=0.5, patience=1
         )
 
         criterion = torch.nn.CrossEntropyLoss(ignore_index=-100)
@@ -259,12 +259,11 @@ class AsterPipeline:
         return self.tokenizer.decode(best_seq, skip_special_tokens=True)
 
 
-def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt", split_name=""):
+def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt", split_name="", skip_beam=False):
     task2_correct = 0
     task3_correct = 0
     task4_correct = 0
     total = len(dataset)
-
     logs = []
 
     for i in tqdm(range(total), desc=f"Evaluating {split_name}"):
@@ -272,7 +271,6 @@ def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt", spli
         fact, stem = item["raw_fact"], item["raw_stem"]
         choices = item["raw_choices"]
         true_label = item["label_idx"]
-
         prompt = f"{fact}\n{stem}\n"
 
         probs = [pipeline.sequence_probability(prompt, c) for c in choices]
@@ -280,32 +278,34 @@ def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt", spli
         if pred2 == true_label:
             task2_correct += 1
 
-        vanilla_gen = pipeline.beam_search(prompt, guided=False)
-        guided_gen = pipeline.beam_search(prompt, guided=True)
+        if not skip_beam:
+            vanilla_gen = pipeline.beam_search(prompt, guided=False)
+            guided_gen  = pipeline.beam_search(prompt, guided=True)
 
-        vanilla_scores = [pipeline.compute_bertscore(vanilla_gen, c) for c in choices]
-        guided_scores = [pipeline.compute_bertscore(guided_gen, c) for c in choices]
+            vanilla_scores = [pipeline.compute_bertscore(vanilla_gen, c) for c in choices]
+            guided_scores  = [pipeline.compute_bertscore(guided_gen,  c) for c in choices]
 
-        pred3 = vanilla_scores.index(max(vanilla_scores))
-        pred4 = guided_scores.index(max(guided_scores))
+            pred3 = vanilla_scores.index(max(vanilla_scores))
+            pred4 = guided_scores.index(max(guided_scores))
 
-        if pred3 == true_label: task3_correct += 1
-        if pred4 == true_label: task4_correct += 1
+            if pred3 == true_label: task3_correct += 1
+            if pred4 == true_label: task4_correct += 1
 
-        logs.append(f"Fact: {fact}\nStem: {stem}\nChoices: {choices}\nGold: {true_label}")
-        logs.append(f"Vanilla Gen: {vanilla_gen} | Pred: {pred3} | Scores: {vanilla_scores}")
-        logs.append(f"Guided Gen: {guided_gen} | Pred: {pred4} | Scores: {guided_scores}\n")
+            logs.append(f"Fact: {fact}\nStem: {stem}\nChoices: {choices}\nGold: {true_label}")
+            logs.append(f"Vanilla Gen: {vanilla_gen} | Pred: {pred3} | Scores: {vanilla_scores}")
+            logs.append(f"Guided Gen: {guided_gen} | Pred: {pred4} | Scores: {guided_scores}\n")
 
     t2 = task2_correct / total * 100
-    t3 = task3_correct / total * 100
-    t4 = task4_correct / total * 100
+    t3 = task3_correct / total * 100 if not skip_beam else None
+    t4 = task4_correct / total * 100 if not skip_beam else None
 
     print(f"\n{'='*50}")
     print(f"Results on {split_name} set (n={total})")
     print(f"{'='*50}")
-    print(f"  Task 2 (Sequence Prob):       {t2:.2f}%")
-    print(f"  Task 3 (Vanilla Beam Search): {t3:.2f}%")
-    print(f"  Task 4 (Guided Beam Search):  {t4:.2f}%")
+    print(f"  Task 2 (Sequence Prob):       {t2:.2f}%  [Prof zero-shot: 27.6%]")
+    if not skip_beam:
+        print(f"  Task 3 (Vanilla Beam Search): {t3:.2f}%  [Prof zero-shot: 26.0%]")
+        print(f"  Task 4 (Guided Beam Search):  {t4:.2f}%  [Prof zero-shot: ~26%]")
     print(f"{'='*50}\n")
 
     with open(output_log, 'w') as f:
@@ -321,8 +321,8 @@ def main():
     test_dataset  = AsterOBQADataset('obqa/obqa.test.txt',  pipeline.tokenizer)
 
     print("\n>>> ZERO-SHOT EVALUATION")
-    execute_evaluation(pipeline, valid_dataset, "zero_shot_valid_logs.txt", split_name="Validation (zero-shot)")
-    execute_evaluation(pipeline, test_dataset,  "zero_shot_test_logs.txt",  split_name="Test (zero-shot)")
+    execute_evaluation(pipeline, valid_dataset, "zero_shot_valid_logs.txt", split_name="Validation (zero-shot)", skip_beam=True)
+    execute_evaluation(pipeline, test_dataset,  "zero_shot_test_logs.txt",  split_name="Test (zero-shot)",       skip_beam=True)
 
     train_dataset = AsterOBQADataset('obqa/obqa.train.txt', pipeline.tokenizer)
     train_loader = DataLoader(
