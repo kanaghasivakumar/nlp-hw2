@@ -77,8 +77,18 @@ class AsterPipeline:
         self.model.to(self.device)
 
     def fine_tune(self, train_loader, valid_loader, epochs=5, patience=2, save_name="aster_finetuned.pt"):
-        optimizer = torch.optim.AdamW(self.model.parameters(), lr=3e-5)
-        criterion = torch.nn.CrossEntropyLoss(ignore_index=-100, label_smoothing=0.1)
+        for name, param in self.model.named_parameters():
+            if "wte" in name or "wpe" in name:
+                param.requires_grad = False
+            
+            for i in range(12):
+                if f".{i}." in name:
+                    param.requires_grad = False
+
+        trainable_params = [p for p in self.model.parameters() if p.requires_grad]
+        optimizer = torch.optim.AdamW(trainable_params, lr=3e-5)
+        
+        criterion = torch.nn.CrossEntropyLoss(ignore_index=-100)
         scaler = torch.amp.GradScaler('cuda')
         
         best_val_loss = float('inf')
