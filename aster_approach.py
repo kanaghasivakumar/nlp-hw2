@@ -77,10 +77,11 @@ class AsterPipeline:
         self.model.to(self.device)
 
     def fine_tune(self, train_loader, valid_loader, epochs=5, patience=2, save_name="aster_finetuned.pt"):
-        optimizer = torch.optim.AdamW(self.model.parameters(), lr=2e-5)
+        optimizer = torch.optim.AdamW(self.model.parameters(), lr=1e-5, weight_decay=0.01)
         criterion = torch.nn.CrossEntropyLoss(ignore_index=-100)
         scaler = torch.amp.GradScaler('cuda')
         
+        accumulation_steps = 4
         best_val_loss = float('inf')
         patience_counter = 0
         train_losses, val_losses = [], []
@@ -88,24 +89,28 @@ class AsterPipeline:
         for epoch in range(epochs):
             self.model.train()
             total_train_loss = 0
+            optimizer.zero_grad()
             
-            for batch in tqdm(train_loader, desc=f"Epoch {epoch+1}"):
+            for step, batch in enumerate(tqdm(train_loader, desc=f"Epoch {epoch+1}")):
                 input_ids = batch["input_ids"].to(self.device, non_blocking=True)
                 attention_mask = batch["attention_mask"].to(self.device, non_blocking=True)
                 labels = batch["labels"].to(self.device, non_blocking=True)
-
-                optimizer.zero_grad()
                 
                 with torch.amp.autocast('cuda'):
                     _, logits = self.model(input_ids, attention_mask=attention_mask)
                     shift_logits = logits[..., :-1, :].contiguous()
                     shift_labels = labels[..., 1:].contiguous()
                     loss = criterion(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
+                    loss = loss / accumulation_steps
                 
                 scaler.scale(loss).backward()
-                scaler.step(optimizer)
-                scaler.update()
-                total_train_loss += loss.item()
+                
+                if (step + 1) % accumulation_steps == 0 or (step + 1) == len(train_loader):
+                    scaler.step(optimizer)
+                    scaler.update()
+                    optimizer.zero_grad()
+                    
+                total_train_loss += loss.item() * accumulation_steps
                 
             avg_train_loss = total_train_loss / len(train_loader)
             
@@ -187,7 +192,7 @@ class AsterPipeline:
             
         return similarity.item()
 
-    def beam_search(self, prompt, beam_width=3, max_len=15, guided=False):
+    def beam_search(self, prompt, beam_width=5, max_len=15, guided=False):
         self.model.eval()
         initial_ids = self.tokenizer(prompt, return_tensors="pt")["input_ids"].to(self.device)[0]
         beams = [(initial_ids, 0.0)]
