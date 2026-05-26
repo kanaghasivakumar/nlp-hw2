@@ -10,7 +10,7 @@ from Aster import TransformerGPT, load_model_best_state_dict
 
 
 class AsterOBQADataset(Dataset):
-    def __init__(self, file_path, tokenizer, max_length=256):
+    def __init__(self, file_path, tokenizer, max_length=128):
         self.data = []
         self.label_map = {"A": 0, "B": 1, "C": 2, "D": 3}
 
@@ -19,44 +19,52 @@ class AsterOBQADataset(Dataset):
                 line = line.strip()
                 if not line or '|' not in line:
                     continue
-                tokens = line.split('|')
+                tokens     = line.split('|')
                 fact       = tokens[0]
                 stem       = tokens[1]
-                choices    = {"A": tokens[2], "B": tokens[3], "C": tokens[4], "D": tokens[5]}
+                choices    = [tokens[2], tokens[3], tokens[4], tokens[5]]
                 answer_key = tokens[6]
+                label_idx  = self.label_map[answer_key]
 
-                prompt_text = f"{fact} {stem}"
+                prompt_text    = f"{fact} {stem}"
                 prompt_encoded = tokenizer(prompt_text, add_special_tokens=False)['input_ids']
 
-                correct_choice  = choices[answer_key]
-                choice_text     = " " + correct_choice + (tokenizer.eos_token or "")
-                choice_encoded  = tokenizer(choice_text, add_special_tokens=False)['input_ids']
+                all_input_ids      = []
+                all_attention_mask = []
+                all_labels         = []
 
-                input_ids      = prompt_encoded + choice_encoded
-                labels         = input_ids.copy()
-                attention_mask = [1] * len(input_ids)
+                for choice_text in choices:
+                    choice_encoded = tokenizer(
+                        " " + choice_text + (tokenizer.eos_token or ""),
+                        add_special_tokens=False
+                    )['input_ids']
 
-                pad_len = max_length - len(input_ids)
-                if pad_len > 0:
-                    input_ids.extend([tokenizer.pad_token_id] * pad_len)
-                    labels.extend([-100] * pad_len)
-                    attention_mask.extend([0] * pad_len)
-                else:
-                    input_ids      = input_ids[:max_length]
-                    labels         = labels[:max_length]
-                    attention_mask = attention_mask[:max_length]
+                    input_ids      = prompt_encoded + choice_encoded
+                    labels         = [-100] * len(prompt_encoded) + choice_encoded.copy()
+                    attention_mask = [1] * len(input_ids)
 
-                for i in range(len(prompt_encoded)):
-                    labels[i] = -100
+                    pad_len = max_length - len(input_ids)
+                    if pad_len > 0:
+                        input_ids.extend([tokenizer.pad_token_id] * pad_len)
+                        labels.extend([-100] * pad_len)
+                        attention_mask.extend([0] * pad_len)
+                    else:
+                        input_ids      = input_ids[:max_length]
+                        labels         = labels[:max_length]
+                        attention_mask = attention_mask[:max_length]
+
+                    all_input_ids.append(input_ids)
+                    all_attention_mask.append(attention_mask)
+                    all_labels.append(labels)
 
                 self.data.append({
-                    "input_ids":      torch.tensor(input_ids),
-                    "attention_mask": torch.tensor(attention_mask),
-                    "labels":         torch.tensor(labels),
+                    "input_ids":      torch.tensor(all_input_ids),       # [4, max_length]
+                    "attention_mask": torch.tensor(all_attention_mask),  # [4, max_length]
+                    "labels":         torch.tensor(all_labels),          # [4, max_length]
+                    "label_idx":      label_idx,
                     "raw_fact":       fact,
                     "raw_stem":       stem,
-                    "raw_choices":    list(choices.values()),
-                    "label_idx":      self.label_map[answer_key]
+                    "raw_choices":    choices,
                 })
 
     def __len__(self):
@@ -81,7 +89,7 @@ class AsterPipeline:
         self.model.to(self.device)
 
     def fine_tune(self, train_loader, valid_loader, epochs=5, patience=2,
-                  save_name="aster_finetuned.pt"):
+              save_name="aster_finetuned.pt"):
 
         for name, param in self.model.named_parameters():
             param.requires_grad = True
@@ -90,16 +98,14 @@ class AsterPipeline:
                 param.requires_grad = False
 
         trainable = [p for p in self.model.parameters() if p.requires_grad]
-        print(f"Trainable param groups: {len([n for n,p in self.model.named_parameters() if p.requires_grad])}")
+        print(f"Trainable params: {len(trainable)}")
 
         optimizer = torch.optim.AdamW(trainable, lr=5e-6, weight_decay=0.1)
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-            optimizer, mode='min', factor=0.5, patience=1
-        )
-        criterion = torch.nn.CrossEntropyLoss(ignore_index=-100, label_smoothing=0.1)
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=1)
+        ce        = torch.nn.CrossEntropyLoss(ignore_index=-100, reduction='sum')
         scaler    = torch.amp.GradScaler('cuda')
 
-        best_val_loss   = float('inf')
+        best_val_loss    = float('inf')
         patience_counter = 0
         train_losses, val_losses = [], []
 
@@ -108,19 +114,46 @@ class AsterPipeline:
             total_train_loss = 0
 
             for batch in tqdm(train_loader, desc=f"Epoch {epoch+1}"):
-                input_ids      = batch["input_ids"].to(self.device, non_blocking=True)
-                attention_mask = batch["attention_mask"].to(self.device, non_blocking=True)
-                labels         = batch["labels"].to(self.device, non_blocking=True)
+                # batch["input_ids"] shape: [B, 4, max_length]
+                B          = batch["input_ids"].size(0)
+                label_idx  = batch["label_idx"].to(self.device)          # [B]
+                input_ids  = batch["input_ids"].to(self.device)          # [B, 4, L]
+                attn_mask  = batch["attention_mask"].to(self.device)     # [B, 4, L]
+                labels     = batch["labels"].to(self.device)             # [B, 4, L]
 
                 optimizer.zero_grad()
+
+                # flatten to [B*4, L] for a single forward pass
+                input_ids_flat = input_ids.view(B * 4, -1)
+                attn_flat      = attn_mask.view(B * 4, -1)
+                labels_flat    = labels.view(B * 4, -1)
+
                 with torch.amp.autocast('cuda'):
-                    _, logits     = self.model(input_ids, attention_mask=attention_mask)
-                    shift_logits  = logits[..., :-1, :].contiguous()
-                    shift_labels  = labels[..., 1:].contiguous()
-                    loss = criterion(
-                        shift_logits.view(-1, shift_logits.size(-1)),
-                        shift_labels.view(-1)
-                    )
+                    _, logits    = self.model(input_ids_flat, attention_mask=attn_flat)
+                    shift_logits = logits[..., :-1, :].contiguous()
+                    shift_labels = labels_flat[..., 1:].contiguous()
+
+                    # per-sequence CE loss: sum over tokens, then normalize by non-masked count
+                    losses_flat = torch.zeros(B * 4, device=self.device)
+                    for k in range(B * 4):
+                        n_toks = (shift_labels[k] != -100).sum().clamp(min=1)
+                        losses_flat[k] = ce(
+                            shift_logits[k].view(-1, shift_logits.size(-1)),
+                            shift_labels[k].view(-1)
+                        ) / n_toks
+
+                    losses     = losses_flat.view(B, 4)          # [B, 4] — lower = better
+                    scores     = -losses                          # [B, 4] — higher = better
+
+                    correct_scores = scores[torch.arange(B), label_idx].unsqueeze(1)  # [B, 1]
+                    margins        = 1.0 - correct_scores + scores                    # [B, 4]
+                    margins[torch.arange(B), label_idx] = 0.0                        # exclude correct
+                    ranking_loss   = F.relu(margins).sum(dim=1).mean()
+
+                    # also keep LM loss on correct choice only to maintain fluency
+                    lm_loss = losses[torch.arange(B), label_idx].mean()
+
+                    loss = lm_loss + ranking_loss
 
                 scaler.scale(loss).backward()
                 torch.nn.utils.clip_grad_norm_(trainable, max_norm=1.0)
@@ -134,17 +167,38 @@ class AsterPipeline:
             total_val_loss = 0
             with torch.no_grad():
                 for batch in valid_loader:
-                    input_ids      = batch["input_ids"].to(self.device, non_blocking=True)
-                    attention_mask = batch["attention_mask"].to(self.device, non_blocking=True)
-                    labels         = batch["labels"].to(self.device, non_blocking=True)
+                    B         = batch["input_ids"].size(0)
+                    label_idx = batch["label_idx"].to(self.device)
+                    input_ids = batch["input_ids"].to(self.device)
+                    attn_mask = batch["attention_mask"].to(self.device)
+                    labels    = batch["labels"].to(self.device)
+
+                    input_ids_flat = input_ids.view(B * 4, -1)
+                    attn_flat      = attn_mask.view(B * 4, -1)
+                    labels_flat    = labels.view(B * 4, -1)
+
                     with torch.amp.autocast('cuda'):
-                        _, logits    = self.model(input_ids, attention_mask=attention_mask)
+                        _, logits    = self.model(input_ids_flat, attention_mask=attn_flat)
                         shift_logits = logits[..., :-1, :].contiguous()
-                        shift_labels = labels[..., 1:].contiguous()
-                        loss = criterion(
-                            shift_logits.view(-1, shift_logits.size(-1)),
-                            shift_labels.view(-1)
-                        )
+                        shift_labels = labels_flat[..., 1:].contiguous()
+
+                        losses_flat = torch.zeros(B * 4, device=self.device)
+                        for k in range(B * 4):
+                            n_toks = (shift_labels[k] != -100).sum().clamp(min=1)
+                            losses_flat[k] = ce(
+                                shift_logits[k].view(-1, shift_logits.size(-1)),
+                                shift_labels[k].view(-1)
+                            ) / n_toks
+
+                        losses       = losses_flat.view(B, 4)
+                        scores       = -losses
+                        correct_scores = scores[torch.arange(B), label_idx].unsqueeze(1)
+                        margins      = 1.0 - correct_scores + scores
+                        margins[torch.arange(B), label_idx] = 0.0
+                        ranking_loss = F.relu(margins).sum(dim=1).mean()
+                        lm_loss      = losses[torch.arange(B), label_idx].mean()
+                        loss         = lm_loss + ranking_loss
+
                     total_val_loss += loss.item()
 
             avg_val_loss = total_val_loss / len(valid_loader)
