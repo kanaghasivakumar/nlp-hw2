@@ -88,8 +88,7 @@ class AsterPipeline:
         self.model.load_state_dict(state_dict, strict=True)
         self.model.to(self.device)
 
-    def fine_tune(self, train_loader, valid_loader, epochs=8, patience=3,
-              save_name="aster_finetuned.pt"):
+    def fine_tune(self, train_loader, valid_loader, epochs=10, patience=4, save_name="aster_finetuned.pt"):
 
         for name, param in self.model.named_parameters():
             param.requires_grad = True
@@ -100,27 +99,20 @@ class AsterPipeline:
         trainable = [p for p in self.model.parameters() if p.requires_grad]
         print(f"Trainable params: {len(trainable)}")
 
-        optimizer = torch.optim.AdamW(trainable, lr=5e-6, weight_decay=0.1)
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-            optimizer, mode='min', factor=0.5, patience=1
-        )
-        ce     = torch.nn.CrossEntropyLoss(ignore_index=-100, reduction='sum')
+        optimizer = torch.optim.AdamW(trainable, lr=1e-5, weight_decay=0.01)
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)
+        ce = torch.nn.CrossEntropyLoss(ignore_index=-100, reduction='sum')
         scaler = torch.amp.GradScaler('cuda')
 
         best_val_loss    = float('inf')
         patience_counter = 0
         train_losses, val_losses = [], []
 
-        # warmup epochs: LM loss only, let model adapt to domain first
-        LM_ONLY_EPOCHS   = 2
-        RANKING_WEIGHT   = 0.5   # scale ranking loss down relative to LM loss
-
         for epoch in range(epochs):
             self.model.train()
-            total_train_loss = 0
-            use_ranking = (epoch >= LM_ONLY_EPOCHS)
+            total_train_loss = 0 
 
-            for batch in tqdm(train_loader, desc=f"Epoch {epoch+1} ({'rank' if use_ranking else 'lm'})"):
+            for batch in tqdm(train_loader, desc=f"Epoch {epoch+1})"):
                 B         = batch["input_ids"].size(0)
                 label_idx = batch["label_idx"].to(self.device)
                 input_ids = batch["input_ids"].to(self.device)
@@ -146,17 +138,7 @@ class AsterPipeline:
                         ) / n_toks
 
                     losses = losses_flat.view(B, 4)
-                    lm_loss = losses[torch.arange(B), label_idx].mean()
-
-                    if use_ranking:
-                        scores         = -losses
-                        correct_scores = scores[torch.arange(B), label_idx].unsqueeze(1)
-                        margins        = 1.0 - correct_scores + scores
-                        margins[torch.arange(B), label_idx] = 0.0
-                        ranking_loss   = F.relu(margins).sum(dim=1).mean()
-                        loss           = lm_loss + RANKING_WEIGHT * ranking_loss
-                    else:
-                        loss = lm_loss
+                    loss = losses[torch.arange(B), label_idx].mean()
 
                 scaler.scale(loss).backward()
                 torch.nn.utils.clip_grad_norm_(trainable, max_norm=1.0)
@@ -193,23 +175,17 @@ class AsterPipeline:
                                 shift_labels[k].view(-1)
                             ) / n_toks
 
-                        losses         = losses_flat.view(B, 4)
-                        scores         = -losses
-                        correct_scores = scores[torch.arange(B), label_idx].unsqueeze(1)
-                        margins        = 1.0 - correct_scores + scores
-                        margins[torch.arange(B), label_idx] = 0.0
-                        ranking_loss   = F.relu(margins).sum(dim=1).mean()
-                        lm_loss        = losses[torch.arange(B), label_idx].mean()
-                        loss           = lm_loss + RANKING_WEIGHT * ranking_loss
+                        losses = losses_flat.view(B, 4)
+                        loss = losses[torch.arange(B), label_idx].mean()
 
                     total_val_loss += loss.item()
 
             avg_val_loss = total_val_loss / len(valid_loader)
             train_losses.append(avg_train_loss)
             val_losses.append(avg_val_loss)
-            scheduler.step(avg_val_loss)
+            scheduler.step()
 
-            print(f"Epoch {epoch+1} | Train: {avg_train_loss:.4f} | Val: {avg_val_loss:.4f} | {'ranking' if use_ranking else 'lm-only'}")
+            print(f"Epoch {epoch+1} | Train: {avg_train_loss:.4f} | Val: {avg_val_loss:.4f}")
 
             if avg_val_loss < best_val_loss:
                 best_val_loss    = avg_val_loss
@@ -387,9 +363,9 @@ def main():
                        split_name="Test (zero-shot)", skip_beam=True)
 
     train_dataset = AsterOBQADataset('obqa/obqa.train.txt', pipeline.tokenizer)
-    train_loader  = DataLoader(train_dataset, batch_size=8, shuffle=True,
+    train_loader  = DataLoader(train_dataset, batch_size=16, shuffle=True,
                                num_workers=os.cpu_count(), pin_memory=True, prefetch_factor=2)
-    valid_loader  = DataLoader(valid_dataset, batch_size=8,
+    valid_loader  = DataLoader(valid_dataset, batch_size=16,
                                num_workers=os.cpu_count(), pin_memory=True)
 
     print("\n>>> FINE-TUNING")
