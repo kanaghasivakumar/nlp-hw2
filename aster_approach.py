@@ -211,8 +211,7 @@ class AsterPipeline:
         plt.savefig(filename)
         plt.close()
 
-    def sequence_probability(self, prompt, choice):
-        """Score only choice tokens conditioned on prompt. Length-penalized."""
+    def sequence_probability(self, prompt, choice, temperature=0.7):
         self.model.eval()
         prompt_ids = self.tokenizer(
             prompt, add_special_tokens=False, return_tensors="pt"
@@ -224,6 +223,7 @@ class AsterPipeline:
 
         with torch.no_grad(), torch.amp.autocast('cuda'):
             _, logits  = self.model(input_ids)
+            logits     = logits / temperature
             log_probs  = F.log_softmax(logits, dim=-1)
 
             seq_log_prob  = 0.0
@@ -245,8 +245,12 @@ class AsterPipeline:
             return 0.0
 
         with torch.no_grad(), torch.amp.autocast('cuda'):
-            embs1 = self.model.wte(ids1).squeeze(0)
-            embs2 = self.model.wte(ids2).squeeze(0)
+            hidden1, _ = self.model(ids1)   # [1, T1, d_model]
+            hidden2, _ = self.model(ids2)   # [1, T2, d_model]
+
+            embs1 = hidden1.squeeze(0)      # [T1, d_model]
+            embs2 = hidden2.squeeze(0)      # [T2, d_model]
+
             embs1_norm = F.normalize(embs1, p=2, dim=1)
             embs2_norm = F.normalize(embs2, p=2, dim=1)
             sim_matrix = torch.matmul(embs1_norm, embs2_norm.T)
@@ -319,11 +323,20 @@ def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt",
             vanilla_gen = pipeline.beam_search(prompt, guided=False)
             guided_gen  = pipeline.beam_search(prompt, guided=True)
 
-            vanilla_scores = [pipeline.compute_bertscore(vanilla_gen, c) for c in choices]
-            guided_scores  = [pipeline.compute_bertscore(guided_gen,  c) for c in choices]
+            vanilla_scores = [pipeline.compute_bertscore_contextual(vanilla_gen, c) for c in choices]
+            guided_scores  = [pipeline.compute_bertscore_contextual(guided_gen, c) for c in choices]
 
-            pred3 = vanilla_scores.index(max(vanilla_scores))
-            pred4 = guided_scores.index(max(guided_scores))
+            seq_probs = [pipeline.sequence_probability(prompt, c) for c in choices]
+
+            sp_min, sp_max = min(seq_probs), max(seq_probs)
+            sp_range = sp_max - sp_min if sp_max != sp_min else 1.0
+            seq_probs_norm = [(s - sp_min) / sp_range for s in seq_probs]
+
+            combined_vanilla = [v + 0.5 * s for v, s in zip(vanilla_scores, seq_probs_norm)]
+            combined_guided  = [g + 0.5 * s for g, s in zip(guided_scores,  seq_probs_norm)]
+
+            pred3 = combined_vanilla.index(max(combined_vanilla))
+            pred4 = combined_guided.index(max(combined_guided))
 
             if pred3 == true_label: task3_correct += 1
             if pred4 == true_label: task4_correct += 1
