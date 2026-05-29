@@ -8,9 +8,11 @@ import os
 
 from Aster import TransformerGPT, load_model_best_state_dict
 
-
 class AsterOBQADataset(Dataset):
     def __init__(self, file_path, tokenizer, max_length=128):
+        """
+        Reads the text file and formats the questions and choices into token sequences for the model.
+        """
         self.data = []
         self.label_map = {"A": 0, "B": 1, "C": 2, "D": 3}
 
@@ -58,9 +60,9 @@ class AsterOBQADataset(Dataset):
                     all_labels.append(labels)
 
                 self.data.append({
-                    "input_ids":      torch.tensor(all_input_ids),       # [4, max_length]
-                    "attention_mask": torch.tensor(all_attention_mask),  # [4, max_length]
-                    "labels":         torch.tensor(all_labels),          # [4, max_length]
+                    "input_ids":      torch.tensor(all_input_ids),       
+                    "attention_mask": torch.tensor(all_attention_mask), 
+                    "labels":         torch.tensor(all_labels),          
                     "label_idx":      label_idx,
                     "raw_fact":       fact,
                     "raw_stem":       stem,
@@ -68,14 +70,22 @@ class AsterOBQADataset(Dataset):
                 })
 
     def __len__(self):
+        """
+        Provides the total number of items in the loaded dataset.
+        """
         return len(self.data)
 
     def __getitem__(self, idx):
+        """
+        Fetches a single formatted question item for training or testing.
+        """
         return self.data[idx]
-
 
 class AsterPipeline:
     def __init__(self, tokenizer_dir="saved/tokenizer", model_path="saved/model_best.pt"):
+        """
+        Loads the tokenizer and model components and assigns them to the hardware device.
+        """
         self.device    = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.tokenizer = GPT2TokenizerFast.from_pretrained(tokenizer_dir)
         self.tokenizer.pad_token = self.tokenizer.eos_token or "[PAD]"
@@ -90,7 +100,9 @@ class AsterPipeline:
 
     def fine_tune(self, train_loader, valid_loader, epochs=5, patience=2,
                   save_name="aster_finetuned.pt"):
-
+        """
+        Updates the model weights using the training data and saves the version that performs best on the validation data.
+        """
         for name, param in self.model.named_parameters():
             param.requires_grad = True
         for name, param in self.model.named_parameters():
@@ -114,10 +126,10 @@ class AsterPipeline:
 
             for batch in tqdm(train_loader, desc=f"Epoch {epoch+1}"):
                 B          = batch["input_ids"].size(0)
-                label_idx  = batch["label_idx"].to(self.device)          # [B]
-                input_ids  = batch["input_ids"].to(self.device)          # [B, 4, L]
-                attn_mask  = batch["attention_mask"].to(self.device)     # [B, 4, L]
-                labels     = batch["labels"].to(self.device)             # [B, 4, L]
+                label_idx  = batch["label_idx"].to(self.device)         
+                input_ids  = batch["input_ids"].to(self.device)         
+                attn_mask  = batch["attention_mask"].to(self.device)     
+                labels     = batch["labels"].to(self.device)            
 
                 optimizer.zero_grad()
 
@@ -141,8 +153,8 @@ class AsterPipeline:
                     losses     = losses_flat.view(B, 4)          
                     scores     = -losses                         
 
-                    correct_scores = scores[torch.arange(B), label_idx].unsqueeze(1)  # [B, 1]
-                    margins        = 1.0 - correct_scores + scores                    # [B, 4]
+                    correct_scores = scores[torch.arange(B), label_idx].unsqueeze(1)  
+                    margins        = 1.0 - correct_scores + scores                  
                     margins[torch.arange(B), label_idx] = 0.0                        
                     ranking_loss   = F.relu(margins).sum(dim=1).mean()
 
@@ -216,6 +228,9 @@ class AsterPipeline:
         self._plot_losses(train_losses, val_losses, save_name.replace('.pt', '_loss.png'))
 
     def _plot_losses(self, train_losses, val_losses, filename):
+        """
+        Generates a line graph showing the training and validation error trends over time.
+        """
         plt.figure(figsize=(10, 6))
         plt.plot(train_losses, label='Training Loss')
         plt.plot(val_losses,   label='Validation Loss')
@@ -227,6 +242,9 @@ class AsterPipeline:
         plt.close()
 
     def sequence_probability(self, prompt, choice):
+        """
+        Calculates a score reflecting how naturally the model transitions from the prompt to a specific choice.
+        """
         self.model.eval()
         prompt_ids = self.tokenizer(
             prompt, add_special_tokens=False, return_tensors="pt"
@@ -251,6 +269,9 @@ class AsterPipeline:
         return seq_log_prob / (n_choice_toks ** 0.7)
 
     def compute_bertscore(self, text1, text2):
+        """
+        Evaluates how closely generated text matches a target text by comparing their semantic representations.
+        """
         if not text1.strip() or not text2.strip():
             return 0.0
         ids1 = self.tokenizer(text1, add_special_tokens=False, return_tensors="pt")["input_ids"].to(self.device)
@@ -271,6 +292,9 @@ class AsterPipeline:
             return 2 * precision * recall / (precision + recall)
 
     def beam_search(self, prompt, beam_width=3, max_len=15, guided=False):
+        """
+        Generates a response token by token by tracking the most likely sequences.
+        """
         self.model.eval()
         initial_ids = self.tokenizer(
             prompt, add_special_tokens=False, return_tensors="pt"
@@ -309,13 +333,14 @@ class AsterPipeline:
         decoded   = self.tokenizer.decode(best_seq, skip_special_tokens=True).strip()
         return decoded if decoded else "unknown"
 
-
 def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt", skip_beam=False):
+    """
+    Runs the model against a dataset to calculate accuracy percentages and records the generated text.
+    """
     task2_correct = task3_correct = task4_correct = 0
     total = len(dataset)
     logs  = []
 
-    # Keeping standard scannable progress tracking
     for i in tqdm(range(total), desc="Evaluating"):
         item       = dataset[i]
         fact, stem = item["raw_fact"], item["raw_stem"]
@@ -354,15 +379,16 @@ def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt", skip
     with open(output_log, 'w') as f:
         f.write("\n".join(logs))
 
-
 def main():
+    """
+    Coordinates the data loading, model initialization, training loops, and evaluation tasks.
+    """
     pipeline = AsterPipeline()
 
     valid_dataset = AsterOBQADataset('obqa/obqa.valid.txt', pipeline.tokenizer)
     test_dataset  = AsterOBQADataset('obqa/obqa.test.txt',  pipeline.tokenizer)
 
     print("Running Zero-Shot Evaluation.")
-    # Zero-shot validation evaluation outputs the standard task print statements
     execute_evaluation(pipeline, valid_dataset, "zero_shot_valid_logs.txt", skip_beam=False)
 
     train_dataset = AsterOBQADataset('obqa/obqa.train.txt', pipeline.tokenizer)
@@ -371,7 +397,7 @@ def main():
     valid_loader  = DataLoader(valid_dataset, batch_size=8,
                                num_workers=os.cpu_count(), pin_memory=True)
 
-    print("Fine-tuning Aster...")
+    print("Fine-tuning Aster.")
     pipeline.fine_tune(train_loader, valid_loader, save_name="aster_finetuned.pt")
 
     pipeline.model.load_state_dict(
@@ -379,9 +405,7 @@ def main():
     )
 
     print("Running Fine-Tuned Evaluation on Test Set.")
-    # Final evaluation run outputs clean final fine-tuned statements
     execute_evaluation(pipeline, test_dataset, "finetuned_test_logs.txt", skip_beam=False)
-
 
 if __name__ == "__main__":
     main()

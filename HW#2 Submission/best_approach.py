@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 import os
 
 class OBQADataset(Dataset):
-    """
-    Parses the local text files and formats the inputs for BERT.
-    """
     def __init__(self, file_path, tokenizer, max_length=128):
+        """
+        Reads the source text and prepares the questions and choices for BERT processing.
+        """
         self.data = []
         self.label_map = {"A": 0, "B": 1, "C": 2, "D": 3}
         
@@ -47,21 +47,30 @@ class OBQADataset(Dataset):
                 })
 
     def __len__(self):
+        """
+        Provides the total number of items in the loaded dataset.
+        """
         return len(self.data)
 
     def __getitem__(self, idx):
+        """
+        Fetches a single tokenized question item during the data loading process.
+        """
         return self.data[idx]
 
 class BertQAClassifier(nn.Module):
-    """
-    Wraps the standard BERT base model with a custom classification head.
-    """
     def __init__(self, checkpoint="google-bert/bert-base-uncased"):
+        """
+        Sets up the base model and attaches a custom scoring layer to evaluate choices.
+        """
         super(BertQAClassifier, self).__init__()
         self.bert = BertModel.from_pretrained(checkpoint)
         self.classifier = nn.Linear(self.bert.config.hidden_size, 1)
 
     def forward(self, input_ids, attention_mask):
+        """
+        Pushes the tokenized text through the model to produce scores for each answer option.
+        """
         batch_size, num_choices, seq_length = input_ids.shape
         input_ids = input_ids.view(-1, seq_length)
         attention_mask = attention_mask.view(-1, seq_length)
@@ -74,7 +83,7 @@ class BertQAClassifier(nn.Module):
 
 def plot_losses(train_losses, val_losses):
     """
-    Generates and saves a plot of the training and validation loss curves.
+    Generates a graph showing the progression of training and validation errors.
     """
     plt.figure(figsize=(10, 6))
     plt.plot(train_losses, label='Training Loss')
@@ -89,7 +98,7 @@ def plot_losses(train_losses, val_losses):
 
 def train_and_evaluate():
     """
-    Executes the training loop with early stopping, mixed precision, and saves the best model weights.
+    Manages the data pipeline, model training, accuracy evaluation, and the saving of the final model weights.
     """
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     tokenizer = BertTokenizer.from_pretrained("google-bert/bert-base-uncased")
