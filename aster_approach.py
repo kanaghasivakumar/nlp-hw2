@@ -26,7 +26,7 @@ class AsterOBQADataset(Dataset):
                 answer_key = tokens[6]
                 label_idx  = self.label_map[answer_key]
 
-                prompt_text = f"{fact} {stem} The answer is"
+                prompt_text    = f"{fact} {stem}"
                 prompt_encoded = tokenizer(prompt_text, add_special_tokens=False)['input_ids']
 
                 all_input_ids      = []
@@ -88,7 +88,8 @@ class AsterPipeline:
         self.model.load_state_dict(state_dict, strict=True)
         self.model.to(self.device)
 
-    def fine_tune(self, train_loader, valid_loader, epochs=10, patience=4, save_name="aster_finetuned.pt"):
+    def fine_tune(self, train_loader, valid_loader, epochs=5, patience=2,
+                  save_name="aster_finetuned.pt"):
 
         for name, param in self.model.named_parameters():
             param.requires_grad = True
@@ -97,12 +98,11 @@ class AsterPipeline:
                 param.requires_grad = False
 
         trainable = [p for p in self.model.parameters() if p.requires_grad]
-        print(f"Trainable params: {len(trainable)}")
 
-        optimizer = torch.optim.AdamW(trainable, lr=1e-5, weight_decay=0.01)
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)
-        ce = torch.nn.CrossEntropyLoss(ignore_index=-100, reduction='sum')
-        scaler = torch.amp.GradScaler('cuda')
+        optimizer = torch.optim.AdamW(trainable, lr=5e-6, weight_decay=0.1)
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=1)
+        ce        = torch.nn.CrossEntropyLoss(ignore_index=-100, reduction='sum')
+        scaler    = torch.amp.GradScaler('cuda')
 
         best_val_loss    = float('inf')
         patience_counter = 0
@@ -110,20 +110,21 @@ class AsterPipeline:
 
         for epoch in range(epochs):
             self.model.train()
-            total_train_loss = 0 
+            total_train_loss = 0
 
-            for batch in tqdm(train_loader, desc=f"Epoch {epoch+1})"):
-                B         = batch["input_ids"].size(0)
-                label_idx = batch["label_idx"].to(self.device)
-                input_ids = batch["input_ids"].to(self.device)
-                attn_mask = batch["attention_mask"].to(self.device)
-                labels    = batch["labels"].to(self.device)
+            for batch in tqdm(train_loader, desc=f"Epoch {epoch+1}"):
+                B          = batch["input_ids"].size(0)
+                label_idx  = batch["label_idx"].to(self.device)          # [B]
+                input_ids  = batch["input_ids"].to(self.device)          # [B, 4, L]
+                attn_mask  = batch["attention_mask"].to(self.device)     # [B, 4, L]
+                labels     = batch["labels"].to(self.device)             # [B, 4, L]
+
+                optimizer.zero_grad()
 
                 input_ids_flat = input_ids.view(B * 4, -1)
                 attn_flat      = attn_mask.view(B * 4, -1)
                 labels_flat    = labels.view(B * 4, -1)
 
-                optimizer.zero_grad()
                 with torch.amp.autocast('cuda'):
                     _, logits    = self.model(input_ids_flat, attention_mask=attn_flat)
                     shift_logits = logits[..., :-1, :].contiguous()
@@ -137,8 +138,17 @@ class AsterPipeline:
                             shift_labels[k].view(-1)
                         ) / n_toks
 
-                    losses = losses_flat.view(B, 4)
-                    loss = losses[torch.arange(B), label_idx].mean()
+                    losses     = losses_flat.view(B, 4)          
+                    scores     = -losses                         
+
+                    correct_scores = scores[torch.arange(B), label_idx].unsqueeze(1)  # [B, 1]
+                    margins        = 1.0 - correct_scores + scores                    # [B, 4]
+                    margins[torch.arange(B), label_idx] = 0.0                        
+                    ranking_loss   = F.relu(margins).sum(dim=1).mean()
+
+                    lm_loss = losses[torch.arange(B), label_idx].mean()
+
+                    loss = lm_loss + ranking_loss
 
                 scaler.scale(loss).backward()
                 torch.nn.utils.clip_grad_norm_(trainable, max_norm=1.0)
@@ -175,23 +185,28 @@ class AsterPipeline:
                                 shift_labels[k].view(-1)
                             ) / n_toks
 
-                        losses = losses_flat.view(B, 4)
-                        loss = losses[torch.arange(B), label_idx].mean()
+                        losses       = losses_flat.view(B, 4)
+                        scores       = -losses
+                        correct_scores = scores[torch.arange(B), label_idx].unsqueeze(1)
+                        margins      = 1.0 - correct_scores + scores
+                        margins[torch.arange(B), label_idx] = 0.0
+                        ranking_loss = F.relu(margins).sum(dim=1).mean()
+                        lm_loss      = losses[torch.arange(B), label_idx].mean()
+                        loss         = lm_loss + ranking_loss
 
                     total_val_loss += loss.item()
 
             avg_val_loss = total_val_loss / len(valid_loader)
             train_losses.append(avg_train_loss)
             val_losses.append(avg_val_loss)
-            scheduler.step()
+            scheduler.step(avg_val_loss)
 
-            print(f"Epoch {epoch+1} | Train: {avg_train_loss:.4f} | Val: {avg_val_loss:.4f}")
+            print(f"Epoch {epoch+1} | Train Loss: {avg_train_loss:.4f} | Val Loss: {avg_val_loss:.4f}")
 
             if avg_val_loss < best_val_loss:
                 best_val_loss    = avg_val_loss
                 patience_counter = 0
                 torch.save(self.model.state_dict(), save_name)
-                print(f"  --> Saved best model at epoch {epoch+1}")
             else:
                 patience_counter += 1
                 if patience_counter >= patience:
@@ -211,7 +226,7 @@ class AsterPipeline:
         plt.savefig(filename)
         plt.close()
 
-    def sequence_probability(self, prompt, choice, temperature=0.7):
+    def sequence_probability(self, prompt, choice):
         self.model.eval()
         prompt_ids = self.tokenizer(
             prompt, add_special_tokens=False, return_tensors="pt"
@@ -223,7 +238,6 @@ class AsterPipeline:
 
         with torch.no_grad(), torch.amp.autocast('cuda'):
             _, logits  = self.model(input_ids)
-            logits     = logits / temperature
             log_probs  = F.log_softmax(logits, dim=-1)
 
             seq_log_prob  = 0.0
@@ -245,12 +259,8 @@ class AsterPipeline:
             return 0.0
 
         with torch.no_grad(), torch.amp.autocast('cuda'):
-            hidden1, _ = self.model(ids1)   # [1, T1, d_model]
-            hidden2, _ = self.model(ids2)   # [1, T2, d_model]
-
-            embs1 = hidden1.squeeze(0)      # [T1, d_model]
-            embs2 = hidden2.squeeze(0)      # [T2, d_model]
-
+            embs1 = self.model.wte(ids1).squeeze(0)
+            embs2 = self.model.wte(ids2).squeeze(0)
             embs1_norm = F.normalize(embs1, p=2, dim=1)
             embs2_norm = F.normalize(embs2, p=2, dim=1)
             sim_matrix = torch.matmul(embs1_norm, embs2_norm.T)
@@ -300,19 +310,19 @@ class AsterPipeline:
         return decoded if decoded else "unknown"
 
 
-def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt",
-                       split_name="", skip_beam=False):
+def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt", skip_beam=False):
     task2_correct = task3_correct = task4_correct = 0
     total = len(dataset)
     logs  = []
 
-    for i in tqdm(range(total), desc=f"Evaluating {split_name}"):
+    # Keeping standard scannable progress tracking
+    for i in tqdm(range(total), desc="Evaluating"):
         item       = dataset[i]
         fact, stem = item["raw_fact"], item["raw_stem"]
         choices    = item["raw_choices"]
         true_label = item["label_idx"]
 
-        prompt = f"{fact} {stem} The answer is"
+        prompt = f"{fact} {stem}"
 
         probs = [pipeline.sequence_probability(prompt, c) for c in choices]
         pred2 = probs.index(max(probs))
@@ -323,20 +333,11 @@ def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt",
             vanilla_gen = pipeline.beam_search(prompt, guided=False)
             guided_gen  = pipeline.beam_search(prompt, guided=True)
 
-            vanilla_scores = [pipeline.compute_bertscore_contextual(vanilla_gen, c) for c in choices]
-            guided_scores  = [pipeline.compute_bertscore_contextual(guided_gen, c) for c in choices]
+            vanilla_scores = [pipeline.compute_bertscore(vanilla_gen, c) for c in choices]
+            guided_scores  = [pipeline.compute_bertscore(guided_gen,  c) for c in choices]
 
-            seq_probs = [pipeline.sequence_probability(prompt, c) for c in choices]
-
-            sp_min, sp_max = min(seq_probs), max(seq_probs)
-            sp_range = sp_max - sp_min if sp_max != sp_min else 1.0
-            seq_probs_norm = [(s - sp_min) / sp_range for s in seq_probs]
-
-            combined_vanilla = [v + 0.5 * s for v, s in zip(vanilla_scores, seq_probs_norm)]
-            combined_guided  = [g + 0.5 * s for g, s in zip(guided_scores,  seq_probs_norm)]
-
-            pred3 = combined_vanilla.index(max(combined_vanilla))
-            pred4 = combined_guided.index(max(combined_guided))
+            pred3 = vanilla_scores.index(max(vanilla_scores))
+            pred4 = guided_scores.index(max(guided_scores))
 
             if pred3 == true_label: task3_correct += 1
             if pred4 == true_label: task4_correct += 1
@@ -345,23 +346,14 @@ def execute_evaluation(pipeline, dataset, output_log="generation_logs.txt",
             logs.append(f"Vanilla Gen: {vanilla_gen} | Pred: {pred3} | Scores: {vanilla_scores}")
             logs.append(f"Guided Gen:  {guided_gen}  | Pred: {pred4} | Scores: {guided_scores}\n")
 
-    t2 = task2_correct / total * 100
-    t3 = task3_correct / total * 100 if not skip_beam else None
-    t4 = task4_correct / total * 100 if not skip_beam else None
-
-    print(f"\n{'='*55}")
-    print(f"  {split_name}  (n={total})")
-    print(f"{'='*55}")
-    print(f"  Task 2 (Seq Prob):        {t2:.2f}%  [Prof: 27.6% / 57.6%]")
+    print(f"Task 2 Accuracy: {task2_correct / total * 100:.2f}%")
     if not skip_beam:
-        print(f"  Task 3 (Vanilla Beam):    {t3:.2f}%  [Prof: 26.0% / 43.8%]")
-        print(f"  Task 4 (Guided Beam):     {t4:.2f}%  [Prof: ~26%  / 47.6%]")
-    print(f"{'='*55}\n")
+        print(f"Task 3 Accuracy: {task3_correct / total * 100:.2f}%")
+        print(f"Task 4 Accuracy: {task4_correct / total * 100:.2f}%")
 
     with open(output_log, 'w') as f:
         f.write("\n".join(logs))
 
-    return t2, t3, t4
 
 def main():
     pipeline = AsterPipeline()
@@ -369,31 +361,26 @@ def main():
     valid_dataset = AsterOBQADataset('obqa/obqa.valid.txt', pipeline.tokenizer)
     test_dataset  = AsterOBQADataset('obqa/obqa.test.txt',  pipeline.tokenizer)
 
-    print("\n>>> ZERO-SHOT EVALUATION")
-    execute_evaluation(pipeline, valid_dataset, "zero_shot_valid_logs.txt",
-                       split_name="Validation (zero-shot)", skip_beam=True)
-    execute_evaluation(pipeline, test_dataset,  "zero_shot_test_logs.txt",
-                       split_name="Test (zero-shot)", skip_beam=True)
+    print("Running Zero-Shot Evaluation.")
+    # Zero-shot validation evaluation outputs the standard task print statements
+    execute_evaluation(pipeline, valid_dataset, "zero_shot_valid_logs.txt", skip_beam=False)
 
     train_dataset = AsterOBQADataset('obqa/obqa.train.txt', pipeline.tokenizer)
-    train_loader  = DataLoader(train_dataset, batch_size=16, shuffle=True,
+    train_loader  = DataLoader(train_dataset, batch_size=8, shuffle=True,
                                num_workers=os.cpu_count(), pin_memory=True, prefetch_factor=2)
-    valid_loader  = DataLoader(valid_dataset, batch_size=16,
+    valid_loader  = DataLoader(valid_dataset, batch_size=8,
                                num_workers=os.cpu_count(), pin_memory=True)
 
-    print("\n>>> FINE-TUNING")
+    print("Fine-tuning Aster...")
     pipeline.fine_tune(train_loader, valid_loader, save_name="aster_finetuned.pt")
 
-    print("\n>>> Loading best fine-tuned checkpoint...")
     pipeline.model.load_state_dict(
         torch.load("aster_finetuned.pt", map_location=pipeline.device)
     )
 
-    print("\n>>> FINE-TUNED EVALUATION")
-    execute_evaluation(pipeline, valid_dataset, "finetuned_valid_logs.txt",
-                       split_name="Validation (fine-tuned)", skip_beam=False)
-    execute_evaluation(pipeline, test_dataset,  "finetuned_test_logs.txt",
-                       split_name="Test (fine-tuned)", skip_beam=False)
+    print("Running Fine-Tuned Evaluation on Test Set.")
+    # Final evaluation run outputs clean final fine-tuned statements
+    execute_evaluation(pipeline, test_dataset, "finetuned_test_logs.txt", skip_beam=False)
 
 
 if __name__ == "__main__":
